@@ -1,0 +1,217 @@
+/* ================================
+   Hero Split-Face Effect
+   Designer | Developer
+   ================================ */
+
+.hero-image {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.split-image-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 5 / 6;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(15, 23, 42, 0.15);
+}
+
+/* Base image - shows full photo */
+.split-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Left half - Artistic/Designer side */
+.split-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Right half - Code/Developer side */
+.split-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.05);
+    z-index: 2;
+    overflow: hidden;
+}
+
+/* Code text overlay */
+.code-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-family: 'Fira Code', 'Monaco', 'Courier New', monospace;
+    color: var(--color-text-primary);
+    line-height: 1.4;
+    pointer-events: none;
+}
+
+.code-snippet {
+    font-size: clamp(0.5rem, 1.5vw, 0.75rem);
+    opacity: 0.8;
+    white-space: pre;
+    letter-spacing: -0.02em;
+    animation: fadeInCode 0.6s ease forwards;
+    animation-delay: calc(var(--delay) * 0.1s);
+}
+
+.code-snippet:nth-child(odd) {
+    text-align: left;
+    padding-left: 0.5rem;
+}
+
+.code-snippet:nth-child(even) {
+    text-align: right;
+    padding-right: 0.5rem;
+}
+
+/* Center divider line */
+.split-divider {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        var(--color-border) 10%,
+        var(--color-accent) 50%,
+        var(--color-border) 90%,
+        transparent 100%
+    );
+    z-index: 3;
+    opacity: 0.6;
+}
+
+/* Label badges */
+.split-label {
+    position: absolute;
+    bottom: 1rem;
+    padding: 0.375rem 0.875rem;
+    font-size: 0.75rem;
+    font-weight: var(--font-weight-semibold);
+    border-radius: var(--radius-sm);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    z-index: 4;
+    backdrop-filter: blur(8px);
+    animation: slideUp 0.6s ease forwards;
+}
+
+.split-label.left {
+    left: 1rem;
+    background: rgba(245, 158, 11, 0.9);
+    color: white;
+}
+
+.split-label.right {
+    right: 1rem;
+    background: rgba(71, 85, 105, 0.9);
+    color: white;
+}
+
+/* Animations */
+@keyframes fadeInCode {
+    from {
+        opacity: 0;
+        transform: translateX(10px);
+    }
+    to {
+        opacity: 0.8;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hover effect */
+.split-image-container:hover .code-snippet {
+    opacity: 1;
+}
+
+.split-image-container:hover .split-divider {
+    opacity: 0.8;
+    box-shadow: 0 0 20px rgba(71, 85, 105, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .split-image-container {
+        max-width: 400px;
+    }
+    
+    .code-snippet {
+        font-size: 0.625rem;
+    }
+    
+    .code-overlay {
+        padding: 1rem 0.5rem;
+    }
+    
+    .split-label {
+        font-size: 0.625rem;
+        padding: 0.25rem 0.625rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .split-image-container {
+        aspect-ratio: 4 / 5;
+    }
+    
+    .code-snippet {
+        font-size: 0.5rem;
+    }
+}
+
+/* Alternative: Stronger code effect */
+.split-right.strong-effect {
+    background: rgba(15, 23, 42, 0.15);
+}
+
+.split-right.strong-effect .code-snippet {
+    font-weight: 500;
+    opacity: 0.95;
+}
+
+/* Alternative: Minimal effect */
+.split-right.minimal-effect {
+    background: transparent;
+}
+
+.split-right.minimal-effect .code-snippet {
+    opacity: 0.5;
+    font-size: 0.625rem;
+}

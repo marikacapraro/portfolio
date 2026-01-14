@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Marika Capraro - UX/UI Designer who designs thoughtful digital experiences for real users. Data-driven design rooted in hospitality.">
+    <title>Marika Capraro - UX/UI Designer</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">MC</a>
+            <ul class="nav-menu">
+                <li><a href="#work">Projects</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="#contact" class="nav-cta">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container-centered">
+            <div class="hero-image-small">
+                <img src="assets/images/hero-split.jpg" alt="Marika Capraro">
+            </div>
+            <h1 class="hero-title">
+                Hi, I'm Marika
+            </h1>
+            <p class="hero-role">UX/UI Designer</p>
+            <p class="hero-tagline">Designing smoother daily experiences</p>
+            <p class="hero-description">
+                I observe how people interact with products in real life—the small frustrations, the workarounds, 
+                the moments of confusion. Then I design solutions that make those experiences flow naturally. 
+                With roots in Italian hospitality and a focus on UX research and accessibility, I bridge design 
+                and development by leveraging AI tools to bring ideas to life.
+            </p>
+            <p class="hero-location">
+                Based in Belgium
+            </p>
+            <div class="hero-cta">
+                <a href="#work" class="btn btn-primary">View Projects</a>
+                <a href="#contact" class="btn btn-secondary">Let's Talk</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Work Section -->
+    <section id="work" class="work">
+        <div class="work-container">
+            <div class="section-header">
+                <h2>Selected Work</h2>
+                <div class="filter-tabs">
+                    <button class="filter-tab active" data-filter="all">All</button>
+                    <button class="filter-tab" data-filter="ux-ui">UX/UI Design</button>
+                    <button class="filter-tab" data-filter="frontend">Frontend Dev</button>
+                </div>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Project 1: City of Gent Sports Booking -->
+                <article class="project-card" data-category="ux-ui">
+                    <a href="projects/gent-sports.html" class="project-link">
+                        <div class="project-image">
+                            <img src="assets/images/projects/Stad Gent Thumbnail New Portoflio.png" alt="City of Gent Sports Booking Redesign">
+                            <div class="project-overlay">
+                                <span class="view-project">View Case Study →</span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-tags">
+                                <span class="tag">UX/UI Design</span>
+                                <span class="tag">Mobile-First</span>
+                                <span class="tag">Accessibility</span>
+                                <span class="tag">Cursor</span>
+                            </div>
+                            <h3 class="project-title">City of Gent Sports Booking</h3>
+                            <p class="project-description">
+                                Redesigning a municipal sports booking platform to reduce friction and improve accessibility
+                            </p>
+                            <p class="project-outcome">
+                                <strong>Outcome:</strong> Reduced booking steps by 37.5%, achieved WCAG AA compliance, 100% mobile responsive
+                            </p>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Project 2: Cambio Autodelen Redesign -->
+                <article class="project-card" data-category="ux-ui">
+                    <a href="projects/cambio-redesign.html" class="project-link">
+                        <div class="project-image">
+                            <img src="assets/images/projects/Cambio Thumbnail New Portoflio.png" alt="Cambio Autodelen App Redesign">
+                            <div class="project-overlay">
+                                <span class="view-project">View Case Study →</span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-tags">
+                                <span class="tag">UX/UI Design</span>
+                                <span class="tag">Mobile App</span>
+                            </div>
+                            <h3 class="project-title">Cambio Autodelen App Redesign</h3>
+                            <p class="project-description">
+                                Redesigning the login flow to improve accessibility and reduce user frustration
+                            </p>
+                            <p class="project-outcome">
+                                <strong>Outcome:</strong> Streamlined authentication process with improved accessibility compliance
+                            </p>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Project 3: Cambio Design System -->
+                <article class="project-card" data-category="ux-ui">
+                    <a href="projects/cambio-design-system.html" class="project-link">
+                        <div class="project-image">
+                            <img src="assets/images/projects/Design System Thumbnail New Portoflio.png" alt="Cambio Design System">
+                            <div class="project-overlay">
+                                <span class="view-project">View Case Study →</span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-tags">
+                                <span class="tag">Design System</span>
+                                <span class="tag">UI Design</span>
+                            </div>
+                            <h3 class="project-title">Cambio Design System</h3>
+                            <p class="project-description">
+                                Building a scalable design system with design tokens and reusable components
+                            </p>
+                            <p class="project-outcome">
+                                <strong>Outcome:</strong> Established design foundation for consistent user experience
+                            </p>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Project 4: Walk Paws App -->
+                <article class="project-card" data-category="ux-ui">
+                    <a href="projects/walk-paws.html" class="project-link">
+                        <div class="project-image">
+                            <img src="assets/images/projects/WalpPaws Design Thumbnail New Portoflio.png" alt="Walk Paws Social Good App">
+                            <div class="project-overlay">
+                                <span class="view-project">View Case Study →</span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-tags">
+                                <span class="tag">UX/UI Design</span>
+                                <span class="tag">Mobile App</span>
+                            </div>
+                            <h3 class="project-title">Walk Paws</h3>
+                            <p class="project-description">
+                                Social good app connecting dog owners with volunteer walkers, featuring responsive design
+                            </p>
+                            <p class="project-outcome">
+                                <strong>Outcome:</strong> Created accessible platform promoting pet welfare and community connection
+                            </p>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Project 5: Walk Paws Website -->
+                <article class="project-card" data-category="frontend">
+                    <a href="projects/walk-paws-frontend.html" class="project-link">
+                        <div class="project-image">
+                            <img src="assets/images/projects/WalpPaws FrontEnd Thumbnail New Portoflio.png" alt="Walk Paws Website Development">
+                            <div class="project-overlay">
+                                <span class="view-project">View Case Study →</span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-tags">
+                                <span class="tag">Frontend Dev</span>
+                                <span class="tag">HTML/CSS/JS</span>
+                            </div>
+                            <h3 class="project-title">Walk Paws Website</h3>
+                            <p class="project-description">
+                                Translating Figma designs into a responsive, accessible website using HTML, CSS, and JavaScript
+                            </p>
+                            <p class="project-outcome">
+                                <strong>Outcome:</strong> Pixel-perfect implementation with semantic HTML and smooth interactions
+                            </p>
+                        </div>
+                    </a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Approach Section -->
+    <section class="approach">
+        <div class="approach-container">
+            <h2 class="section-title">My Process</h2>
+            <div class="approach-grid">
+                <div class="approach-card">
+                    <div class="approach-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 16v-4"/>
+                            <path d="M12 8h.01"/>
+                        </svg>
+                    </div>
+                    <h3>UX Research First</h3>
+                    <p>I start by observing how people actually use products—their workarounds, frustrations, and patterns. Understanding the problem comes before designing the solution.</p>
+                </div>
+                <div class="approach-card">
+                    <div class="approach-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                        </svg>
+                    </div>
+                    <h3>Accessibility as Standard</h3>
+                    <p>Not a feature—a requirement. I design for WCAG compliance from the start, ensuring products work for everyone, not just the average user.</p>
+                </div>
+                <div class="approach-card">
+                    <div class="approach-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="16 18 22 12 16 6"/>
+                            <polyline points="8 6 2 12 8 18"/>
+                        </svg>
+                    </div>
+                    <h3>Design Meets Technology</h3>
+                    <p>With a solid understanding of HTML, CSS, and JavaScript, I bridge design and development. I work with AI agents to rapidly prototype and validate ideas, ensuring designs are technically feasible.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Preview Section -->
+    <section class="about-preview">
+        <div class="about-preview-container">
+            <div class="about-preview-image">
+                <img src="assets/images/marika-about.jpg" alt="Marika Capraro">
+            </div>
+            <div class="about-preview-content">
+                <h2>From Hotel Management to UX Design</h2>
+                <p>
+                    My path to UX wasn't traditional. I spent years in hospitality—managing guest experiences, 
+                    anticipating needs, removing friction. Then I realized: that was UX design, just without screens.
+                </p>
+                <p>
+                    Now I bring that same mindset to digital products. I observe real user behavior, focus on 
+                    accessibility, and design solutions that feel natural. Based in Belgium, working in Italian, 
+                    English, Spanish, Portuguese—and improving my French daily.
+                </p>
+                <a href="about.html" class="btn btn-text">More about me →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="contact-container">
+            <h2 class="section-title">Let's Work Together</h2>
+            <p class="contact-subtitle">
+                Based in Belgium and available for UX/UI design projects—especially those focused on 
+                improving daily-use products. Always up for a coffee chat 
+                (virtual or in-person).
+            </p>
+            <div class="contact-links">
+                <a href="mailto:marikacapraro94@gmail.com" class="btn btn-primary">Email Me</a>
+                <a href="https://www.linkedin.com/in/marika-capraro-a09bb5239" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">LinkedIn</a>
+                <a href="assets/Marika-Capraro-Resume.pdf" target="_blank" class="btn btn-secondary">View Resume</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <p class="logo">MC</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="#work">Projects</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <ul>
+                            <li><a href="mailto:marikacapraro94@gmail.com">Email</a></li>
+                            <li><a href="https://www.linkedin.com/in/marika-capraro-a09bb5239" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                            <li><a href="assets/Marika-Capraro-Resume.pdf" target="_blank">Resume</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Marika Capraro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+</body>
+</html>

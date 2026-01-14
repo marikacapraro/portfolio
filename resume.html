@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marika Capraro - Resume</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #0F172A;
+            background: #FFFFFF;
+            padding: 48px;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .resume-header {
+            margin-bottom: 32px;
+            padding-bottom: 24px;
+            border-bottom: 2px solid #E5E7EB;
+        }
+
+        .resume-header h1 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #0F172A;
+            margin-bottom: 4px;
+        }
+
+        .resume-header .title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #475569;
+            margin-bottom: 16px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-size: 13px;
+            color: #475569;
+        }
+
+        .contact-info a {
+            color: #475569;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            color: #0F172A;
+        }
+
+        /* Summary */
+        .summary {
+            margin-bottom: 32px;
+        }
+
+        .summary p {
+            color: #475569;
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        /* Section Styles */
+        .section {
+            margin-bottom: 32px;
+        }
+
+        .section h2 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #0F172A;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        /* Experience */
+        .experience-item {
+            margin-bottom: 24px;
+        }
+
+        .experience-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 4px;
+        }
+
+        .experience-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #0F172A;
+        }
+
+        .experience-date {
+            font-size: 13px;
+            color: #94A3B8;
+            font-weight: 500;
+        }
+
+        .experience-company {
+            font-size: 14px;
+            color: #475569;
+            margin-bottom: 8px;
+        }
+
+        .experience-description {
+            font-size: 13px;
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        /* Two Column Layout */
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 16px;
+        }
+
+        .skill-item {
+            font-size: 13px;
+            color: #475569;
+            padding: 4px 0;
+        }
+
+        .skill-item:before {
+            content: "•";
+            color: #475569;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        /* Education/Certificates */
+        .cert-item {
+            margin-bottom: 16px;
+        }
+
+        .cert-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .cert-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #0F172A;
+        }
+
+        .cert-source {
+            font-size: 13px;
+            color: #475569;
+        }
+
+        /* Languages */
+        .language-item {
+            font-size: 13px;
+            color: #475569;
+            margin-bottom: 4px;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                padding: 24px;
+            }
+
+            .resume-header {
+                margin-bottom: 24px;
+                padding-bottom: 16px;
+            }
+
+            .section {
+                margin-bottom: 24px;
+                page-break-inside: avoid;
+            }
+
+            a {
+                color: inherit;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 24px;
+            }
+
+            .two-columns {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .experience-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="resume-header">
+        <h1>Marika Capraro</h1>
+        <div class="title">UX/UI Designer</div>
+        <div class="contact-info">
+            <span>+32 456 71 48 37</span>
+            <span>•</span>
+            <a href="mailto:marikacapraro94@gmail.com">marikacapraro94@gmail.com</a>
+            <span>•</span>
+            <a href="https://www.marikacapraro.com" target="_blank">Portfolio</a>
+            <span>•</span>
+            <a href="https://www.linkedin.com/in/marika-capraro-a09bb5239" target="_blank">LinkedIn</a>
+            <span>•</span>
+            <span>Belgium</span>
+        </div>
+    </header>
+
+    <!-- Summary -->
+    <section class="summary">
+        <p>
+            UX/UI designer passionate about creating accessible, user-centered digital experiences. I observe how people interact 
+            with products in real life and design solutions that make those experiences flow naturally. With a background in hospitality 
+            and a focus on UX research and accessibility, I bring empathy and attention to detail to every project.
+        </p>
+        <p>
+            I understand HTML, CSS, and JavaScript, which helps me collaborate effectively with developers and leverage AI tools 
+            to rapidly prototype ideas. This bridge between design and technology means I create solutions that are both 
+            user-friendly and feasible to build.
+        </p>
+    </section>
+
+    <!-- Work Experience -->
+    <section class="section">
+        <h2>Work Experience</h2>
+
+        <div class="experience-item">
+            <div class="experience-header">
+                <div class="experience-title">QA Specialist</div>
+                <div class="experience-date">Apr 2024 – Present</div>
+            </div>
+            <div class="experience-company">Legend Biotech • Ghent, Belgium</div>
+            <div class="experience-description">
+                Quality assurance specialist using SAP, Nicelabel Designer, MBOX, and pharma-related software systems. 
+                Ensuring compliance and accuracy in pharmaceutical documentation and processes.
+            </div>
+        </div>
+
+        <div class="experience-item">
+            <div class="experience-header">
+                <div class="experience-title">Freelance UX/UI Designer</div>
+                <div class="experience-date">Dec 2023 – Present</div>
+            </div>
+            <div class="experience-company">Calvin Hanson Creative • Remote</div>
+            <div class="experience-description">
+                Designing websites and web pages, updating content using Elementor, and working with clients through 
+                platforms like Upwork. Focus on user-centered design and accessibility compliance.
+            </div>
+        </div>
+
+        <div class="experience-item">
+            <div class="experience-header">
+                <div class="experience-title">Freelance Translator</div>
+                <div class="experience-date">Apr 2020 – Present</div>
+            </div>
+            <div class="experience-company">Learn English with Camille • Remote</div>
+            <div class="experience-description">
+                Translation of diverse content including webpages, video subtitles, and books across multiple languages 
+                (Italian, English, Spanish, Portuguese).
+            </div>
+        </div>
+
+        <div class="experience-item">
+            <div class="experience-header">
+                <div class="experience-title">Hotel Receptionist</div>
+                <div class="experience-date">Jan 2018 – Oct 2021</div>
+            </div>
+            <div class="experience-company">Garden Cactus B&B • On-site</div>
+            <div class="experience-description">
+                Managed guest experiences, anticipated needs, and optimized operational processes. Developed strong skills 
+                in problem-solving, attention to detail, and user empathy—foundations that translated seamlessly into UX design.
+            </div>
+        </div>
+    </section>
+
+    <!-- Two Column Section -->
+    <div class="two-columns">
+        <!-- Left Column -->
+        <div>
+            <!-- Education & Certificates -->
+            <section class="section">
+                <h2>Education & Certificates</h2>
+
+                <div class="cert-item">
+                    <div class="cert-title">UX/UI Design Bootcamp</div>
+                    <div class="cert-source">CareerFoundry • 2022-2023</div>
+                </div>
+
+                <div class="cert-item">
+                    <div class="cert-title">Google UX Design Certificate</div>
+                    <div class="cert-source">Coursera • 2023</div>
+                </div>
+
+                <div class="cert-item">
+                    <div class="cert-title">Meta Front-End Developer</div>
+                    <div class="cert-source">Coursera • 2023</div>
+                </div>
+
+                <div class="cert-item">
+                    <div class="cert-title">Figma UI/UX Design Essential</div>
+                    <div class="cert-source">Udemy • 2023</div>
+                </div>
+            </section>
+
+            <!-- Languages -->
+            <section class="section">
+                <h2>Languages</h2>
+                <div class="language-item">Italian (Native)</div>
+                <div class="language-item">English (Fluent)</div>
+                <div class="language-item">Spanish (Fluent)</div>
+                <div class="language-item">Portuguese (Fluent)</div>
+                <div class="language-item">French (Basic)</div>
+            </section>
+        </div>
+
+        <!-- Right Column -->
+        <div>
+            <!-- Skills -->
+            <section class="section">
+                <h2>Skills</h2>
+                
+                <h3 style="font-size: 14px; font-weight: 600; color: #0F172A; margin-bottom: 8px;">Design</h3>
+                <div class="skills-grid" style="margin-bottom: 16px;">
+                    <div class="skill-item">Figma</div>
+                    <div class="skill-item">Adobe XD</div>
+                    <div class="skill-item">Wireframing</div>
+                    <div class="skill-item">Prototyping</div>
+                    <div class="skill-item">UI Design</div>
+                    <div class="skill-item">Design Systems</div>
+                </div>
+
+                <h3 style="font-size: 14px; font-weight: 600; color: #0F172A; margin-bottom: 8px;">UX</h3>
+                <div class="skills-grid" style="margin-bottom: 16px;">
+                    <div class="skill-item">User Research</div>
+                    <div class="skill-item">Usability Testing</div>
+                    <div class="skill-item">User Flows</div>
+                    <div class="skill-item">Information Architecture</div>
+                    <div class="skill-item">Accessibility (WCAG)</div>
+                    <div class="skill-item">Responsive Design</div>
+                </div>
+
+                <h3 style="font-size: 14px; font-weight: 600; color: #0F172A; margin-bottom: 8px;">Technical</h3>
+                <div class="skills-grid">
+                    <div class="skill-item">HTML/CSS</div>
+                    <div class="skill-item">JavaScript (basics)</div>
+                    <div class="skill-item">AI-assisted prototyping</div>
+                    <div class="skill-item">Git & version control</div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+</body>
+</html>

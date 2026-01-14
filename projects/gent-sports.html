@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="City of Gent Sports Booking Redesign - UX/UI Case Study by Marika Capraro">
+    <title>City of Gent Sports Booking | Marika Capraro</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../styles/main.css">
+    
+    <style>
+        /* Case Study Specific Styles */
+        .case-study-hero {
+            padding: calc(var(--space-3xl) + 80px) var(--container-padding) var(--space-3xl);
+            text-align: center;
+        }
+
+        .case-study-hero h1 {
+            font-size: var(--font-size-4xl);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--space-md);
+            line-height: 1.2;
+        }
+
+        .case-study-subtitle {
+            font-size: var(--font-size-xl);
+            color: var(--color-text-secondary);
+            max-width: 700px;
+            margin: 0 auto var(--space-lg);
+            line-height: 1.6;
+        }
+
+        .case-study-meta {
+            display: flex;
+            gap: var(--space-lg);
+            justify-content: center;
+            flex-wrap: wrap;
+            font-size: var(--font-size-sm);
+            color: var(--color-text-tertiary);
+            margin-bottom: var(--space-3xl);
+        }
+
+        .case-study-meta span {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        /* Hero Image */
+        .hero-image-container {
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(15, 23, 42, 0.15);
+        }
+
+        .hero-image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Content Sections */
+        .case-study-section {
+            padding: var(--space-2xl) var(--container-padding);
+        }
+
+        .case-study-section.alt-bg {
+            background-color: var(--color-surface);
+        }
+
+        .section-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section-container-wide {
+            max-width: var(--container-max);
+            margin: 0 auto;
+        }
+
+        .case-study-section h2 {
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--space-xl);
+            color: var(--color-text-primary);
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .case-study-section h3 {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--space-lg);
+            margin-top: var(--space-2xl);
+            color: var(--color-text-primary);
+        }
+
+        .case-study-section h3:first-child {
+            margin-top: 0;
+        }
+
+        .case-study-section p {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+            margin-bottom: var(--space-md);
+        }
+
+        .case-study-section p strong {
+            color: var(--color-text-primary);
+            font-weight: var(--font-weight-semibold);
+        }
+
+        /* Disclaimer */
+        .disclaimer {
+            background: rgba(71, 85, 105, 0.1);
+            border-left: 3px solid var(--color-accent);
+            padding: var(--space-md) var(--space-lg);
+            border-radius: var(--radius-sm);
+            margin: var(--space-xl) 0;
+        }
+
+        .disclaimer strong {
+            color: var(--color-accent);
+            display: block;
+            margin-bottom: var(--space-xs);
+            font-size: var(--font-size-sm);
+        }
+
+        .disclaimer p {
+            font-size: var(--font-size-sm);
+            margin: 0;
+        }
+
+        /* Split View Layout */
+        .split-view-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-xl) var(--space-2xl);
+            margin: var(--space-xl) 0;
+        }
+
+        .split-view-item {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+            padding: var(--space-lg);
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+        }
+
+        .problem-content {
+            flex: 1;
+        }
+
+        .problem-title {
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-text-primary);
+            margin-bottom: var(--space-xs);
+        }
+
+        .problem-description {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .problem-meta {
+            display: flex;
+            flex-direction: row;
+            gap: var(--space-xs);
+            align-items: center;
+        }
+
+        .problem-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: 0.375rem 0.75rem;
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-xs);
+            font-weight: var(--font-weight-semibold);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .problem-badge.critical {
+            background: rgba(220, 53, 69, 0.1);
+            color: #dc3545;
+        }
+
+        .problem-badge.high {
+            background: rgba(255, 193, 7, 0.1);
+            color: #d39e00;
+        }
+
+        .problem-badge.medium {
+            background: rgba(111, 66, 193, 0.1);
+            color: #6f42c1;
+        }
+
+        .problem-category-tag {
+            font-size: var(--font-size-xs);
+            color: var(--color-text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Problems & Solutions Lists */
+        .problem-list,
+        .solution-list {
+            list-style: none;
+            padding: 0;
+            margin: var(--space-lg) 0;
+        }
+
+        .problem-list li {
+            padding: var(--space-xs) 0 var(--space-xs) var(--space-lg);
+            position: relative;
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+            margin-bottom: var(--space-xs);
+        }
+
+        .problem-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #dc3545;
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+
+        .solution-list li {
+            padding: var(--space-xs) 0 var(--space-xs) var(--space-lg);
+            position: relative;
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+            margin-bottom: var(--space-xs);
+        }
+
+        .solution-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .problem-list li strong,
+        .solution-list li strong {
+            color: var(--color-text-primary);
+        }
+
+        /* Solution Items with Images */
+        .solution-item {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: var(--space-2xl);
+            align-items: center;
+            margin: 0;
+            padding: var(--space-2xl) 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .solution-item:first-child {
+            padding-top: 0;
+        }
+
+        .solution-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .solution-content h3 {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-text-primary);
+            margin: 0 0 var(--space-md) 0;
+            line-height: 1.3;
+        }
+
+        .solution-content p {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+            margin-bottom: var(--space-md);
+        }
+
+        .solution-content p strong {
+            color: var(--color-text-primary);
+            font-weight: var(--font-weight-semibold);
+        }
+
+        .solution-image {
+            width: 100%;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-border);
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+            cursor: pointer;
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+            position: relative;
+        }
+
+        .solution-image:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(15, 23, 42, 0.12);
+        }
+
+        .solution-image::after {
+            content: '🔍 Click to zoom';
+            position: absolute;
+            bottom: 16px;
+            right: 16px;
+            background: rgba(15, 23, 42, 0.85);
+            color: white;
+            padding: 8px 16px;
+            border-radius: var(--radius-md);
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity var(--transition-fast);
+            pointer-events: none;
+        }
+
+        .solution-image:hover::after {
+            opacity: 1;
+        }
+
+        .solution-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Special handling for mobile screenshots (portrait) */
+        .solution-image.mobile-screenshot {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            background: transparent;
+        }
+
+        .solution-image.mobile-screenshot img {
+            width: auto;
+            max-width: 60%;
+            max-height: 450px;
+            height: auto;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: var(--space-xl);
+            cursor: zoom-out;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 95%;
+            max-height: 95%;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            cursor: default;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            background: white;
+            border: none;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform var(--transition-fast);
+            z-index: 10000;
+        }
+
+        .lightbox-close:hover {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .solution-item {
+                grid-template-columns: 1fr;
+                gap: var(--space-xl);
+            }
+
+            .solution-image.mobile-screenshot img {
+                max-height: 350px;
+            }
+
+            .lightbox {
+                padding: var(--space-md);
+            }
+
+            .lightbox-close {
+                top: 16px;
+                right: 16px;
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+        }
+
+        /* Image Grid */
+        .image-grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-xl);
+            margin: 0;
+            align-items: start;
+        }
+
+        .image-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-lg);
+            margin: var(--space-xl) 0;
+        }
+
+        .image-item {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            background: var(--color-bg);
+            transition: all var(--transition-normal);
+            cursor: pointer;
+        }
+
+        .image-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+            border-color: var(--color-accent);
+        }
+
+        .image-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            background: var(--color-surface);
+            border-bottom: 2px solid var(--color-border);
+            transition: transform var(--transition-normal);
+        }
+
+        /* Ensure consistent image heights in 2-column grid */
+        .image-grid-2 .image-item img {
+            width: 100%;
+            height: 286px;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        .image-item:hover img {
+            transform: scale(1.02);
+        }
+
+        .image-caption {
+            padding: var(--space-lg);
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+            flex-grow: 1;
+            background: var(--color-surface);
+        }
+
+        .image-caption strong {
+            display: block;
+            color: var(--color-text-primary);
+            font-size: var(--font-size-md);
+            margin-bottom: var(--space-xs);
+        }
+
+        /* Design Subsections with Visual Separators */
+        .design-subsection {
+            margin: var(--space-3xl) 0;
+            padding: var(--space-2xl) 0;
+            position: relative;
+        }
+
+        .design-subsection:first-of-type {
+            margin-top: var(--space-lg);
+            padding-top: 0;
+        }
+
+        .design-subsection:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            bottom: calc(-1 * var(--space-2xl));
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            max-width: 600px;
+            height: 1px;
+            background: linear-gradient(
+                to right,
+                transparent 0%,
+                var(--color-border) 20%,
+                var(--color-accent) 50%,
+                var(--color-border) 80%,
+                transparent 100%
+            );
+            opacity: 0.4;
+        }
+
+        .design-subsection h3 {
+            text-align: center;
+            margin-bottom: var(--space-xl);
+            font-size: var(--font-size-2xl);
+            color: var(--color-text-primary);
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            box-sizing: content-box;
+        }
+
+        /* Prototype Links */
+        .prototype-link {
+            color: var(--color-accent) !important;
+            font-weight: var(--font-weight-semibold);
+            transition: all var(--transition-fast);
+            position: relative;
+        }
+
+        .prototype-link:hover {
+            color: var(--color-text-primary) !important;
+            transform: translateX(2px);
+        }
+
+        .prototype-cta {
+            font-size: var(--font-size-md);
+            padding: 0.875rem 1.75rem;
+            box-shadow: 0 4px 12px rgba(71, 85, 105, 0.2);
+            transition: all var(--transition-normal);
+        }
+
+        .prototype-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(71, 85, 105, 0.3);
+        }
+
+        .prototype-cta svg {
+            transition: transform var(--transition-fast);
+        }
+
+        .prototype-cta:hover svg {
+            transform: translate(2px, -2px);
+        }
+
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-lg);
+            margin: var(--space-xl) 0;
+        }
+
+        .stat-card {
+            background: var(--color-surface);
+            padding: var(--space-xl);
+            border-radius: var(--radius-md);
+            text-align: center;
+            border: 1px solid var(--color-border);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: var(--font-weight-bold);
+            color: var(--color-accent);
+            display: block;
+            margin-bottom: var(--space-xs);
+        }
+
+        .stat-label {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+        }
+
+        /* Back Link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-sm);
+            margin-bottom: var(--space-xl);
+            transition: color var(--transition-fast);
+        }
+
+        .back-link:hover {
+            color: var(--color-accent);
+        }
+
+        /* Comparison Images - Crop from bottom */
+        .comparison-image {
+            height: 340px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Mobile screenshots display fully but at a controlled height */
+        .comparison-image[data-img-src*="mobile.png"] {
+            height: 600px;
+            overflow: hidden;
+        }
+
+        .comparison-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            position: relative;
+            top: 0;
+        }
+
+        /* Mobile screenshots use object-fit to show the full image */
+        .comparison-image[data-img-src*="mobile.png"] img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: top;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .comparison-image {
+                height: 200px;
+            }
+            
+            /* Mobile screenshots at controlled height for tablets */
+            .comparison-image[data-img-src*="mobile.png"] {
+                height: 450px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .comparison-image {
+                height: 150px;
+            }
+            
+            /* Mobile screenshots at controlled height for small screens */
+            .comparison-image[data-img-src*="mobile.png"] {
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .case-study-hero {
+                padding-top: calc(var(--space-2xl) + 80px);
+            }
+
+            .case-study-hero h1 {
+                font-size: var(--font-size-3xl);
+            }
+
+            .case-study-subtitle {
+                font-size: var(--font-size-lg);
+            }
+
+            .split-view-container {
+                grid-template-columns: 1fr;
+                gap: var(--space-md);
+            }
+
+            .image-grid-2,
+            .image-grid-4 {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">MC</a>
+            <ul class="nav-menu">
+                <li><a href="../index.html#work">Projects</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="https://6967c12e0a3e6c3968ae7597--quiet-selkie-80a0b0.netlify.app" class="prototype-link" id="nav-prototype-link" target="_blank" rel="noopener noreferrer">View Prototype ↗</a></li>
+                <li><a href="../index.html#contact" class="nav-cta">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="case-study-hero">
+        <a href="../index.html#work" class="back-link">← Back to Projects</a>
+        <h1>City of Gent Sports Booking Redesign</h1>
+        <p class="case-study-subtitle">
+            Streamlining the booking flow with mobile-first design and accessibility improvements
+        </p>
+        <div class="case-study-meta">
+            <span><strong>Role:</strong> UX/UI Designer</span>
+            <span>•</span>
+            <span><strong>Timeline:</strong> Jan 2026</span>
+            <span>•</span>
+            <span><strong>Type:</strong> Redesign</span>
+        </div>
+
+        <a href="https://6967c12e0a3e6c3968ae7597--quiet-selkie-80a0b0.netlify.app" class="btn btn-primary prototype-cta" id="hero-prototype-link" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: var(--space-xl);">
+            <span>View Interactive Prototype</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+        </a>
+        
+        <div class="hero-image-container">
+            <img src="gent-sports-screenshots/hero-preview.png" alt="City of Gent Sports Booking Interface">
+        </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="case-study-section">
+        <div class="section-container">
+            <h2>The Challenge</h2>
+            <p>
+                The City of Gent's sports booking platform serves thousands of residents daily, but the current 
+                experience presents significant usability challenges. Users face an 8-step booking process with 
+                hidden pricing, no mobile optimization, and multiple accessibility barriers.
+            </p>
+            
+            <div class="disclaimer">
+                <strong>⚠️ Disclaimer</strong>
+                <p>This is a personal redesign project for portfolio purposes. Not affiliated with the City of Gent.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problems -->
+    <section class="case-study-section alt-bg">
+        <div class="section-container">
+            <h2>UX & UI Issues</h2>
+            
+            <div class="split-view-container">
+                <!-- Problem 1 -->
+                <div class="split-view-item">
+                    <div class="problem-content">
+                        <h3 class="problem-title">8-Step Booking Process</h3>
+                        <p class="problem-description">Users lose context and abandon the flow due to excessive steps between search and confirmation</p>
+                    </div>
+                    <div class="problem-meta">
+                        <span class="problem-badge critical">Critical</span>
+                        <span class="problem-category-tag">UX</span>
+                    </div>
+                </div>
+
+                <!-- Problem 2 -->
+                <div class="split-view-item">
+                    <div class="problem-content">
+                        <h3 class="problem-title">Hidden Pricing</h3>
+                        <p class="problem-description">Price not visible until step 7 of 8, creating transparency issues and user frustration</p>
+                    </div>
+                    <div class="problem-meta">
+                        <span class="problem-badge critical">Critical</span>
+                        <span class="problem-category-tag">UX</span>
+                    </div>
+                </div>
+
+                <!-- Problem 3 -->
+                <div class="split-view-item">
+                    <div class="problem-content">
+                        <h3 class="problem-title">Zero Mobile Optimization</h3>
+                        <p class="problem-description">Calendar requires horizontal scrolling, making it completely unusable on mobile devices</p>
+                    </div>
+                    <div class="problem-meta">
+                        <span class="problem-badge critical">Critical</span>
+                        <span class="problem-category-tag">Accessibility</span>
+                    </div>
+                </div>
+
+                <!-- Problem 4 -->
+                <div class="split-view-item">
+                    <div class="problem-content">
+                        <h3 class="problem-title">Competing Search Methods</h3>
+                        <p class="problem-description">Two different search patterns create confusion and poor visual hierarchy</p>
+                    </div>
+                    <div class="problem-meta">
+                        <span class="problem-badge high">High</span>
+                        <span class="problem-category-tag">UX</span>
+                    </div>
+                </div>
+
+                <!-- Problem 5 -->
+                <div class="split-view-item">
+                    <div class="problem-content">
+                        <h3 class="problem-title">Poor Color Contrast</h3>
+                        <p class="problem-description">Fails WCAG AA standards, creating barriers for users with visual impairments</p>
+                    </div>
+                    <div class="problem-meta">
+                        <span class="problem-badge high">High</span>
+                        <span class="problem-category-tag">Accessibility</span>
+                    </div>
+                </div>
+
+                <!-- Problem 6 -->
+                <div class="split-view-item">
+                    <div class="problem-content">
+                        <h3 class="problem-title">Missing Alt Text</h3>
+                        <p class="problem-description">36 instances of images without alt text, creating screen reader barriers</p>
+                    </div>
+                    <div class="problem-meta">
+                        <span class="problem-badge high">High</span>
+                        <span class="problem-category-tag">Accessibility</span>
+                    </div>
+                </div>
+
+                <!-- Problem 7 -->
+                <div class="split-view-item">
+                    <div class="problem-content">
+                        <h3 class="problem-title">No Progress Indication</h3>
+                        <p class="problem-description">Users don't know their location in the flow or how many steps remain</p>
+                    </div>
+                    <div class="problem-meta">
+                        <span class="problem-badge medium">Medium</span>
+                        <span class="problem-category-tag">UX</span>
+                    </div>
+                </div>
+
+                <!-- Problem 8 -->
+                <div class="split-view-item">
+                    <div class="problem-content">
+                        <h3 class="problem-title">Visual Inconsistencies</h3>
+                        <p class="problem-description">Inconsistent card heights, text wrapping issues, and legend mismatch</p>
+                    </div>
+                    <div class="problem-meta">
+                        <span class="problem-badge medium">Medium</span>
+                        <span class="problem-category-tag">Visual Design</span>
+                    </div>
+                </div>
+
+                <!-- Problem 9 -->
+                <div class="split-view-item">
+                    <div class="problem-content">
+                        <h3 class="problem-title">Missing Interactive States</h3>
+                        <p class="problem-description">No hover or focus states to provide feedback on clickable elements</p>
+                    </div>
+                    <div class="problem-meta">
+                        <span class="problem-badge medium">Medium</span>
+                        <span class="problem-category-tag">Visual Design</span>
+                    </div>
+                </div>
+
+                <!-- Problem 10 -->
+                <div class="split-view-item">
+                    <div class="problem-content">
+                        <h3 class="problem-title">Small Touch Targets</h3>
+                        <p class="problem-description">Clickable elements below minimum size, difficult for motor impairments</p>
+                    </div>
+                    <div class="problem-meta">
+                        <span class="problem-badge medium">Medium</span>
+                        <span class="problem-category-tag">Accessibility</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Design Process -->
+    <section class="case-study-section alt-bg">
+        <div class="section-container">
+            <h2>Design Process</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto var(--space-xl); color: var(--color-text-secondary); font-size: var(--font-size-sm); line-height: 1.7;">
+                My approach combined AI-powered analysis with systematic problem-solving to create an accessible, user-friendly redesign.
+            </p>
+
+            <div style="display: grid; gap: var(--space-2xl); margin-top: var(--space-xl);">
+                <!-- Step 1: Research & Analysis -->
+                <div style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-xl);">
+                    <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-lg);">
+                        <div style="width: 48px; height: 48px; background: rgba(71, 85, 105, 0.1); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0;">
+                            🔍
+                        </div>
+                        <div>
+                            <h3 style="margin: 0; font-size: var(--font-size-xl);">Step 1: Research & Analysis</h3>
+                            <p style="margin: 0; font-size: var(--font-size-sm); color: var(--color-text-tertiary);">Identifying problems systematically</p>
+                        </div>
+                    </div>
+                    <ul class="solution-list">
+                        <li>Used <strong>AI tools (Claude)</strong> to conduct comprehensive UX/UI audit of the existing platform</li>
+                        <li>Ran <strong>WAVE Web Accessibility Evaluation Tool</strong> to identify WCAG compliance issues</li>
+                        <li>Documented and categorized <strong>15+ issues</strong> by severity (Critical, High, Medium)</li>
+                        <li>Analyzed user flow pain points, visual design inconsistencies, and accessibility barriers</li>
+                    </ul>
+                </div>
+
+                <!-- Step 2: Design & Build -->
+                <div style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-xl);">
+                    <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-lg);">
+                        <div style="width: 48px; height: 48px; background: rgba(71, 85, 105, 0.1); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0;">
+                            ✨
+                        </div>
+                        <div>
+                            <h3 style="margin: 0; font-size: var(--font-size-xl);">Step 2: AI-Assisted Design & Development</h3>
+                            <p style="margin: 0; font-size: var(--font-size-sm); color: var(--color-text-tertiary);">Building the solution</p>
+                        </div>
+                    </div>
+                    <ul class="solution-list">
+                        <li>Worked with <strong>Cursor AI</strong> to design and build the redesigned platform</li>
+                        <li>Addressed each identified issue systematically through iterative design decisions</li>
+                        <li>Implemented using <strong>React, TypeScript, Tailwind CSS, and shadcn-ui</strong></li>
+                        <li>Ensured <strong>accessibility-first approach</strong> throughout development (WCAG AA compliance)</li>
+                    </ul>
+                </div>
+
+                <!-- Why This Approach Works -->
+                <div style="background: rgba(71, 85, 105, 0.05); border-left: 3px solid var(--color-accent); padding: var(--space-lg); border-radius: var(--radius-sm);">
+                    <h3 style="margin: 0 0 var(--space-md) 0; font-size: var(--font-size-lg); color: var(--color-text-primary);">Why This Approach Works</h3>
+                    <p style="margin: 0; font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: 1.7;">
+                        Leveraging AI tools allowed me to systematically identify issues, make data-driven design decisions, and rapidly prototype solutions while maintaining a strong focus on accessibility and user experience. This modern workflow combines the speed of AI-assisted development with thoughtful UX problem-solving.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution -->
+    <section class="case-study-section">
+        <div class="section-container">
+            <h2>Redesigned Experience</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto var(--space-2xl); color: var(--color-text-secondary); font-size: var(--font-size-sm); line-height: 1.7;">
+                My approach focused on three core principles: simplify the booking flow, prioritize mobile users, 
+                and ensure accessibility standards are met throughout.
+            </p>
+
+            <!-- Solution 1: Streamlined Flow -->
+            <div class="solution-item">
+                <div class="solution-content">
+                    <h3>Streamlined 5-Step Flow</h3>
+                    <p><strong>Reduced from 8 to 5 clear steps</strong> — eliminating redundant screens and simplifying the booking process.</p>
+                    <ul class="solution-list">
+                        <li>Combined redundant screens (Login → Dashboard → Search → Book → Confirm)</li>
+                        <li>Consolidated checkout into single view</li>
+                        <li>Added "Recent bookings" for faster repeat reservations</li>
+                        <li>Clear progress indication throughout</li>
+                    </ul>
+                </div>
+                <div class="solution-image">
+                    <img src="../projects/gent-sports-screenshots/02-dashboard-desktop.png" alt="Simplified dashboard with clear navigation">
+                </div>
+            </div>
+
+            <!-- Solution 2: Transparent Pricing -->
+            <div class="solution-item">
+                <div class="solution-content">
+                    <h3>Transparent Pricing</h3>
+                    <p><strong>Made pricing visible from the start</strong> — allowing users to make informed decisions early in the booking process.</p>
+                    <ul class="solution-list">
+                        <li>Prices visible from search results (step 2)</li>
+                        <li>Real-time cost calculation in calendar view</li>
+                        <li>Clear breakdown before confirmation</li>
+                        <li>No surprises at checkout</li>
+                    </ul>
+                </div>
+                <div class="solution-image">
+                    <img src="../projects/gent-sports-screenshots/03-search-bookings.png" alt="Search results showing transparent pricing">
+                </div>
+            </div>
+
+            <!-- Solution 3: Enhanced Calendar -->
+            <div class="solution-item">
+                <div class="solution-content">
+                    <h3>Enhanced Calendar Interface</h3>
+                    <p><strong>Redesigned calendar with clear visual indicators</strong> — adding support for multi-hour consecutive bookings with real-time pricing.</p>
+                    <ul class="solution-list">
+                        <li>Visual clarity: Green (+) for available, red (×) for booked</li>
+                        <li>Multi-hour consecutive booking support</li>
+                        <li>Matching legend icons with grid symbols</li>
+                        <li>Clear time range display (e.g., "08:00 - 10:00")</li>
+                        <li>Real-time price updates as slots are selected</li>
+                    </ul>
+                </div>
+                <div class="solution-image">
+                    <img src="../assets/images/projects/stadgentproject/calendar-newdesign.png" alt="Enhanced calendar with clear availability indicators">
+                </div>
+            </div>
+
+            <!-- Solution 4: Mobile-First Design -->
+            <div class="solution-item">
+                <div class="solution-content">
+                    <h3>Mobile-First Design</h3>
+                    <p><strong>Built for mobile from the ground up</strong> — ensuring a smooth, accessible experience across all devices and screen sizes.</p>
+                    <ul class="solution-list">
+                        <li>Responsive layouts for all screen sizes</li>
+                        <li>Touch-friendly targets (min 44×44px)</li>
+                        <li>Hamburger navigation for mobile</li>
+                        <li>No horizontal scrolling required</li>
+                        <li>Optimized for one-handed use</li>
+                    </ul>
+                </div>
+                <div class="solution-image mobile-screenshot">
+                    <img src="../projects/gent-sports-screenshots/08-dashboard-mobile.png" alt="Mobile-optimized dashboard interface">
+                </div>
+            </div>
+
+            <!-- Solution 5: Accessibility -->
+            <div class="solution-item">
+                <div class="solution-content">
+                    <h3>Accessibility Improvements</h3>
+                    <p><strong>Ensured WCAG AA compliance throughout</strong> — making the platform usable for everyone regardless of ability.</p>
+                    <ul class="solution-list">
+                        <li>WCAG AA compliant color contrast (4.5:1 minimum)</li>
+                        <li>Colorblind-friendly status indicators (icons + color)</li>
+                        <li>Proper semantic HTML and ARIA labels</li>
+                        <li>Multi-language support (Dutch, English, French)</li>
+                        <li>Keyboard navigation support</li>
+                    </ul>
+                </div>
+                <div class="solution-image">
+                    <img src="../assets/images/projects/stadgentproject/confirmation-image.png" alt="Accessible confirmation page with clear information hierarchy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before/After Comparison -->
+    <section class="case-study-section">
+        <div class="section-container-wide">
+            <h2>Key Improvements: Before & After</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto var(--space-xl); color: var(--color-text-secondary); font-size: var(--font-size-sm); line-height: 1.7;">
+                Visual comparison of the most impactful changes that transformed the booking experience.
+            </p>
+
+            <!-- Comparison 1: Calendar - Transparent Pricing -->
+            <div style="margin: var(--space-3xl) 0;">
+                <h3 style="font-size: var(--font-size-xl); font-weight: var(--font-weight-semibold); color: var(--color-text-primary); margin-bottom: var(--space-lg); text-align: center;">
+                    Transparent Pricing in Calendar
+                </h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xl); margin-bottom: var(--space-md);">
+                    <div>
+                        <div style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);">
+                            <div style="background: rgba(220, 53, 69, 0.1); padding: var(--space-sm); text-align: center; border-bottom: 2px solid #dc3545;">
+                                <strong style="color: #dc3545; font-size: var(--font-size-sm); text-transform: uppercase; letter-spacing: 0.05em;">Before</strong>
+                            </div>
+                            <div class="comparison-image" data-img-src="gent-sports-screenshots/original/original-calendar-no-price.png" style="cursor: pointer;">
+                                <img src="gent-sports-screenshots/original/original-calendar-no-price.png" alt="Original calendar without pricing" style="width: 100%; height: auto; display: block; pointer-events: none;">
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);">
+                            <div style="background: rgba(40, 167, 69, 0.1); padding: var(--space-sm); text-align: center; border-bottom: 2px solid #28a745;">
+                                <strong style="color: #28a745; font-size: var(--font-size-sm); text-transform: uppercase; letter-spacing: 0.05em;">After</strong>
+                            </div>
+                            <div class="comparison-image" data-img-src="../assets/images/projects/stadgentproject/calendar-newdesign.png" style="cursor: pointer;">
+                                <img src="../assets/images/projects/stadgentproject/calendar-newdesign.png" alt="New calendar with transparent pricing" style="width: 100%; height: auto; display: block; pointer-events: none;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="background: rgba(71, 85, 105, 0.05); padding: var(--space-md); border-radius: var(--radius-sm); border-left: 3px solid var(--color-accent);">
+                    <p style="margin: 0; font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: 1.6;">
+                        <strong style="color: var(--color-text-primary);">Key improvement:</strong> Prices now visible directly in the calendar grid, allowing users to make informed decisions without navigating to checkout. Real-time cost calculation updates as time slots are selected.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Comparison 2: Dashboard - Streamlined Navigation -->
+            <div style="margin: var(--space-3xl) 0;">
+                <h3 style="font-size: var(--font-size-xl); font-weight: var(--font-weight-semibold); color: var(--color-text-primary); margin-bottom: var(--space-lg); text-align: center;">
+                    Streamlined Dashboard
+                </h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xl); margin-bottom: var(--space-md);">
+                    <div>
+                        <div style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);">
+                            <div style="background: rgba(220, 53, 69, 0.1); padding: var(--space-sm); text-align: center; border-bottom: 2px solid #dc3545;">
+                                <strong style="color: #dc3545; font-size: var(--font-size-sm); text-transform: uppercase; letter-spacing: 0.05em;">Before</strong>
+                            </div>
+                            <div class="comparison-image" data-img-src="gent-sports-screenshots/original/original-after-login.png" style="cursor: pointer;">
+                                <img src="gent-sports-screenshots/original/original-after-login.png" alt="Original dashboard after login" style="width: 100%; height: auto; display: block; pointer-events: none;">
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);">
+                            <div style="background: rgba(40, 167, 69, 0.1); padding: var(--space-sm); text-align: center; border-bottom: 2px solid #28a745;">
+                                <strong style="color: #28a745; font-size: var(--font-size-sm); text-transform: uppercase; letter-spacing: 0.05em;">After</strong>
+                            </div>
+                            <div class="comparison-image" data-img-src="gent-sports-screenshots/02-dashboard-desktop.png" style="cursor: pointer;">
+                                <img src="gent-sports-screenshots/02-dashboard-desktop.png" alt="New streamlined dashboard" style="width: 100%; height: auto; display: block; pointer-events: none;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="background: rgba(71, 85, 105, 0.05); padding: var(--space-md); border-radius: var(--radius-sm); border-left: 3px solid var(--color-accent);">
+                    <p style="margin: 0; font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: 1.6;">
+                        <strong style="color: var(--color-text-primary);">Key improvement:</strong> Clean card-based interface with clear visual hierarchy. Hero banner provides welcoming context, while action cards guide users to primary tasks (book, view reservations, manage profile).
+                    </p>
+                </div>
+            </div>
+
+            <!-- Comparison 3: Mobile - Mobile-First Design -->
+            <div style="margin: var(--space-3xl) 0 0 0;">
+                <h3 style="font-size: var(--font-size-xl); font-weight: var(--font-weight-semibold); color: var(--color-text-primary); margin-bottom: var(--space-lg); text-align: center;">
+                    Mobile-First Experience
+                </h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xl); margin-bottom: var(--space-md); max-width: 800px; margin-left: auto; margin-right: auto;">
+                    <div style="display: flex; justify-content: center;">
+                        <div style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08); max-width: 350px;">
+                            <div style="background: rgba(220, 53, 69, 0.1); padding: var(--space-sm); text-align: center; border-bottom: 2px solid #dc3545;">
+                                <strong style="color: #dc3545; font-size: var(--font-size-sm); text-transform: uppercase; letter-spacing: 0.05em;">Before</strong>
+                            </div>
+                            <div class="comparison-image" data-img-src="../assets/images/projects/stadgentproject/original-afterlogin-mobile.png" style="cursor: pointer;">
+                                <img src="../assets/images/projects/stadgentproject/original-afterlogin-mobile.png" alt="Original mobile interface" style="width: 100%; height: auto; display: block; pointer-events: none;">
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: flex; justify-content: center;">
+                        <div style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08); max-width: 350px;">
+                            <div style="background: rgba(40, 167, 69, 0.1); padding: var(--space-sm); text-align: center; border-bottom: 2px solid #28a745;">
+                                <strong style="color: #28a745; font-size: var(--font-size-sm); text-transform: uppercase; letter-spacing: 0.05em;">After</strong>
+                            </div>
+                            <div class="comparison-image" data-img-src="gent-sports-screenshots/08-dashboard-mobile.png" style="cursor: pointer;">
+                                <img src="gent-sports-screenshots/08-dashboard-mobile.png" alt="New mobile-optimized interface" style="width: 100%; height: auto; display: block; pointer-events: none;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="background: rgba(71, 85, 105, 0.05); padding: var(--space-md); border-radius: var(--radius-sm); border-left: 3px solid var(--color-accent);">
+                    <p style="margin: 0; font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: 1.6;">
+                        <strong style="color: var(--color-text-primary);">Key improvement:</strong> Fully responsive mobile-first design with touch-friendly targets (min 44×44px), optimized navigation, and no horizontal scrolling. Clean typography and spacing optimized for smaller screens.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final Designs -->
+    <section class="case-study-section alt-bg">
+        <div class="section-container-wide">
+            <h2>Final Designs</h2>
+            <p style="max-width: 800px; margin: 0 auto var(--space-xl); text-align: center; font-size: var(--font-size-lg); color: var(--color-text-secondary); line-height: 1.6;">
+                The redesigned platform delivers a modern, intuitive experience across all devices. From streamlined login flows to optimized mobile interfaces, every screen prioritizes clarity, efficiency, and user satisfaction.
+            </p>
+            
+            <div style="text-align: center; margin-bottom: var(--space-2xl);">
+                <a href="https://6967c12e0a3e6c3968ae7597--quiet-selkie-80a0b0.netlify.app" class="btn btn-primary prototype-cta" id="designs-prototype-link" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                    <span>Explore Interactive Prototype</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                </a>
+            </div>
+            
+            <div class="design-subsection">
+                <h3>Login & Dashboard</h3>
+            <div class="image-grid-2">
+                <div class="image-item">
+                    <img src="gent-sports-screenshots/01-login-desktop.png" alt="Login Screen - Desktop">
+                    <div class="image-caption">
+                        Clean interface with hero image, language selector (NL/EN/FR), and streamlined login form
+                    </div>
+                </div>
+                <div class="image-item">
+                    <img src="gent-sports-screenshots/02-dashboard-desktop.png" alt="Dashboard - Desktop">
+                    <div class="image-caption">
+                        Quick action cards for booking, viewing reservations, and accessing profile
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <div class="design-subsection">
+                <h3>Search & Calendar</h3>
+            <div class="image-grid-2">
+                <div class="image-item">
+                    <img src="gent-sports-screenshots/03-search-bookings.png" alt="Search and Filter">
+                    <div class="image-caption">
+                        Unified search bar with dropdown filters, visible pricing on activity cards, and recent bookings section
+                    </div>
+                </div>
+                <div class="image-item">
+                    <img src="../assets/images/projects/stadgentproject/calendar-newdesign.png" alt="Calendar Grid">
+                    <div class="image-caption">
+                        Improved calendar with accessible colors, multi-select support, and clear availability indicators
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <div class="design-subsection">
+                <h3>Checkout & Confirmation</h3>
+            <div class="image-grid-2">
+                <div class="image-item">
+                    <img src="../assets/images/projects/stadgentproject/checkout-image1.png" alt="Checkout Page">
+                    <div class="image-caption">
+                        Single checkout screen with clear summary, pricing breakdown, and cancellation policy
+                    </div>
+                </div>
+                <div class="image-item">
+                    <img src="../assets/images/projects/stadgentproject/confirmation-image.png" alt="Confirmation Page">
+                    <div class="image-caption">
+                        Confirmation screen with booking details and quick actions to view reservations or book again
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <div class="design-subsection">
+                <h3>Mobile Views</h3>
+            <div class="image-grid-4">
+                <div class="image-item">
+                    <img src="gent-sports-screenshots/07-login-mobile.png" alt="Login Mobile">
+                    <div class="image-caption">Responsive login with optimized form fields</div>
+                </div>
+                <div class="image-item">
+                    <img src="gent-sports-screenshots/08-dashboard-mobile.png" alt="Dashboard Mobile">
+                    <div class="image-caption">Hamburger menu and stacked action cards</div>
+                </div>
+                <div class="image-item">
+                    <img src="gent-sports-screenshots/09-booking-mobile.png" alt="Booking Mobile">
+                    <div class="image-caption">Scrollable view without horizontal overflow</div>
+                </div>
+                <div class="image-item">
+                    <img src="../assets/images/projects/stadgentproject/calendar-mobile.png" alt="Calendar Mobile">
+                    <div class="image-caption">Mobile calendar with clear availability and easy date selection</div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact -->
+    <section class="case-study-section">
+        <div class="section-container">
+            <h2>Impact & Learnings</h2>
+            <p>
+                This redesign demonstrates how thoughtful UX decisions and mobile-first thinking can transform 
+                a complex booking flow into an intuitive, accessible experience.
+            </p>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-value">37.5%</span>
+                    <span class="stat-label">Reduction in steps<br>(8 → 5)</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value">Step 2</span>
+                    <span class="stat-label">Pricing visible<br>(vs step 7)</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value">100%</span>
+                    <span class="stat-label">Mobile<br>responsive</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value">WCAG AA</span>
+                    <span class="stat-label">Accessibility<br>compliance</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <p class="logo">MC</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="../index.html#work">Projects</a></li>
+                            <li><a href="../about.html">About</a></li>
+                            <li><a href="../index.html#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <ul>
+                            <li><a href="mailto:marikacapraro94@gmail.com">Email</a></li>
+                            <li><a href="https://www.linkedin.com/in/marika-capraro-a09bb5239" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                            <li><a href="../assets/Marika-Capraro-Resume.pdf" target="_blank">Resume</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Marika Capraro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" aria-label="Close lightbox">×</button>
+        <img src="" alt="" id="lightbox-img">
+    </div>
+
+    <script src="../scripts/main.js"></script>
+    <script>
+        // ============================================
+        // PROTOTYPE LINK - UPDATE URL HERE
+        // ============================================
+        const PROTOTYPE_URL = 'https://6967c12e0a3e6c3968ae7597--quiet-selkie-80a0b0.netlify.app';
+        
+        // Update all prototype links
+        const navLink = document.getElementById('nav-prototype-link');
+        const heroLink = document.getElementById('hero-prototype-link');
+        const designsLink = document.getElementById('designs-prototype-link');
+        
+        if (navLink) {
+            navLink.href = PROTOTYPE_URL;
+            console.log('Nav link updated:', navLink.href);
+        }
+        if (heroLink) {
+            heroLink.href = PROTOTYPE_URL;
+            console.log('Hero link updated:', heroLink.href);
+        }
+        if (designsLink) {
+            designsLink.href = PROTOTYPE_URL;
+            console.log('Designs link updated:', designsLink.href);
+        }
+
+        // ============================================
+        // Lightbox functionality
+        // ============================================
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const solutionImages = document.querySelectorAll('.solution-image img');
+        const comparisonImages = document.querySelectorAll('.comparison-image');
+        const closeBtn = document.querySelector('.lightbox-close');
+
+        // Add click event to all solution images
+        solutionImages.forEach(img => {
+            img.parentElement.addEventListener('click', function() {
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            });
+        });
+
+        // Add click event to all comparison images
+        comparisonImages.forEach(container => {
+            container.addEventListener('click', function() {
+                const imgSrc = this.getAttribute('data-img-src');
+                const img = this.querySelector('img');
+                lightboxImg.src = imgSrc;
+                lightboxImg.alt = img.alt;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            });
+        });
+
+        // Add click event to all Final Designs image items
+        const finalDesignImages = document.querySelectorAll('.image-item');
+        finalDesignImages.forEach(item => {
+            item.addEventListener('click', function() {
+                const img = this.querySelector('img');
+                if (img) {
+                    lightboxImg.src = img.src;
+                    lightboxImg.alt = img.alt;
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden'; // Prevent scrolling
+                }
+            });
+        });
+
+        // Close lightbox
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+
+        closeBtn.addEventListener('click', closeLightbox);
+        
+        // Close on background click
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Close on ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>
