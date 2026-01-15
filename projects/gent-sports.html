@@ -351,13 +351,16 @@
             align-items: flex-start;
             justify-content: center;
             background: transparent;
+            width: fit-content;
+            margin: 0 auto;
         }
 
         .solution-image.mobile-screenshot img {
             width: auto;
-            max-width: 60%;
+            max-width: none;
             max-height: 450px;
             height: auto;
+            display: block;
         }
 
         /* Lightbox */
@@ -483,6 +486,137 @@
             margin-bottom: var(--space-xs);
         }
 
+        /* Image Item Hover Effects */
+        .image-item {
+            transition: all var(--transition-normal);
+            cursor: pointer;
+        }
+
+        .image-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+            border-color: var(--color-accent);
+        }
+
+        .image-item img {
+            transition: transform var(--transition-normal);
+        }
+
+        .image-item:hover img {
+            transform: scale(1.02);
+        }
+
+        /* Comparison Images Base Styles */
+        .comparison-image {
+            transition: all var(--transition-normal);
+            cursor: pointer;
+        }
+
+        .comparison-image:hover {
+            transform: scale(1.02);
+        }
+
+        .comparison-image img {
+            transition: transform var(--transition-fast);
+        }
+
+        /* Mobile Screenshots - Full Height Display */
+        .comparison-image[data-img-src*="mobile.png"] {
+            height: 600px;
+            overflow: hidden;
+        }
+
+        .comparison-image[data-img-src*="mobile.png"] img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: top;
+        }
+
+        /* Ensure consistent image heights in 2-column grid */
+        .image-grid-2 .image-item img {
+            width: 100%;
+            height: 286px;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        /* Design Subsections with Visual Separators */
+        .design-subsection {
+            margin: var(--space-3xl) 0;
+            padding: var(--space-2xl) 0;
+            position: relative;
+        }
+
+        .design-subsection:first-of-type {
+            margin-top: var(--space-lg);
+            padding-top: 0;
+        }
+
+        .design-subsection:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            bottom: calc(-1 * var(--space-2xl));
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            max-width: 600px;
+            height: 1px;
+            background: linear-gradient(
+                to right,
+                transparent 0%,
+                var(--color-border) 20%,
+                var(--color-accent) 50%,
+                var(--color-border) 80%,
+                transparent 100%
+            );
+            opacity: 0.4;
+        }
+
+        .design-subsection h3 {
+            text-align: center;
+            margin-bottom: var(--space-xl);
+            font-size: var(--font-size-2xl);
+            color: var(--color-text-primary);
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            box-sizing: content-box;
+        }
+
+        /* Prototype Links */
+        .prototype-link {
+            color: var(--color-accent) !important;
+            font-weight: var(--font-weight-semibold);
+            transition: all var(--transition-fast);
+            position: relative;
+        }
+
+        .prototype-link:hover {
+            color: var(--color-text-primary) !important;
+            transform: translateX(2px);
+        }
+
+        .prototype-cta {
+            font-size: var(--font-size-md);
+            padding: 0.875rem 1.75rem;
+            box-shadow: 0 4px 12px rgba(71, 85, 105, 0.2);
+            transition: all var(--transition-normal);
+        }
+
+        .prototype-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(71, 85, 105, 0.3);
+        }
+
+        .prototype-cta svg {
+            transition: transform var(--transition-fast);
+        }
+
+        .prototype-cta:hover svg {
+            transform: translate(2px, -2px);
+        }
+
         /* Stats */
         .stats-grid {
             display: grid;
@@ -566,6 +700,7 @@
             <ul class="nav-menu">
                 <li><a href="../index.html#work">Projects</a></li>
                 <li><a href="../about.html">About</a></li>
+                <li><a href="https://6967c12e0a3e6c3968ae7597--quiet-selkie-80a0b0.netlify.app" class="prototype-link" id="nav-prototype-link" target="_blank" rel="noopener noreferrer">View Prototype ↗</a></li>
                 <li><a href="../index.html#contact" class="nav-cta">Contact</a></li>
             </ul>
             <button class="nav-toggle" aria-label="Toggle navigation">
@@ -590,6 +725,15 @@
             <span>•</span>
             <span><strong>Type:</strong> Redesign</span>
         </div>
+
+        <a href="https://6967c12e0a3e6c3968ae7597--quiet-selkie-80a0b0.netlify.app" class="btn btn-primary prototype-cta" id="hero-prototype-link" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: var(--space-xl);">
+            <span>View Interactive Prototype</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+        </a>
         
         <div class="hero-image-container">
             <img src="gent-sports-screenshots/hero-preview.png" alt="City of Gent Sports Booking Interface">
@@ -799,7 +943,7 @@
                     </ul>
                 </div>
                 <div class="solution-image">
-                    <img src="../projects/gent-sports-screenshots/04-calendar-grid.png" alt="Enhanced calendar with clear availability indicators">
+                    <img src="../assets/images/projects/stadgentproject/calendar-newdesign.png" alt="Enhanced calendar with clear availability indicators">
                 </div>
             </div>
 
@@ -835,7 +979,121 @@
                     </ul>
                 </div>
                 <div class="solution-image">
-                    <img src="../projects/gent-sports-screenshots/06-confirmation.png" alt="Accessible confirmation page with clear information hierarchy">
+                    <img src="../assets/images/projects/stadgentproject/confirmation-image.png" alt="Accessible confirmation page with clear information hierarchy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before/After Comparison -->
+    <section class="case-study-section alt-bg">
+        <div class="section-container-wide">
+            <h2>Before & After: Visual Transformation</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto var(--space-2xl); font-size: var(--font-size-lg); color: var(--color-text-secondary);">
+                The redesign addresses critical UX issues across all key screens, from pricing visibility to mobile optimization.
+            </p>
+            
+            <!-- Dashboard Comparison -->
+            <div style="margin-bottom: var(--space-3xl);">
+                <h4 style="text-align: center; margin-bottom: var(--space-sm); color: var(--color-text-secondary); font-size: var(--font-size-md);">Dashboard After Login</h4>
+                <p style="text-align: center; max-width: 600px; margin: 0 auto var(--space-lg); font-size: var(--font-size-sm); color: var(--color-text-tertiary); line-height: 1.5;">
+                    Transformed cluttered navigation into clear action cards, improving task completion and reducing cognitive load
+                </p>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-xl); max-width: 1000px; margin: 0 auto;">
+                    <div style="border-radius: var(--radius-lg); overflow: hidden; border: 2px solid var(--color-border);">
+                        <div style="background: rgba(220, 53, 69, 0.1); padding: var(--space-sm); text-align: center; border-bottom: 2px solid #dc3545;">
+                            <strong style="color: #dc3545; font-size: var(--font-size-sm); text-transform: uppercase; letter-spacing: 0.05em;">Before</strong>
+                        </div>
+                        <div class="comparison-image" data-img-src="gent-sports-screenshots/original/original-after-login.png" style="cursor: pointer;">
+                            <img src="gent-sports-screenshots/original/original-after-login.png" alt="Original dashboard" style="width: 100%; height: auto; display: block; pointer-events: none;">
+                        </div>
+                    </div>
+                    <div style="border-radius: var(--radius-lg); overflow: hidden; border: 2px solid var(--color-border);">
+                        <div style="background: rgba(40, 167, 69, 0.1); padding: var(--space-sm); text-align: center; border-bottom: 2px solid #28a745;">
+                            <strong style="color: #28a745; font-size: var(--font-size-sm); text-transform: uppercase; letter-spacing: 0.05em;">After</strong>
+                        </div>
+                        <div class="comparison-image" data-img-src="gent-sports-screenshots/02-dashboard-desktop.png" style="cursor: pointer;">
+                            <img src="gent-sports-screenshots/02-dashboard-desktop.png" alt="Redesigned dashboard with clear actions" style="width: 100%; height: auto; display: block; pointer-events: none;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calendar Comparison -->
+            <div style="margin-bottom: var(--space-3xl);">
+                <h4 style="text-align: center; margin-bottom: var(--space-sm); color: var(--color-text-secondary); font-size: var(--font-size-md);">Calendar with Pricing</h4>
+                <p style="text-align: center; max-width: 600px; margin: 0 auto var(--space-lg); font-size: var(--font-size-sm); color: var(--color-text-tertiary); line-height: 1.5;">
+                    Added transparent pricing and improved availability indicators, eliminating user frustration and late-stage surprises
+                </p>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-xl); max-width: 1000px; margin: 0 auto;">
+                    <div style="border-radius: var(--radius-lg); overflow: hidden; border: 2px solid var(--color-border);">
+                        <div style="background: rgba(220, 53, 69, 0.1); padding: var(--space-sm); text-align: center; border-bottom: 2px solid #dc3545;">
+                            <strong style="color: #dc3545; font-size: var(--font-size-sm); text-transform: uppercase; letter-spacing: 0.05em;">Before</strong>
+                        </div>
+                        <div class="comparison-image" data-img-src="gent-sports-screenshots/original/original-calendar-no-price.png" style="cursor: pointer;">
+                            <img src="gent-sports-screenshots/original/original-calendar-no-price.png" alt="Calendar without pricing" style="width: 100%; height: auto; display: block; pointer-events: none;">
+                        </div>
+                    </div>
+                    <div style="border-radius: var(--radius-lg); overflow: hidden; border: 2px solid var(--color-border);">
+                        <div style="background: rgba(40, 167, 69, 0.1); padding: var(--space-sm); text-align: center; border-bottom: 2px solid #28a745;">
+                            <strong style="color: #28a745; font-size: var(--font-size-sm); text-transform: uppercase; letter-spacing: 0.05em;">After</strong>
+                        </div>
+                        <div class="comparison-image" data-img-src="../assets/images/projects/stadgentproject/calendar-newdesign.png" style="cursor: pointer;">
+                            <img src="../assets/images/projects/stadgentproject/calendar-newdesign.png" alt="New calendar with transparent pricing" style="width: 100%; height: auto; display: block; pointer-events: none;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search Comparison -->
+            <div style="margin-bottom: var(--space-3xl);">
+                <h4 style="text-align: center; margin-bottom: var(--space-sm); color: var(--color-text-secondary); font-size: var(--font-size-md);">Unified Search & Filter</h4>
+                <p style="text-align: center; max-width: 600px; margin: 0 auto var(--space-lg); font-size: var(--font-size-sm); color: var(--color-text-tertiary); line-height: 1.5;">
+                    Consolidated competing search interfaces into one unified system with visible pricing on activity cards
+                </p>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-xl); max-width: 1000px; margin: 0 auto;">
+                    <div style="border-radius: var(--radius-lg); overflow: hidden; border: 2px solid var(--color-border);">
+                        <div style="background: rgba(220, 53, 69, 0.1); padding: var(--space-sm); text-align: center; border-bottom: 2px solid #dc3545;">
+                            <strong style="color: #dc3545; font-size: var(--font-size-sm); text-transform: uppercase; letter-spacing: 0.05em;">Before</strong>
+                        </div>
+                        <div class="comparison-image" data-img-src="gent-sports-screenshots/original/original-competing-searches.png" style="cursor: pointer;">
+                            <img src="gent-sports-screenshots/original/original-competing-searches.png" alt="Original competing search interfaces" style="width: 100%; height: auto; display: block; pointer-events: none;">
+                        </div>
+                    </div>
+                    <div style="border-radius: var(--radius-lg); overflow: hidden; border: 2px solid var(--color-border);">
+                        <div style="background: rgba(40, 167, 69, 0.1); padding: var(--space-sm); text-align: center; border-bottom: 2px solid #28a745;">
+                            <strong style="color: #28a745; font-size: var(--font-size-sm); text-transform: uppercase; letter-spacing: 0.05em;">After</strong>
+                        </div>
+                        <div class="comparison-image" data-img-src="gent-sports-screenshots/03-search-bookings.png" style="cursor: pointer;">
+                            <img src="gent-sports-screenshots/03-search-bookings.png" alt="Unified search interface" style="width: 100%; height: auto; display: block; pointer-events: none;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Comparison -->
+            <div style="margin-bottom: var(--space-2xl);">
+                <h4 style="text-align: center; margin-bottom: var(--space-sm); color: var(--color-text-secondary); font-size: var(--font-size-md);">Mobile Dashboard</h4>
+                <p style="text-align: center; max-width: 600px; margin: 0 auto var(--space-lg); font-size: var(--font-size-sm); color: var(--color-text-tertiary); line-height: 1.5;">
+                    Optimized touch targets, improved readability, and streamlined navigation for seamless mobile experience
+                </p>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-xl); max-width: 800px; margin: 0 auto;">
+                    <div style="border-radius: var(--radius-lg); overflow: hidden; border: 2px solid var(--color-border);">
+                        <div style="background: rgba(220, 53, 69, 0.1); padding: var(--space-sm); text-align: center; border-bottom: 2px solid #dc3545;">
+                            <strong style="color: #dc3545; font-size: var(--font-size-sm); text-transform: uppercase; letter-spacing: 0.05em;">Before</strong>
+                        </div>
+                        <div class="comparison-image" data-img-src="../assets/images/projects/stadgentproject/original-afterlogin-mobile.png" style="cursor: pointer;">
+                            <img src="../assets/images/projects/stadgentproject/original-afterlogin-mobile.png" alt="Original mobile interface" style="width: 100%; height: auto; display: block; pointer-events: none;">
+                        </div>
+                    </div>
+                    <div style="border-radius: var(--radius-lg); overflow: hidden; border: 2px solid var(--color-border);">
+                        <div style="background: rgba(40, 167, 69, 0.1); padding: var(--space-sm); text-align: center; border-bottom: 2px solid #28a745;">
+                            <strong style="color: #28a745; font-size: var(--font-size-sm); text-transform: uppercase; letter-spacing: 0.05em;">After</strong>
+                        </div>
+                        <div class="comparison-image" data-img-src="gent-sports-screenshots/08-dashboard-mobile.png" style="cursor: pointer;">
+                            <img src="gent-sports-screenshots/08-dashboard-mobile.png" alt="New mobile-optimized interface" style="width: 100%; height: auto; display: block; pointer-events: none;">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -845,8 +1103,23 @@
     <section class="case-study-section alt-bg">
         <div class="section-container-wide">
             <h2>Final Designs</h2>
+            <p style="max-width: 800px; margin: 0 auto var(--space-xl); text-align: center; font-size: var(--font-size-lg); color: var(--color-text-secondary); line-height: 1.6;">
+                The redesigned platform delivers a modern, intuitive experience across all devices. From streamlined login flows to optimized mobile interfaces, every screen prioritizes clarity, efficiency, and user satisfaction.
+            </p>
             
-            <h3>Login & Dashboard</h3>
+            <div style="text-align: center; margin-bottom: var(--space-2xl);">
+                <a href="https://6967c12e0a3e6c3968ae7597--quiet-selkie-80a0b0.netlify.app" class="btn btn-primary prototype-cta" id="designs-prototype-link" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                    <span>Explore Interactive Prototype</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                </a>
+            </div>
+            
+            <div class="design-subsection">
+                <h3>Login & Dashboard</h3>
             <div class="image-grid-2">
                 <div class="image-item">
                     <img src="gent-sports-screenshots/01-login-desktop.png" alt="Login Screen - Desktop">
@@ -861,8 +1134,10 @@
                     </div>
                 </div>
             </div>
+            </div>
 
-            <h3>Search & Calendar</h3>
+            <div class="design-subsection">
+                <h3>Search & Calendar</h3>
             <div class="image-grid-2">
                 <div class="image-item">
                     <img src="gent-sports-screenshots/03-search-bookings.png" alt="Search and Filter">
@@ -871,30 +1146,34 @@
                     </div>
                 </div>
                 <div class="image-item">
-                    <img src="gent-sports-screenshots/04-calendar-grid.png" alt="Calendar Grid">
+                    <img src="../assets/images/projects/stadgentproject/calendar-newdesign.png" alt="Calendar Grid">
                     <div class="image-caption">
                         Improved calendar with accessible colors, multi-select support, and clear availability indicators
                     </div>
                 </div>
             </div>
+            </div>
 
-            <h3>Checkout & Confirmation</h3>
+            <div class="design-subsection">
+                <h3>Checkout & Confirmation</h3>
             <div class="image-grid-2">
                 <div class="image-item">
-                    <img src="gent-sports-screenshots/05-cart-desktop.png" alt="Checkout Page">
+                    <img src="../assets/images/projects/stadgentproject/checkout-image1.png" alt="Checkout Page">
                     <div class="image-caption">
                         Single checkout screen with clear summary, pricing breakdown, and cancellation policy
                     </div>
                 </div>
                 <div class="image-item">
-                    <img src="gent-sports-screenshots/06-confirmation.png" alt="Confirmation Page">
+                    <img src="../assets/images/projects/stadgentproject/confirmation-image.png" alt="Confirmation Page">
                     <div class="image-caption">
                         Confirmation screen with booking details and quick actions to view reservations or book again
                     </div>
                 </div>
             </div>
+            </div>
 
-            <h3>Mobile Views</h3>
+            <div class="design-subsection">
+                <h3>Mobile Views</h3>
             <div class="image-grid-4">
                 <div class="image-item">
                     <img src="gent-sports-screenshots/07-login-mobile.png" alt="Login Mobile">
@@ -909,9 +1188,10 @@
                     <div class="image-caption">Scrollable view without horizontal overflow</div>
                 </div>
                 <div class="image-item">
-                    <img src="gent-sports-screenshots/10-cart-mobile.png" alt="Cart Mobile">
-                    <div class="image-caption">Touch-optimized checkout with clear CTAs</div>
+                    <img src="../assets/images/projects/stadgentproject/calendar-mobile.png" alt="Calendar Mobile">
+                    <div class="image-caption">Mobile calendar with clear availability and easy date selection</div>
                 </div>
+            </div>
             </div>
         </div>
     </section>
@@ -990,6 +1270,7 @@
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
         const solutionImages = document.querySelectorAll('.solution-image img');
+        const comparisonImages = document.querySelectorAll('.comparison-image');
         const closeBtn = document.querySelector('.lightbox-close');
 
         // Add click event to all solution images
@@ -999,6 +1280,32 @@
                 lightboxImg.alt = img.alt;
                 lightbox.classList.add('active');
                 document.body.style.overflow = 'hidden'; // Prevent scrolling
+            });
+        });
+
+        // Add click event to all comparison images
+        comparisonImages.forEach(container => {
+            container.addEventListener('click', function() {
+                const imgSrc = this.getAttribute('data-img-src');
+                const img = this.querySelector('img');
+                lightboxImg.src = imgSrc;
+                lightboxImg.alt = img.alt;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            });
+        });
+
+        // Add click event to all Final Designs image items
+        const finalDesignImages = document.querySelectorAll('.image-item');
+        finalDesignImages.forEach(item => {
+            item.addEventListener('click', function() {
+                const img = this.querySelector('img');
+                if (img) {
+                    lightboxImg.src = img.src;
+                    lightboxImg.alt = img.alt;
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden'; // Prevent scrolling
+                }
             });
         });
 
