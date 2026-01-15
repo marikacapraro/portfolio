@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambio Design System - Marika Capraro</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../styles/main.css">
+    <style>
+        /* Case Study Specific Styles */
+        .case-study-hero {
+            padding: calc(var(--space-3xl) + 80px) var(--container-padding) var(--space-3xl);
+            text-align: center;
+        }
+
+        .case-study-hero h1 {
+            font-size: var(--font-size-4xl);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--space-md);
+            line-height: 1.2;
+        }
+
+        .case-study-subtitle {
+            font-size: var(--font-size-xl);
+            color: var(--color-text-secondary);
+            max-width: 700px;
+            margin: 0 auto var(--space-lg);
+            line-height: 1.6;
+        }
+
+        .case-study-meta {
+            display: flex;
+            gap: var(--space-lg);
+            justify-content: center;
+            flex-wrap: wrap;
+            font-size: var(--font-size-sm);
+            color: var(--color-text-tertiary);
+            margin-bottom: var(--space-3xl);
+        }
+
+        .case-study-meta span {
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-image-container {
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 8px 40px rgba(15, 23, 42, 0.12);
+        }
+
+        .hero-image-container img {
+            width: 100%;
+            max-height: 500px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .case-study-section {
+            padding: var(--space-3xl) var(--container-padding);
+        }
+
+        .case-study-section.alt-bg {
+            background: var(--color-surface);
+        }
+
+        .section-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section-container-wide {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .case-study-section h2 {
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--space-lg);
+            text-align: center;
+        }
+
+        .case-study-section h3 {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-semibold);
+            margin-top: var(--space-2xl);
+            margin-bottom: var(--space-md);
+        }
+
+        .case-study-section p {
+            font-size: var(--font-size-md);
+            line-height: 1.7;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-md);
+        }
+
+        .case-study-section ul {
+            margin: var(--space-md) 0;
+            padding-left: var(--space-xl);
+        }
+
+        .case-study-section li {
+            font-size: var(--font-size-md);
+            line-height: 1.7;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-sm);
+        }
+
+        /* Foundation Grid */
+        .foundation-grid {
+            display: grid;
+            gap: var(--space-2xl);
+            margin: var(--space-2xl) 0;
+        }
+
+        .foundation-row-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-2xl);
+            margin-bottom: var(--space-2xl);
+        }
+
+        .foundation-row-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-2xl);
+        }
+
+        .foundation-item {
+            background: var(--color-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            transition: all var(--transition-normal);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .foundation-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(15, 23, 42, 0.12);
+        }
+
+        .foundation-item h3 {
+            margin-top: 0;
+            font-size: var(--font-size-xl);
+            margin-bottom: var(--space-md);
+        }
+
+        .foundation-item p {
+            font-size: var(--font-size-sm);
+            margin-bottom: var(--space-lg);
+        }
+
+        .foundation-image {
+            width: 100%;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--color-border);
+            overflow: hidden;
+            margin-top: auto;
+            padding-top: var(--space-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-height: 300px;
+        }
+
+        .foundation-image img {
+            width: 100%;
+            height: auto;
+            max-height: 300px;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* Component Showcase */
+        .component-showcase {
+            margin: var(--space-2xl) auto;
+            padding: var(--space-xl);
+            background: var(--color-surface);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-border);
+            max-width: 700px;
+        }
+
+        .component-showcase h3 {
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .component-image {
+            max-width: 350px;
+            margin: var(--space-lg) auto;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+            align-items: center;
+        }
+
+        .component-image img {
+            max-width: 100%;
+            max-height: 120px;
+            height: auto;
+            object-fit: contain;
+            border-radius: var(--radius-md);
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+        }
+
+        /* Impact List */
+        .impact-list {
+            list-style: none;
+            padding: 0;
+            margin: var(--space-xl) 0;
+            display: grid;
+            gap: var(--space-md);
+        }
+
+        .impact-list li {
+            padding: var(--space-md);
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+            background: var(--color-surface);
+            border-left: 3px solid #28a745;
+            border-radius: var(--radius-sm);
+        }
+
+        .impact-list li strong {
+            color: var(--color-text-primary);
+            font-weight: var(--font-weight-semibold);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        /* Process Steps */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-xl);
+            margin: var(--space-2xl) 0;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: var(--space-xl);
+            background: var(--color-surface);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-border);
+        }
+
+        .process-step-number {
+            width: 48px;
+            height: 48px;
+            background: #1F6FA8;
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0 auto var(--space-md);
+        }
+
+        .process-step h3 {
+            margin-top: 0;
+            margin-bottom: var(--space-sm);
+            font-size: var(--font-size-lg);
+        }
+
+        .process-step p {
+            font-size: var(--font-size-sm);
+            margin: 0;
+        }
+
+        /* Prototype CTA */
+        .prototype-cta {
+            font-size: var(--font-size-md);
+            padding: 0.875rem 1.75rem;
+            box-shadow: 0 4px 12px rgba(71, 85, 105, 0.2);
+            transition: all var(--transition-normal);
+        }
+
+        .prototype-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(71, 85, 105, 0.3);
+        }
+
+        .prototype-cta svg {
+            transition: transform var(--transition-fast);
+        }
+
+        .prototype-cta:hover svg {
+            transform: translateX(2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .foundation-row-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .case-study-hero {
+                padding-top: calc(var(--space-2xl) + 80px);
+            }
+
+            .case-study-hero h1 {
+                font-size: var(--font-size-3xl);
+            }
+
+            .case-study-subtitle {
+                font-size: var(--font-size-lg);
+            }
+
+            .foundation-row-2,
+            .foundation-row-3,
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">MC</a>
+            <ul class="nav-menu">
+                <li><a href="../index.html#work">Projects</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="https://www.figma.com/design/REUJlwN4onALvsNzE5CevX/Cambio-app-redesign--Design-System-?node-id=598-7286&p=f&t=7eaZJAiSKy1DbqHt-0" target="_blank" rel="noopener noreferrer" id="nav-prototype-link">View Documentation ↗</a></li>
+                <li><a href="../index.html#contact" class="nav-cta">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="case-study-hero">
+        <a href="../index.html#work" class="back-link">← Back to Projects</a>
+        <h1>Cambio Design System</h1>
+        <p class="case-study-subtitle">
+            A personal project demonstrating my approach to building scalable design systems with comprehensive foundations and reusable components
+        </p>
+        <div class="case-study-meta">
+            <span><strong>Role:</strong> UX/UI Designer</span>
+            <span>•</span>
+            <span><strong>Timeline:</strong> December 2025</span>
+            <span>•</span>
+            <span><strong>Type:</strong> Design System</span>
+        </div>
+
+        <a href="https://www.figma.com/design/REUJlwN4onALvsNzE5CevX/Cambio-app-redesign--Design-System-?node-id=598-7286&p=f&t=7eaZJAiSKy1DbqHt-0" class="btn btn-primary prototype-cta" id="hero-prototype-link" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: var(--space-xl);">
+            <span>View Complete Documentation</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+        </a>
+        
+        <div class="hero-image-container">
+            <img src="../assets/images/projects/cambiodesignsystem/heroimage-designsystem.png" alt="Cambio Design System Overview">
+        </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="case-study-section">
+        <div class="section-container">
+            <h2>The Challenge</h2>
+            <p>
+                This personal project demonstrates my ability to build comprehensive design systems from the ground up. Working with the Cambio app redesign as a case study, I created a complete design system to showcase how standardized foundations and reusable components can improve consistency and scalability.
+            </p>
+            <p>
+                The goal was to establish a unified design language that could streamline workflows, improve collaboration between designers and developers, and create a foundation for scalable product development.
+            </p>
+        </div>
+    </section>
+
+    <!-- The Problem -->
+    <section class="case-study-section alt-bg">
+        <div class="section-container">
+            <h2>Why a Design System?</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto var(--space-lg); color: var(--color-text-secondary); font-size: var(--font-size-sm); line-height: 1.7;">
+                This project demonstrates my understanding of common challenges that design systems solve in real-world applications.
+            </p>
+            
+            <ul class="impact-list">
+                <li>
+                    <strong>Inconsistent Visual Language</strong>
+                    Without a design system, different screens often use varying button styles, spacing values, and typography scales, creating a disjointed user experience.
+                </li>
+                <li>
+                    <strong>Slow Development Handoff</strong>
+                    Without standardized specs, developers must make guesses about spacing, colors, and interactions, leading to implementation inconsistencies.
+                </li>
+                <li>
+                    <strong>Difficult to Scale</strong>
+                    Adding new features means reinventing patterns instead of reusing established components, slowing down product iteration.
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section class="case-study-section">
+        <div class="section-container">
+            <h2>The Process</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto var(--space-2xl); color: var(--color-text-secondary); font-size: var(--font-size-sm); line-height: 1.7;">
+                This project showcases my systematic approach to building design systems: auditing existing patterns, defining foundational standards, and documenting everything for seamless designer-developer collaboration.
+            </p>
+        </div>
+
+        <div class="section-container-wide">
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="process-step-number">1</div>
+                    <h3>Audit UI Patterns</h3>
+                    <p>Analyze existing screens to identify repeated elements, inconsistencies, and patterns across the application.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-step-number">2</div>
+                    <h3>Define Foundations</h3>
+                    <p>Establish design tokens for typography, colors, spacing, and iconography to ensure consistency.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-step-number">3</div>
+                    <h3>Build & Document</h3>
+                    <p>Transform patterns into reusable components with comprehensive documentation and accessibility specs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Foundations -->
+    <section class="case-study-section alt-bg">
+        <div class="section-container-wide">
+            <h2>Foundations</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto var(--space-2xl); color: var(--color-text-secondary); font-size: var(--font-size-sm); line-height: 1.7;">
+                This design system demonstrates core foundations that establish visual consistency and scalability across all components.
+            </p>
+
+            <div class="foundation-grid">
+                <!-- Row 1: Typography and Spacing -->
+                <div class="foundation-row-2">
+                    <div class="foundation-item">
+                        <h3>Typography</h3>
+                        <p>A clear hierarchy with 9 text styles, from hero titles (32px/Bold) to helper text (12px/Regular). Each style serves a specific purpose, creating rhythm and improving readability.</p>
+                        <div class="foundation-image">
+                            <img src="../assets/images/projects/cambiodesignsystem/typography.png" alt="Typography System">
+                        </div>
+                    </div>
+
+                    <div class="foundation-item">
+                        <h3>Spacing</h3>
+                        <p>Four fixed tokens (12px, 24px, 32px, 64px) ensure consistent padding, margins, and alignment. These values create visual balance and predictability across all screens.</p>
+                        <div class="foundation-image">
+                            <img src="../assets/images/projects/cambiodesignsystem/Spacing Detailed.png" alt="Spacing System">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 2: Colors (3 columns) -->
+                <div class="foundation-row-3">
+                    <div class="foundation-item">
+                        <h3>Primary Blue</h3>
+                        <p>The main brand color with full tonal range (50-800) used for primary actions, navigation elements, and brand-defining UI components.</p>
+                        <div class="foundation-image">
+                            <img src="../assets/images/projects/cambiodesignsystem/blue-color.png" alt="Primary Blue Color Palette">
+                        </div>
+                    </div>
+
+                    <div class="foundation-item">
+                        <h3>Secondary Orange</h3>
+                        <p>Accent brand color with full tonal range (50-800) used for highlights, secondary actions, and complementary brand elements.</p>
+                        <div class="foundation-image">
+                            <img src="../assets/images/projects/cambiodesignsystem/orange-color.png" alt="Secondary Orange Color Palette">
+                        </div>
+                    </div>
+
+                    <div class="foundation-item">
+                        <h3>Neutral Colors</h3>
+                        <p>Gray scale palette used for backgrounds, text, borders, surfaces, and disabled states. These support structure and hierarchy.</p>
+                        <div class="foundation-image">
+                            <img src="../assets/images/projects/cambiodesignsystem/neutral-color.png" alt="Neutral Gray Color Palette">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Components -->
+    <section class="case-study-section">
+        <div class="section-container-wide">
+            <h2>Components</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto var(--space-2xl); color: var(--color-text-secondary); font-size: var(--font-size-sm); line-height: 1.7;">
+                Examples of reusable, documented components covering primary use cases. Each includes specs, variants, and accessibility guidelines.
+            </p>
+
+            <div class="component-showcase">
+                <h3>Buttons</h3>
+                <p style="text-align: center; max-width: 600px; margin: 0 auto var(--space-lg);">
+                    Primary action buttons with 4 variants (Default, Outline, Secondary, Disabled). All share the same size, radius (30px), and typography (Body-medium-bold).
+                </p>
+                <div class="component-image">
+                    <img src="../assets/images/projects/cambiodesignsystem/button-default.png" alt="Default Button" style="margin-bottom: var(--space-md);">
+                    <img src="../assets/images/projects/cambiodesignsystem/button-outline.png" alt="Outline Button" style="margin-bottom: var(--space-md);">
+                    <img src="../assets/images/projects/cambiodesignsystem/button-disabled.png" alt="Disabled Button">
+                </div>
+            </div>
+
+            <div class="component-showcase">
+                <h3>Form Fields</h3>
+                <p style="text-align: center; max-width: 600px; margin: 0 auto var(--space-lg);">
+                    Input fields with 3 states (Default, Active, Error). Includes helper text, icons, and accessibility-compliant touch targets (44x44px minimum).
+                </p>
+                <div class="component-image">
+                    <img src="../assets/images/projects/cambiodesignsystem/inactive-form.png" alt="Default Form Field" style="margin-bottom: var(--space-md);">
+                    <img src="../assets/images/projects/cambiodesignsystem/active-form.png" alt="Active Form Field" style="margin-bottom: var(--space-md);">
+                    <img src="../assets/images/projects/cambiodesignsystem/error-form.png" alt="Error Form Field">
+                </div>
+            </div>
+
+            <div class="component-showcase">
+                <h3>Car Cards</h3>
+                <p style="text-align: center; max-width: 600px; margin: 0 auto var(--space-lg);">
+                    Two variants: with and without action buttons. Used in the "Available cars" list and reservation summaries to display vehicle information in a scannable format.
+                </p>
+                <div class="component-image" style="flex-direction: row; max-width: fit-content; gap: var(--space-lg); justify-content: center;">
+                    <img src="../assets/images/projects/cambiodesignsystem/car_card_citroen_button.png" alt="Car Card with Button" style="max-height: 200px; width: auto;">
+                    <img src="../assets/images/projects/cambiodesignsystem/car_card_citroen-nobutton.png" alt="Car Card without Button" style="max-height: 200px; width: auto;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Developer Handoff -->
+    <section class="case-study-section alt-bg">
+        <div class="section-container">
+            <h2>Designer-Developer Handoff</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto var(--space-lg); color: var(--color-text-secondary); font-size: var(--font-size-sm); line-height: 1.7;">
+                This project demonstrates how comprehensive accessibility annotations and technical specifications ensure seamless implementation.
+            </p>
+
+            <ul class="impact-list">
+                <li>
+                    <strong>Technical Specs</strong>
+                    Each interactive element would be documented with HTML attributes, input modes, autocomplete values, and state definitions for accurate implementation.
+                </li>
+                <li>
+                    <strong>Accessible Names</strong>
+                    Clear accessible naming conventions would ensure screen readers can properly announce all interactive elements and their purpose.
+                </li>
+                <li>
+                    <strong>Action Definitions</strong>
+                    Explicit action descriptions would clarify user interactions and navigation flows, reducing implementation guesswork.
+                </li>
+            </ul>
+
+            <div style="text-align: center; margin-top: var(--space-2xl);">
+                <a href="https://www.figma.com/design/REUJlwN4onALvsNzE5CevX/Cambio-app-redesign--Design-System-?node-id=598-7286&p=f&t=7eaZJAiSKy1DbqHt-0" class="btn btn-primary prototype-cta" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                    <span>View Full Documentation</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact & Learnings -->
+    <section class="case-study-section">
+        <div class="section-container">
+            <h2>Value & Key Learnings</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto var(--space-lg); color: var(--color-text-secondary); font-size: var(--font-size-sm); line-height: 1.7;">
+                This project demonstrates how a well-structured design system can transform workflows and improve product development.
+            </p>
+            
+            <h3 style="font-size: var(--font-size-lg); margin-top: var(--space-xl); margin-bottom: var(--space-md); text-align: center;">Expected Benefits</h3>
+            
+            <ul class="impact-list">
+                <li>
+                    <strong>Faster Design Iterations</strong>
+                    Reusable components would eliminate redundant work, allowing designers to focus on solving user problems instead of recreating UI elements.
+                </li>
+                <li>
+                    <strong>Consistent User Experience</strong>
+                    Standardized patterns would create a cohesive experience across all screens, improving usability and building user trust.
+                </li>
+                <li>
+                    <strong>Improved Developer Efficiency</strong>
+                    Comprehensive documentation and accessibility specs would reduce implementation time and eliminate guesswork during handoff.
+                </li>
+                <li>
+                    <strong>Scalable Foundation</strong>
+                    New features could be built faster by leveraging existing components, accelerating product development timelines.
+                </li>
+                <li>
+                    <strong>Better Collaboration</strong>
+                    A shared design language would improve communication between designers, developers, and stakeholders, reducing miscommunication.
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <p class="logo">MC</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="../index.html#work">Projects</a></li>
+                            <li><a href="../about.html">About</a></li>
+                            <li><a href="../index.html#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <ul>
+                            <li><a href="mailto:marikacapraro94@gmail.com">Email</a></li>
+                            <li><a href="https://www.linkedin.com/in/marika-capraro-a09bb5239" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                            <li><a href="../assets/Marika-Capraro-Resume.pdf" target="_blank">Resume</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Marika Capraro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../scripts/main.js"></script>
+</body>
+</html>
