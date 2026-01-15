@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambio Autodelen App Redesign - Marika Capraro</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <style>
+        /* Case Study Specific Styles */
+        .case-study-hero {
+            padding: calc(var(--space-3xl) + 80px) var(--container-padding) var(--space-3xl);
+            text-align: center;
+            background: transparent;
+        }
+
+        .case-study-hero h1 {
+            font-size: var(--font-size-4xl);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--space-md);
+            line-height: 1.2;
+        }
+
+        .case-study-subtitle {
+            font-size: var(--font-size-xl);
+            color: var(--color-text-secondary);
+            max-width: 700px;
+            margin: 0 auto var(--space-lg);
+            line-height: 1.6;
+        }
+
+        .case-study-meta {
+            display: flex;
+            gap: var(--space-lg);
+            justify-content: center;
+            flex-wrap: wrap;
+            font-size: var(--font-size-sm);
+            color: var(--color-text-tertiary);
+            margin-bottom: var(--space-3xl);
+        }
+
+        .case-study-meta span {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .hero-image-container {
+            max-width: 1200px;
+            max-height: 500px;
+            margin: 0 auto;
+            border-radius: var(--radius-lg);
+            overflow: visible;
+            box-shadow: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+        }
+
+        .hero-image-container img {
+            width: 100%;
+            height: auto;
+            max-height: 500px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-size: var(--font-size-sm);
+            margin-bottom: var(--space-xl);
+            transition: color var(--transition-fast);
+        }
+
+        .back-link:hover {
+            color: var(--color-accent);
+        }
+
+        /* Case Study Sections */
+        .case-study-section {
+            padding: var(--space-3xl) var(--container-padding);
+        }
+
+        .case-study-section.alt-bg {
+            background-color: var(--color-surface);
+        }
+
+        .section-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section-container-wide {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .case-study-section h2 {
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--space-xl);
+            text-align: center;
+        }
+
+        .case-study-section h3 {
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-semibold);
+            margin: var(--space-2xl) 0 var(--space-lg);
+            color: var(--color-text-primary);
+        }
+
+        .case-study-section p {
+            font-size: var(--font-size-md);
+            line-height: 1.7;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-md);
+        }
+
+        /* Goals Grid */
+        .goals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-xl);
+            margin: var(--space-2xl) 0;
+        }
+
+        .goal-card {
+            background: var(--color-bg);
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-border);
+            transition: all var(--transition-normal);
+        }
+
+        .goal-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+            border-color: var(--color-accent);
+        }
+
+        .goal-card h3 {
+            font-size: var(--font-size-lg);
+            margin: 0 0 var(--space-sm);
+            color: var(--color-accent);
+        }
+
+        .goal-card p {
+            font-size: var(--font-size-sm);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Problems Grid */
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-xl);
+            margin-top: var(--space-2xl);
+        }
+
+        /* Problem Items */
+        .problem-item {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+            padding: var(--space-lg);
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+        }
+
+        .problem-content {
+            flex: 1;
+        }
+
+        .problem-title {
+            font-size: var(--font-size-lg) !important;
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-text-primary);
+            margin: 0 0 var(--space-xs) 0 !important;
+        }
+
+        .problem-description {
+            font-size: 16px !important;
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .problem-meta {
+            display: flex;
+            flex-direction: row;
+            gap: var(--space-xs);
+            align-items: center;
+        }
+
+        .problem-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: 0.375rem 0.75rem;
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-xs);
+            font-weight: var(--font-weight-semibold);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .problem-badge.critical {
+            background: rgba(220, 53, 69, 0.1);
+            color: #dc3545;
+        }
+
+        .problem-badge.high {
+            background: rgba(255, 193, 7, 0.1);
+            color: #d39e00;
+        }
+
+        .problem-badge.medium {
+            background: rgba(13, 110, 253, 0.1);
+            color: #0d6efd;
+        }
+
+        .problem-badge.business {
+            background: rgba(111, 66, 193, 0.1);
+            color: #6f42c1;
+        }
+
+        .problem-category-tag {
+            font-size: var(--font-size-xs);
+            color: var(--color-text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Image Grid */
+        .image-grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-xl);
+            margin: var(--space-2xl) 0;
+            align-items: start;
+        }
+
+        .image-item {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            background: var(--color-bg);
+            transition: all var(--transition-normal);
+            cursor: pointer;
+        }
+
+        .image-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+            border-color: var(--color-accent);
+        }
+
+        .image-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            background: var(--color-surface);
+            border-bottom: 2px solid var(--color-border);
+            transition: transform var(--transition-normal);
+        }
+
+        .image-item:hover img {
+            transform: scale(1.02);
+        }
+
+        .image-caption {
+            padding: var(--space-lg);
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+            flex-grow: 1;
+            background: var(--color-surface);
+        }
+
+        /* Comparison Section */
+        .comparison-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-xl);
+            margin: var(--space-2xl) 0;
+        }
+
+        .comparison-item {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 2px solid var(--color-border);
+        }
+
+        .comparison-label {
+            padding: var(--space-md);
+            text-align: center;
+            font-weight: var(--font-weight-semibold);
+            font-size: var(--font-size-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .comparison-label.before {
+            background: rgba(220, 53, 69, 0.1);
+            color: #dc3545;
+            border-bottom: 2px solid #dc3545;
+        }
+
+        .comparison-label.after {
+            background: rgba(40, 167, 69, 0.1);
+            color: #28a745;
+            border-bottom: 2px solid #28a745;
+        }
+
+        .comparison-image {
+            background: var(--color-surface);
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .comparison-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Prototype CTA */
+        .prototype-cta {
+            font-size: var(--font-size-md);
+            padding: 0.875rem 1.75rem;
+            box-shadow: 0 4px 12px rgba(71, 85, 105, 0.2);
+            transition: all var(--transition-normal);
+        }
+
+        .prototype-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(71, 85, 105, 0.3);
+        }
+
+        .prototype-cta svg {
+            transition: transform var(--transition-fast);
+        }
+
+        .prototype-cta:hover svg {
+            transform: translate(2px, -2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .case-study-hero {
+                padding-top: calc(var(--space-2xl) + 80px);
+            }
+
+            .case-study-hero h1 {
+                font-size: var(--font-size-3xl);
+            }
+
+            .case-study-subtitle {
+                font-size: var(--font-size-lg);
+            }
+
+            .image-grid-2,
+            .comparison-container,
+            .problems-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .goals-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">MC</a>
+            <ul class="nav-menu">
+                <li><a href="../index.html#work">Projects</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../index.html#contact" class="nav-cta">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="case-study-hero">
+        <a href="../index.html#work" class="back-link">← Back to Projects</a>
+        <h1>Cambio Autodelen App Redesign</h1>
+        <p class="case-study-subtitle">
+            From accessibility issues to business impact: transforming the registration experience to protect market share in Belgium's competitive car-sharing landscape
+        </p>
+        <div class="case-study-meta">
+            <span><strong>Role:</strong> UX/UI Designer</span>
+            <span>•</span>
+            <span><strong>Timeline:</strong> April 2025</span>
+            <span>•</span>
+            <span><strong>Type:</strong> Mobile App Redesign</span>
+        </div>
+        
+        <div class="hero-image-container">
+            <img src="../assets/images/projects/cambioappredesign/hero-image-casestudy.png" alt="Cambio App Redesign Overview">
+        </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="case-study-section">
+        <div class="section-container">
+            <h2>The Challenge</h2>
+            <p>
+                The Cambio Autodelen app redesign began with a comprehensive UX research phase that revealed critical insights about user experience and business impact. Despite Cambio's strong position in the Belgian car-sharing market with competitive pricing and an established user base, the app faced significant challenges that threatened its competitive edge.
+            </p>
+            <p>
+                The existing interface suffered from accessibility issues, including inadequate touch targets, unclear visual hierarchy, and weak brand identity. The registration process was particularly problematic, causing user frustration and potential drop-offs. In an increasingly competitive car-sharing landscape, these UX weaknesses risked losing customers to more modern, streamlined alternatives.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Goals -->
+    <section class="case-study-section alt-bg">
+        <div class="section-container-wide">
+            <h2>Project Goals</h2>
+            <div class="goals-grid">
+                <div class="goal-card">
+                    <h3>Streamline Registration</h3>
+                    <p>Simplify the sign-up process to reduce friction and drop-off rates, making it faster and easier for new users to join Cambio</p>
+                </div>
+                <div class="goal-card">
+                    <h3>Strengthen Brand Identity</h3>
+                    <p>Create a consistent, recognizable visual identity throughout the app that reinforces Cambio's market position</p>
+                </div>
+                <div class="goal-card">
+                    <h3>Improve Accessibility</h3>
+                    <p>Address touch target sizes, visual hierarchy, and other accessibility issues to ensure the app works for all users</p>
+                </div>
+                <div class="goal-card">
+                    <h3>Localized Experience</h3>
+                    <p>Provide multiple language options for Belgium's multilingual market, enabling faster, more comfortable registration</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Current Design Issues -->
+    <section class="case-study-section">
+        <div class="section-container">
+            <h2>UX & Accessibility Issues</h2>
+            
+            <div class="problems-grid">
+            <div class="problem-item">
+                <div class="problem-content">
+                    <h3 class="problem-title">Inadequate Touch Targets</h3>
+                    <p class="problem-description">Touch targets fell below the recommended 44x44pt minimum, making it difficult for users to accurately tap buttons and form fields—especially problematic for users with motor impairments or those using the app while on the move.</p>
+                </div>
+                <div class="problem-meta">
+                    <span class="problem-badge medium">Medium</span>
+                    <span class="problem-category-tag">Accessibility</span>
+                </div>
+            </div>
+
+            <div class="problem-item">
+                <div class="problem-content">
+                    <h3 class="problem-title">Lack of Visual Hierarchy</h3>
+                    <p class="problem-description">The absence of clear visual hierarchy left users confused about where to focus their attention. Inconsistent spacing and typography created a cluttered, unprofessional appearance that reduced user confidence in the service.</p>
+                </div>
+                <div class="problem-meta">
+                    <span class="problem-badge high">High</span>
+                    <span class="problem-category-tag">UX</span>
+                </div>
+            </div>
+
+            <div class="problem-item">
+                <div class="problem-content">
+                    <h3 class="problem-title">Weak Brand Identity</h3>
+                    <p class="problem-description">The app's visual identity didn't reflect Cambio's brand values or differentiate it from competitors. Generic styling and lack of brand colors made the experience feel disconnected from the Cambio brand users knew from marketing materials, reducing brand recognition and trust.</p>
+                </div>
+                <div class="problem-meta">
+                    <span class="problem-badge business">High</span>
+                    <span class="problem-category-tag">Brand</span>
+                </div>
+            </div>
+
+            <div class="problem-item">
+                <div class="problem-content">
+                    <h3 class="problem-title">Complex Registration Process</h3>
+                    <p class="problem-description">The sign-up process required too many steps with unclear instructions, leading to user frustration and abandoned registrations. Users reported confusion about required information, creating a significant barrier to customer acquisition.</p>
+                </div>
+                <div class="problem-meta">
+                    <span class="problem-badge critical">Critical</span>
+                    <span class="problem-category-tag">UX</span>
+                </div>
+            </div>
+
+            <div class="problem-item">
+                <div class="problem-content">
+                    <h3 class="problem-title">No Multilingual Support</h3>
+                    <p class="problem-description">In Belgium's multilingual market (Dutch, French, English), forcing users to navigate registration in a single language increased cognitive load and error rates, particularly for non-native speakers.</p>
+                </div>
+                <div class="problem-meta">
+                    <span class="problem-badge high">High</span>
+                    <span class="problem-category-tag">UX</span>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before/After Comparison -->
+    <section class="case-study-section alt-bg">
+        <div class="section-container-wide">
+            <h2>Current vs. Proposed Design</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto var(--space-2xl);">
+                The comparison below illustrates the transformation from the problematic current design to the improved proposed solution.
+            </p>
+            
+            <div class="comparison-container">
+                <div class="comparison-item">
+                    <div class="comparison-label before">Before - Current Design</div>
+                    <div class="comparison-image">
+                        <img src="../assets/images/projects/cambioappredesign/login-before.png" alt="Current Cambio App Design">
+                    </div>
+                </div>
+                <div class="comparison-item">
+                    <div class="comparison-label after">After - Proposed Design</div>
+                    <div class="comparison-image">
+                        <img src="../assets/images/projects/cambioappredesign/login-after.png" alt="Proposed Cambio App Design">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Redesign Solutions -->
+    <section class="case-study-section">
+        <div class="section-container">
+            <h2>The Redesign Approach</h2>
+            <p>
+                The redesign phase focused on addressing the issues uncovered during user research with targeted, user-centered solutions:
+            </p>
+            
+            <h3>Faster Sign-Up with itsme®</h3>
+            <p>
+                We integrated itsme®, Belgium's trusted digital identity platform, allowing users to sign up in seconds using their existing verified identity. This eliminated lengthy form filling and reduced registration time from several minutes to under 30 seconds, while also ensuring identity verification—a critical requirement for car-sharing services.
+            </p>
+
+            <h3>Clearer Communication Through UX Writing</h3>
+            <p>
+                Every button label, form field, and instruction was rewritten with clarity and user understanding in mind. Ambiguous phrases were replaced with clear, action-oriented language that guided users confidently through each step.
+            </p>
+
+            <h3>Multilingual Support for Belgium's Market</h3>
+            <p>
+                Recognizing Belgium's multilingual reality, we introduced clear language selection options (Dutch, French, and English) presented upfront. This localized approach ensures users can complete registration in their preferred language, reducing cognitive load and errors.
+            </p>
+
+            <h3>Strengthened Visual Brand Identity</h3>
+            <p>
+                The redesign introduced Cambio's brand colors, typography, and visual style consistently throughout the app. This creates a cohesive experience that builds brand recognition and trust while differentiating Cambio from competitors.
+            </p>
+
+            <h3>Accessibility-First Design</h3>
+            <p>
+                All interactive elements now meet WCAG 2.1 AA standards with appropriate touch target sizes (minimum 44x44pt), clear visual hierarchy, sufficient color contrast, and proper spacing. The design accommodates users with varying abilities and device sizes.
+            </p>
+        </div>
+    </section>
+
+    <!-- Business Impact -->
+    <section class="case-study-section alt-bg">
+        <div class="section-container">
+            <h2>Business Impact</h2>
+            <p>
+                By streamlining the sign-up process and enhancing the overall user experience, this redesign aims to expand Cambio's customer base and maintain its competitive edge in Belgium's car-sharing market.
+            </p>
+            <p>
+                The design leverages Cambio's existing strengths—competitive pricing, a well-established Belgian user base, and trusted brand reputation—while directly addressing critical weaknesses like the outdated interface and complex onboarding process.
+            </p>
+            <p>
+                <strong>Expected outcomes include:</strong>
+            </p>
+            <ul>
+                <li><strong>Reduced registration drop-off rates</strong> through simplified onboarding and itsme® integration</li>
+                <li><strong>Increased customer acquisition</strong> by removing barriers to entry and improving first impressions</li>
+                <li><strong>Enhanced brand perception</strong> through consistent, professional design that reinforces trust</li>
+                <li><strong>Improved competitive position</strong> by matching or exceeding modern car-sharing app standards</li>
+                <li><strong>Better market penetration</strong> across Belgium's linguistic communities through proper localization</li>
+            </ul>
+            <p>
+                In a market where users have multiple car-sharing options, the improved user experience becomes a key differentiator that protects market share and drives growth.
+            </p>
+        </div>
+    </section>
+
+    <!-- Final Design -->
+    <section class="case-study-section">
+        <div class="section-container-wide">
+            <h2>Final Design</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto var(--space-xl);">
+                The final design brings together refined navigation, simplified sign-up with itsme® integration, and consistent branding to create a seamless, user-focused experience.
+            </p>
+
+            <div style="text-align: center; margin-bottom: var(--space-2xl);">
+                <a href="https://www.figma.com/proto/4cmX3JCjdA2NMUyrDUef1I/Cambio-app-redesign?node-id=83-152&scaling=scale-down&page-id=0%3A1&starting-point-node-id=83%3A152" class="btn btn-primary prototype-cta" id="prototype-link" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                    <span>View Interactive Prototype</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="image-grid-2">
+                <div class="image-item">
+                    <img src="../assets/images/projects/cambioappredesign/welcome page-after.png" alt="Final Design - Welcome Screen">
+                    <div class="image-caption">
+                        Welcoming onboarding experience with clear brand identity and user-friendly introduction
+                    </div>
+                </div>
+                <div class="image-item">
+                    <img src="../assets/images/projects/cambioappredesign/login-after.png" alt="Final Design - Login Screen">
+                    <div class="image-caption">
+                        Streamlined login with itsme® integration for faster, secure sign-up
+                    </div>
+                </div>
+                <div class="image-item">
+                    <img src="../assets/images/projects/cambioappredesign/selectioncountry-after.png" alt="Final Design - Language Selection">
+                    <div class="image-caption">
+                        Multilingual support for Belgium's diverse user base with clear language selection
+                    </div>
+                </div>
+                <div class="image-item">
+                    <img src="../assets/images/projects/cambioappredesign/homepgae-after.png" alt="Final Design - Home Screen">
+                    <div class="image-caption">
+                        Consistent brand identity with improved navigation and visual hierarchy throughout the app
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact & Learnings -->
+    <section class="case-study-section alt-bg">
+        <div class="section-container">
+            <h2>Impact & Key Learnings</h2>
+            <p>
+                This project demonstrated the critical connection between UX design and business outcomes. What began as an accessibility improvement initiative evolved into a comprehensive redesign that addresses both user needs and business goals.
+            </p>
+            <h3>Key Takeaways</h3>
+            <ul>
+                <li><strong>Small friction points have big business impact:</strong> Issues like unclear buttons or extra form fields can significantly affect conversion rates and customer acquisition</li>
+                <li><strong>Localization matters:</strong> In multilingual markets, providing native language options isn't just nice-to-have—it's essential for reducing cognitive load and building trust</li>
+                <li><strong>Brand consistency builds trust:</strong> A cohesive visual identity throughout the user journey reinforces professionalism and reliability</li>
+                <li><strong>Modern authentication methods add value:</strong> Integration with services like itsme® simultaneously improves user experience and meets security requirements</li>
+                <li><strong>Accessibility benefits everyone:</strong> Designing for accessibility doesn't just help users with disabilities—it creates a better experience for all users</li>
+            </ul>
+            <p>
+                The redesign positions Cambio to protect and grow its market share in Belgium's competitive car-sharing landscape by removing barriers to entry and creating a modern, trustworthy digital experience.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <h2 class="logo">MC</h2>
+                    <p>Creating intuitive digital experiences through thoughtful design and development.</p>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>Navigation</h3>
+                    <ul>
+                        <li><a href="../index.html#work">Projects</a></li>
+                        <li><a href="../about.html">About</a></li>
+                        <li><a href="../index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="mailto:marikacapraro94@gmail.com">Email</a></li>
+                        <li><a href="https://www.linkedin.com/in/marika-capraro/" target="_blank">LinkedIn</a></li>
+                        <li><a href="../assets/Marika-Capraro-Resume.pdf" target="_blank">Resume</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Marika Capraro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../scripts/main.js"></script>
+    <script>
+        // Lightbox for images
+        const imageItems = document.querySelectorAll('.image-item');
+        
+        imageItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const img = this.querySelector('img');
+                if (img && img.src && !img.src.includes('placeholder')) {
+                    // Create simple lightbox
+                    const lightbox = document.createElement('div');
+                    lightbox.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: flex; align-items: center; justify-content: center; z-index: 10000; cursor: zoom-out;';
+                    
+                    const lightboxImg = document.createElement('img');
+                    lightboxImg.src = img.src;
+                    lightboxImg.alt = img.alt;
+                    lightboxImg.style.cssText = 'max-width: 95%; max-height: 95%; border-radius: 8px;';
+                    
+                    lightbox.appendChild(lightboxImg);
+                    document.body.appendChild(lightbox);
+                    document.body.style.overflow = 'hidden';
+                    
+                    lightbox.addEventListener('click', function() {
+                        document.body.removeChild(lightbox);
+                        document.body.style.overflow = '';
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

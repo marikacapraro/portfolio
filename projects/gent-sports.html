@@ -457,14 +457,6 @@
             flex-direction: column;
             height: 100%;
             background: var(--color-bg);
-            transition: all var(--transition-normal);
-            cursor: pointer;
-        }
-
-        .image-item:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
-            border-color: var(--color-accent);
         }
 
         .image-item img {
@@ -473,19 +465,6 @@
             display: block;
             background: var(--color-surface);
             border-bottom: 2px solid var(--color-border);
-            transition: transform var(--transition-normal);
-        }
-
-        /* Ensure consistent image heights in 2-column grid */
-        .image-grid-2 .image-item img {
-            width: 100%;
-            height: 286px;
-            object-fit: cover;
-            object-position: top;
-        }
-
-        .image-item:hover img {
-            transform: scale(1.02);
         }
 
         .image-caption {
@@ -502,82 +481,6 @@
             color: var(--color-text-primary);
             font-size: var(--font-size-md);
             margin-bottom: var(--space-xs);
-        }
-
-        /* Design Subsections with Visual Separators */
-        .design-subsection {
-            margin: var(--space-3xl) 0;
-            padding: var(--space-2xl) 0;
-            position: relative;
-        }
-
-        .design-subsection:first-of-type {
-            margin-top: var(--space-lg);
-            padding-top: 0;
-        }
-
-        .design-subsection:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            bottom: calc(-1 * var(--space-2xl));
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80%;
-            max-width: 600px;
-            height: 1px;
-            background: linear-gradient(
-                to right,
-                transparent 0%,
-                var(--color-border) 20%,
-                var(--color-accent) 50%,
-                var(--color-border) 80%,
-                transparent 100%
-            );
-            opacity: 0.4;
-        }
-
-        .design-subsection h3 {
-            text-align: center;
-            margin-bottom: var(--space-xl);
-            font-size: var(--font-size-2xl);
-            color: var(--color-text-primary);
-            position: relative;
-            display: inline-block;
-            width: 100%;
-            box-sizing: content-box;
-        }
-
-        /* Prototype Links */
-        .prototype-link {
-            color: var(--color-accent) !important;
-            font-weight: var(--font-weight-semibold);
-            transition: all var(--transition-fast);
-            position: relative;
-        }
-
-        .prototype-link:hover {
-            color: var(--color-text-primary) !important;
-            transform: translateX(2px);
-        }
-
-        .prototype-cta {
-            font-size: var(--font-size-md);
-            padding: 0.875rem 1.75rem;
-            box-shadow: 0 4px 12px rgba(71, 85, 105, 0.2);
-            transition: all var(--transition-normal);
-        }
-
-        .prototype-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(71, 85, 105, 0.3);
-        }
-
-        .prototype-cta svg {
-            transition: transform var(--transition-fast);
-        }
-
-        .prototype-cta:hover svg {
-            transform: translate(2px, -2px);
         }
 
         /* Stats */
@@ -624,58 +527,7 @@
             color: var(--color-accent);
         }
 
-        /* Comparison Images - Crop from bottom */
-        .comparison-image {
-            height: 340px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        /* Mobile screenshots display fully but at a controlled height */
-        .comparison-image[data-img-src*="mobile.png"] {
-            height: 600px;
-            overflow: hidden;
-        }
-
-        .comparison-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-            position: relative;
-            top: 0;
-        }
-
-        /* Mobile screenshots use object-fit to show the full image */
-        .comparison-image[data-img-src*="mobile.png"] img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            object-position: top;
-        }
-
         /* Responsive */
-        @media (max-width: 768px) {
-            .comparison-image {
-                height: 200px;
-            }
-            
-            /* Mobile screenshots at controlled height for tablets */
-            .comparison-image[data-img-src*="mobile.png"] {
-                height: 450px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .comparison-image {
-                height: 150px;
-            }
-            
-            /* Mobile screenshots at controlled height for small screens */
-            .comparison-image[data-img-src*="mobile.png"] {
-                height: 350px;
-            }
-        }
-
         @media (max-width: 768px) {
             .case-study-hero {
                 padding-top: calc(var(--space-2xl) + 80px);
@@ -714,7 +566,6 @@
             <ul class="nav-menu">
                 <li><a href="../index.html#work">Projects</a></li>
                 <li><a href="../about.html">About</a></li>
-                <li><a href="https://6967c12e0a3e6c3968ae7597--quiet-selkie-80a0b0.netlify.app" class="prototype-link" id="nav-prototype-link" target="_blank" rel="noopener noreferrer">View Prototype ↗</a></li>
                 <li><a href="../index.html#contact" class="nav-cta">Contact</a></li>
             </ul>
             <button class="nav-toggle" aria-label="Toggle navigation">
@@ -739,15 +590,6 @@
             <span>•</span>
             <span><strong>Type:</strong> Redesign</span>
         </div>
-
-        <a href="https://6967c12e0a3e6c3968ae7597--quiet-selkie-80a0b0.netlify.app" class="btn btn-primary prototype-cta" id="hero-prototype-link" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: var(--space-xl);">
-            <span>View Interactive Prototype</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                <polyline points="15 3 21 3 21 9"></polyline>
-                <line x1="10" y1="14" x2="21" y2="3"></line>
-            </svg>
-        </a>
         
         <div class="hero-image-container">
             <img src="gent-sports-screenshots/hero-preview.png" alt="City of Gent Sports Booking Interface">
@@ -900,64 +742,6 @@
         </div>
     </section>
 
-    <!-- Design Process -->
-    <section class="case-study-section alt-bg">
-        <div class="section-container">
-            <h2>Design Process</h2>
-            <p style="text-align: center; max-width: 700px; margin: 0 auto var(--space-xl); color: var(--color-text-secondary); font-size: var(--font-size-sm); line-height: 1.7;">
-                My approach combined AI-powered analysis with systematic problem-solving to create an accessible, user-friendly redesign.
-            </p>
-
-            <div style="display: grid; gap: var(--space-2xl); margin-top: var(--space-xl);">
-                <!-- Step 1: Research & Analysis -->
-                <div style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-xl);">
-                    <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-lg);">
-                        <div style="width: 48px; height: 48px; background: rgba(71, 85, 105, 0.1); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0;">
-                            🔍
-                        </div>
-                        <div>
-                            <h3 style="margin: 0; font-size: var(--font-size-xl);">Step 1: Research & Analysis</h3>
-                            <p style="margin: 0; font-size: var(--font-size-sm); color: var(--color-text-tertiary);">Identifying problems systematically</p>
-                        </div>
-                    </div>
-                    <ul class="solution-list">
-                        <li>Used <strong>AI tools (Claude)</strong> to conduct comprehensive UX/UI audit of the existing platform</li>
-                        <li>Ran <strong>WAVE Web Accessibility Evaluation Tool</strong> to identify WCAG compliance issues</li>
-                        <li>Documented and categorized <strong>15+ issues</strong> by severity (Critical, High, Medium)</li>
-                        <li>Analyzed user flow pain points, visual design inconsistencies, and accessibility barriers</li>
-                    </ul>
-                </div>
-
-                <!-- Step 2: Design & Build -->
-                <div style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-xl);">
-                    <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-lg);">
-                        <div style="width: 48px; height: 48px; background: rgba(71, 85, 105, 0.1); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0;">
-                            ✨
-                        </div>
-                        <div>
-                            <h3 style="margin: 0; font-size: var(--font-size-xl);">Step 2: AI-Assisted Design & Development</h3>
-                            <p style="margin: 0; font-size: var(--font-size-sm); color: var(--color-text-tertiary);">Building the solution</p>
-                        </div>
-                    </div>
-                    <ul class="solution-list">
-                        <li>Worked with <strong>Cursor AI</strong> to design and build the redesigned platform</li>
-                        <li>Addressed each identified issue systematically through iterative design decisions</li>
-                        <li>Implemented using <strong>React, TypeScript, Tailwind CSS, and shadcn-ui</strong></li>
-                        <li>Ensured <strong>accessibility-first approach</strong> throughout development (WCAG AA compliance)</li>
-                    </ul>
-                </div>
-
-                <!-- Why This Approach Works -->
-                <div style="background: rgba(71, 85, 105, 0.05); border-left: 3px solid var(--color-accent); padding: var(--space-lg); border-radius: var(--radius-sm);">
-                    <h3 style="margin: 0 0 var(--space-md) 0; font-size: var(--font-size-lg); color: var(--color-text-primary);">Why This Approach Works</h3>
-                    <p style="margin: 0; font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: 1.7;">
-                        Leveraging AI tools allowed me to systematically identify issues, make data-driven design decisions, and rapidly prototype solutions while maintaining a strong focus on accessibility and user experience. This modern workflow combines the speed of AI-assisted development with thoughtful UX problem-solving.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Solution -->
     <section class="case-study-section">
         <div class="section-container">
@@ -1015,7 +799,7 @@
                     </ul>
                 </div>
                 <div class="solution-image">
-                    <img src="../assets/images/projects/stadgentproject/calendar-newdesign.png" alt="Enhanced calendar with clear availability indicators">
+                    <img src="../projects/gent-sports-screenshots/04-calendar-grid.png" alt="Enhanced calendar with clear availability indicators">
                 </div>
             </div>
 
@@ -1051,119 +835,7 @@
                     </ul>
                 </div>
                 <div class="solution-image">
-                    <img src="../assets/images/projects/stadgentproject/confirmation-image.png" alt="Accessible confirmation page with clear information hierarchy">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Before/After Comparison -->
-    <section class="case-study-section">
-        <div class="section-container-wide">
-            <h2>Key Improvements: Before & After</h2>
-            <p style="text-align: center; max-width: 700px; margin: 0 auto var(--space-xl); color: var(--color-text-secondary); font-size: var(--font-size-sm); line-height: 1.7;">
-                Visual comparison of the most impactful changes that transformed the booking experience.
-            </p>
-
-            <!-- Comparison 1: Calendar - Transparent Pricing -->
-            <div style="margin: var(--space-3xl) 0;">
-                <h3 style="font-size: var(--font-size-xl); font-weight: var(--font-weight-semibold); color: var(--color-text-primary); margin-bottom: var(--space-lg); text-align: center;">
-                    Transparent Pricing in Calendar
-                </h3>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xl); margin-bottom: var(--space-md);">
-                    <div>
-                        <div style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);">
-                            <div style="background: rgba(220, 53, 69, 0.1); padding: var(--space-sm); text-align: center; border-bottom: 2px solid #dc3545;">
-                                <strong style="color: #dc3545; font-size: var(--font-size-sm); text-transform: uppercase; letter-spacing: 0.05em;">Before</strong>
-                            </div>
-                            <div class="comparison-image" data-img-src="gent-sports-screenshots/original/original-calendar-no-price.png" style="cursor: pointer;">
-                                <img src="gent-sports-screenshots/original/original-calendar-no-price.png" alt="Original calendar without pricing" style="width: 100%; height: auto; display: block; pointer-events: none;">
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);">
-                            <div style="background: rgba(40, 167, 69, 0.1); padding: var(--space-sm); text-align: center; border-bottom: 2px solid #28a745;">
-                                <strong style="color: #28a745; font-size: var(--font-size-sm); text-transform: uppercase; letter-spacing: 0.05em;">After</strong>
-                            </div>
-                            <div class="comparison-image" data-img-src="../assets/images/projects/stadgentproject/calendar-newdesign.png" style="cursor: pointer;">
-                                <img src="../assets/images/projects/stadgentproject/calendar-newdesign.png" alt="New calendar with transparent pricing" style="width: 100%; height: auto; display: block; pointer-events: none;">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div style="background: rgba(71, 85, 105, 0.05); padding: var(--space-md); border-radius: var(--radius-sm); border-left: 3px solid var(--color-accent);">
-                    <p style="margin: 0; font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: 1.6;">
-                        <strong style="color: var(--color-text-primary);">Key improvement:</strong> Prices now visible directly in the calendar grid, allowing users to make informed decisions without navigating to checkout. Real-time cost calculation updates as time slots are selected.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Comparison 2: Dashboard - Streamlined Navigation -->
-            <div style="margin: var(--space-3xl) 0;">
-                <h3 style="font-size: var(--font-size-xl); font-weight: var(--font-weight-semibold); color: var(--color-text-primary); margin-bottom: var(--space-lg); text-align: center;">
-                    Streamlined Dashboard
-                </h3>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xl); margin-bottom: var(--space-md);">
-                    <div>
-                        <div style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);">
-                            <div style="background: rgba(220, 53, 69, 0.1); padding: var(--space-sm); text-align: center; border-bottom: 2px solid #dc3545;">
-                                <strong style="color: #dc3545; font-size: var(--font-size-sm); text-transform: uppercase; letter-spacing: 0.05em;">Before</strong>
-                            </div>
-                            <div class="comparison-image" data-img-src="gent-sports-screenshots/original/original-after-login.png" style="cursor: pointer;">
-                                <img src="gent-sports-screenshots/original/original-after-login.png" alt="Original dashboard after login" style="width: 100%; height: auto; display: block; pointer-events: none;">
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);">
-                            <div style="background: rgba(40, 167, 69, 0.1); padding: var(--space-sm); text-align: center; border-bottom: 2px solid #28a745;">
-                                <strong style="color: #28a745; font-size: var(--font-size-sm); text-transform: uppercase; letter-spacing: 0.05em;">After</strong>
-                            </div>
-                            <div class="comparison-image" data-img-src="gent-sports-screenshots/02-dashboard-desktop.png" style="cursor: pointer;">
-                                <img src="gent-sports-screenshots/02-dashboard-desktop.png" alt="New streamlined dashboard" style="width: 100%; height: auto; display: block; pointer-events: none;">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div style="background: rgba(71, 85, 105, 0.05); padding: var(--space-md); border-radius: var(--radius-sm); border-left: 3px solid var(--color-accent);">
-                    <p style="margin: 0; font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: 1.6;">
-                        <strong style="color: var(--color-text-primary);">Key improvement:</strong> Clean card-based interface with clear visual hierarchy. Hero banner provides welcoming context, while action cards guide users to primary tasks (book, view reservations, manage profile).
-                    </p>
-                </div>
-            </div>
-
-            <!-- Comparison 3: Mobile - Mobile-First Design -->
-            <div style="margin: var(--space-3xl) 0 0 0;">
-                <h3 style="font-size: var(--font-size-xl); font-weight: var(--font-weight-semibold); color: var(--color-text-primary); margin-bottom: var(--space-lg); text-align: center;">
-                    Mobile-First Experience
-                </h3>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xl); margin-bottom: var(--space-md); max-width: 800px; margin-left: auto; margin-right: auto;">
-                    <div style="display: flex; justify-content: center;">
-                        <div style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08); max-width: 350px;">
-                            <div style="background: rgba(220, 53, 69, 0.1); padding: var(--space-sm); text-align: center; border-bottom: 2px solid #dc3545;">
-                                <strong style="color: #dc3545; font-size: var(--font-size-sm); text-transform: uppercase; letter-spacing: 0.05em;">Before</strong>
-                            </div>
-                            <div class="comparison-image" data-img-src="../assets/images/projects/stadgentproject/original-afterlogin-mobile.png" style="cursor: pointer;">
-                                <img src="../assets/images/projects/stadgentproject/original-afterlogin-mobile.png" alt="Original mobile interface" style="width: 100%; height: auto; display: block; pointer-events: none;">
-                            </div>
-                        </div>
-                    </div>
-                    <div style="display: flex; justify-content: center;">
-                        <div style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08); max-width: 350px;">
-                            <div style="background: rgba(40, 167, 69, 0.1); padding: var(--space-sm); text-align: center; border-bottom: 2px solid #28a745;">
-                                <strong style="color: #28a745; font-size: var(--font-size-sm); text-transform: uppercase; letter-spacing: 0.05em;">After</strong>
-                            </div>
-                            <div class="comparison-image" data-img-src="gent-sports-screenshots/08-dashboard-mobile.png" style="cursor: pointer;">
-                                <img src="gent-sports-screenshots/08-dashboard-mobile.png" alt="New mobile-optimized interface" style="width: 100%; height: auto; display: block; pointer-events: none;">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div style="background: rgba(71, 85, 105, 0.05); padding: var(--space-md); border-radius: var(--radius-sm); border-left: 3px solid var(--color-accent);">
-                    <p style="margin: 0; font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: 1.6;">
-                        <strong style="color: var(--color-text-primary);">Key improvement:</strong> Fully responsive mobile-first design with touch-friendly targets (min 44×44px), optimized navigation, and no horizontal scrolling. Clean typography and spacing optimized for smaller screens.
-                    </p>
+                    <img src="../projects/gent-sports-screenshots/06-confirmation.png" alt="Accessible confirmation page with clear information hierarchy">
                 </div>
             </div>
         </div>
@@ -1173,23 +845,8 @@
     <section class="case-study-section alt-bg">
         <div class="section-container-wide">
             <h2>Final Designs</h2>
-            <p style="max-width: 800px; margin: 0 auto var(--space-xl); text-align: center; font-size: var(--font-size-lg); color: var(--color-text-secondary); line-height: 1.6;">
-                The redesigned platform delivers a modern, intuitive experience across all devices. From streamlined login flows to optimized mobile interfaces, every screen prioritizes clarity, efficiency, and user satisfaction.
-            </p>
             
-            <div style="text-align: center; margin-bottom: var(--space-2xl);">
-                <a href="https://6967c12e0a3e6c3968ae7597--quiet-selkie-80a0b0.netlify.app" class="btn btn-primary prototype-cta" id="designs-prototype-link" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.5rem;">
-                    <span>Explore Interactive Prototype</span>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                        <polyline points="15 3 21 3 21 9"></polyline>
-                        <line x1="10" y1="14" x2="21" y2="3"></line>
-                    </svg>
-                </a>
-            </div>
-            
-            <div class="design-subsection">
-                <h3>Login & Dashboard</h3>
+            <h3>Login & Dashboard</h3>
             <div class="image-grid-2">
                 <div class="image-item">
                     <img src="gent-sports-screenshots/01-login-desktop.png" alt="Login Screen - Desktop">
@@ -1204,10 +861,8 @@
                     </div>
                 </div>
             </div>
-            </div>
 
-            <div class="design-subsection">
-                <h3>Search & Calendar</h3>
+            <h3>Search & Calendar</h3>
             <div class="image-grid-2">
                 <div class="image-item">
                     <img src="gent-sports-screenshots/03-search-bookings.png" alt="Search and Filter">
@@ -1216,34 +871,30 @@
                     </div>
                 </div>
                 <div class="image-item">
-                    <img src="../assets/images/projects/stadgentproject/calendar-newdesign.png" alt="Calendar Grid">
+                    <img src="gent-sports-screenshots/04-calendar-grid.png" alt="Calendar Grid">
                     <div class="image-caption">
                         Improved calendar with accessible colors, multi-select support, and clear availability indicators
                     </div>
                 </div>
             </div>
-            </div>
 
-            <div class="design-subsection">
-                <h3>Checkout & Confirmation</h3>
+            <h3>Checkout & Confirmation</h3>
             <div class="image-grid-2">
                 <div class="image-item">
-                    <img src="../assets/images/projects/stadgentproject/checkout-image1.png" alt="Checkout Page">
+                    <img src="gent-sports-screenshots/05-cart-desktop.png" alt="Checkout Page">
                     <div class="image-caption">
                         Single checkout screen with clear summary, pricing breakdown, and cancellation policy
                     </div>
                 </div>
                 <div class="image-item">
-                    <img src="../assets/images/projects/stadgentproject/confirmation-image.png" alt="Confirmation Page">
+                    <img src="gent-sports-screenshots/06-confirmation.png" alt="Confirmation Page">
                     <div class="image-caption">
                         Confirmation screen with booking details and quick actions to view reservations or book again
                     </div>
                 </div>
             </div>
-            </div>
 
-            <div class="design-subsection">
-                <h3>Mobile Views</h3>
+            <h3>Mobile Views</h3>
             <div class="image-grid-4">
                 <div class="image-item">
                     <img src="gent-sports-screenshots/07-login-mobile.png" alt="Login Mobile">
@@ -1258,10 +909,9 @@
                     <div class="image-caption">Scrollable view without horizontal overflow</div>
                 </div>
                 <div class="image-item">
-                    <img src="../assets/images/projects/stadgentproject/calendar-mobile.png" alt="Calendar Mobile">
-                    <div class="image-caption">Mobile calendar with clear availability and easy date selection</div>
+                    <img src="gent-sports-screenshots/10-cart-mobile.png" alt="Cart Mobile">
+                    <div class="image-caption">Touch-optimized checkout with clear CTAs</div>
                 </div>
-            </div>
             </div>
         </div>
     </section>
@@ -1336,36 +986,10 @@
 
     <script src="../scripts/main.js"></script>
     <script>
-        // ============================================
-        // PROTOTYPE LINK - UPDATE URL HERE
-        // ============================================
-        const PROTOTYPE_URL = 'https://6967c12e0a3e6c3968ae7597--quiet-selkie-80a0b0.netlify.app';
-        
-        // Update all prototype links
-        const navLink = document.getElementById('nav-prototype-link');
-        const heroLink = document.getElementById('hero-prototype-link');
-        const designsLink = document.getElementById('designs-prototype-link');
-        
-        if (navLink) {
-            navLink.href = PROTOTYPE_URL;
-            console.log('Nav link updated:', navLink.href);
-        }
-        if (heroLink) {
-            heroLink.href = PROTOTYPE_URL;
-            console.log('Hero link updated:', heroLink.href);
-        }
-        if (designsLink) {
-            designsLink.href = PROTOTYPE_URL;
-            console.log('Designs link updated:', designsLink.href);
-        }
-
-        // ============================================
         // Lightbox functionality
-        // ============================================
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
         const solutionImages = document.querySelectorAll('.solution-image img');
-        const comparisonImages = document.querySelectorAll('.comparison-image');
         const closeBtn = document.querySelector('.lightbox-close');
 
         // Add click event to all solution images
@@ -1375,32 +999,6 @@
                 lightboxImg.alt = img.alt;
                 lightbox.classList.add('active');
                 document.body.style.overflow = 'hidden'; // Prevent scrolling
-            });
-        });
-
-        // Add click event to all comparison images
-        comparisonImages.forEach(container => {
-            container.addEventListener('click', function() {
-                const imgSrc = this.getAttribute('data-img-src');
-                const img = this.querySelector('img');
-                lightboxImg.src = imgSrc;
-                lightboxImg.alt = img.alt;
-                lightbox.classList.add('active');
-                document.body.style.overflow = 'hidden'; // Prevent scrolling
-            });
-        });
-
-        // Add click event to all Final Designs image items
-        const finalDesignImages = document.querySelectorAll('.image-item');
-        finalDesignImages.forEach(item => {
-            item.addEventListener('click', function() {
-                const img = this.querySelector('img');
-                if (img) {
-                    lightboxImg.src = img.src;
-                    lightboxImg.alt = img.alt;
-                    lightbox.classList.add('active');
-                    document.body.style.overflow = 'hidden'; // Prevent scrolling
-                }
             });
         });
 
