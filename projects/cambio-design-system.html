@@ -120,16 +120,16 @@
             margin: var(--space-2xl) 0;
         }
 
-        .foundation-row-2 {
+        .foundation-row-4 {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: var(--space-2xl);
             margin-bottom: var(--space-2xl);
         }
 
-        .foundation-row-3 {
+        .foundation-row-single {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 1fr;
             gap: var(--space-2xl);
         }
 
@@ -170,22 +170,34 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            max-height: 300px;
+            min-height: 300px;
         }
 
         .foundation-image img {
             width: 100%;
             height: auto;
-            max-height: 300px;
+            max-height: 280px;
             object-fit: contain;
+            object-position: center;
             display: block;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+        }
+
+        .foundation-image img:hover {
+            transform: scale(1.02);
+            opacity: 0.9;
+        }
+
+        .foundation-item:hover .foundation-image img {
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.15);
         }
 
         /* Component Showcase */
         .component-showcase {
             margin: var(--space-2xl) auto;
             padding: var(--space-xl);
-            background: var(--color-surface);
+            background: transparent;
             border-radius: var(--radius-lg);
             border: 1px solid var(--color-border);
             max-width: 700px;
@@ -211,8 +223,7 @@
             max-height: 120px;
             height: auto;
             object-fit: contain;
-            border-radius: var(--radius-md);
-            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+            background: transparent;
         }
 
         /* Impact List */
@@ -301,6 +312,58 @@
 
         .prototype-cta:hover svg {
             transform: translateX(2px);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: var(--space-xl);
+            cursor: zoom-out;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 95%;
+            max-height: 95%;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            cursor: default;
+            background: white;
+            padding: var(--space-lg);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            background: white;
+            border: none;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform var(--transition-fast);
+            z-index: 10000;
+        }
+
+        .lightbox-close:hover {
+            transform: scale(1.1);
         }
 
         /* Responsive */
@@ -457,8 +520,8 @@
             </p>
 
             <div class="foundation-grid">
-                <!-- Row 1: Typography and Spacing -->
-                <div class="foundation-row-2">
+                <!-- Row 1: Typography + Colors (4 columns) -->
+                <div class="foundation-row-4">
                     <div class="foundation-item">
                         <h3>Typography</h3>
                         <p>A clear hierarchy with 9 text styles, from hero titles (32px/Bold) to helper text (12px/Regular). Each style serves a specific purpose, creating rhythm and improving readability.</p>
@@ -467,17 +530,6 @@
                         </div>
                     </div>
 
-                    <div class="foundation-item">
-                        <h3>Spacing</h3>
-                        <p>Four fixed tokens (12px, 24px, 32px, 64px) ensure consistent padding, margins, and alignment. These values create visual balance and predictability across all screens.</p>
-                        <div class="foundation-image">
-                            <img src="../assets/images/projects/cambiodesignsystem/Spacing Detailed.png" alt="Spacing System">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Row 2: Colors (3 columns) -->
-                <div class="foundation-row-3">
                     <div class="foundation-item">
                         <h3>Primary Blue</h3>
                         <p>The main brand color with full tonal range (50-800) used for primary actions, navigation elements, and brand-defining UI components.</p>
@@ -499,6 +551,17 @@
                         <p>Gray scale palette used for backgrounds, text, borders, surfaces, and disabled states. These support structure and hierarchy.</p>
                         <div class="foundation-image">
                             <img src="../assets/images/projects/cambiodesignsystem/neutral-color.png" alt="Neutral Gray Color Palette">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 2: Spacing (full width) -->
+                <div class="foundation-row-single">
+                    <div class="foundation-item">
+                        <h3>Spacing</h3>
+                        <p>Four fixed tokens (12px, 24px, 32px, 64px) ensure consistent padding, margins, and alignment. These values create visual balance and predictability across all screens.</p>
+                        <div class="foundation-image">
+                            <img src="../assets/images/projects/cambiodesignsystem/Spacing Detailed.png" alt="Spacing System">
                         </div>
                     </div>
                 </div>
@@ -654,6 +717,49 @@
         </div>
     </footer>
 
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" aria-label="Close lightbox">×</button>
+        <img src="" alt="" id="lightbox-img">
+    </div>
+
     <script src="../scripts/main.js"></script>
+    <script>
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const closeBtn = document.querySelector('.lightbox-close');
+
+        // Make foundation images clickable
+        const foundationImages = document.querySelectorAll('.foundation-image img');
+        foundationImages.forEach(img => {
+            img.addEventListener('click', function() {
+                lightboxImg.src = this.src;
+                lightboxImg.alt = this.alt;
+                lightbox.classList.add('active');
+            });
+        });
+
+        // Close lightbox
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+        }
+
+        closeBtn.addEventListener('click', closeLightbox);
+
+        // Close when clicking outside the image
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                closeLightbox();
+            }
+        });
+    </script>
 </body>
 </html>
