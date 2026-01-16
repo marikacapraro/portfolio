@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Walk Paws Design - Marika Capraro</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../styles/main.css">
+    <style>
+        /* Case Study Specific Styles */
+        .case-study-hero {
+            padding: calc(var(--space-3xl) + 80px) var(--container-padding) var(--space-3xl);
+            text-align: center;
+            background: transparent;
+        }
+
+        .case-study-hero h1 {
+            font-size: var(--font-size-4xl);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--space-md);
+            line-height: 1.2;
+        }
+
+        .case-study-subtitle {
+            font-size: var(--font-size-xl);
+            color: var(--color-text-secondary);
+            max-width: 700px;
+            margin: 0 auto var(--space-lg);
+            line-height: 1.6;
+        }
+
+        .case-study-meta {
+            display: flex;
+            gap: var(--space-lg);
+            justify-content: center;
+            flex-wrap: wrap;
+            font-size: var(--font-size-sm);
+            color: var(--color-text-tertiary);
+            margin-bottom: var(--space-3xl);
+        }
+
+        .case-study-meta span {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .hero-image-container {
+            max-width: 800px;
+            max-height: 400px;
+            margin: 0 auto;
+            border-radius: var(--radius-lg);
+            overflow: visible;
+            box-shadow: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+        }
+
+        .hero-image-container img {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-size: var(--font-size-sm);
+            margin-bottom: var(--space-xl);
+            transition: color var(--transition-fast);
+        }
+
+        .back-link:hover {
+            color: var(--color-accent);
+        }
+
+        .prototype-link {
+            color: var(--color-accent) !important;
+        }
+
+        /* Case Study Sections */
+        .case-study-section {
+            padding: var(--space-3xl) var(--container-padding);
+        }
+
+        .case-study-section.alt-bg {
+            background-color: var(--color-surface);
+        }
+
+        .section-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section-container-wide {
+            max-width: var(--container-max);
+            margin: 0 auto;
+        }
+
+        .case-study-section h2 {
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--space-xl);
+            color: var(--color-text-primary);
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .case-study-section h3 {
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-semibold);
+            margin: var(--space-2xl) 0 var(--space-lg);
+            color: var(--color-text-primary);
+        }
+
+        .case-study-section h4 {
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-semibold);
+            margin-top: var(--space-xl);
+            margin-bottom: var(--space-md);
+            color: var(--color-text-primary);
+        }
+
+        .case-study-section p {
+            font-size: var(--font-size-md);
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+            margin-bottom: var(--space-md);
+        }
+
+        .case-study-section p strong {
+            color: var(--color-text-primary);
+            font-weight: var(--font-weight-semibold);
+        }
+
+        /* Solution List */
+        .solution-list {
+            list-style: none;
+            padding: 0;
+            margin: var(--space-xl) 0;
+            display: grid;
+            gap: var(--space-md);
+        }
+
+        .solution-list li {
+            padding-left: var(--space-lg);
+            position: relative;
+            font-size: var(--font-size-md);
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+        }
+
+        .solution-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        /* Process Steps */
+        .process-grid {
+            display: grid;
+            gap: var(--space-lg);
+            margin: var(--space-2xl) 0;
+        }
+
+        .process-item {
+            background: var(--color-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            transition: all var(--transition-normal);
+        }
+
+        .process-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(15, 23, 42, 0.12);
+        }
+
+        .process-item h3 {
+            margin-top: 0;
+            font-size: var(--font-size-xl);
+            margin-bottom: var(--space-md);
+        }
+
+        .process-item ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .process-item li {
+            padding-left: var(--space-lg);
+            position: relative;
+            margin-bottom: var(--space-sm);
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+
+        .process-item li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
+            font-weight: bold;
+        }
+
+        /* Impact List */
+        .impact-list {
+            list-style: none;
+            padding: 0;
+            margin: var(--space-xl) 0;
+            display: grid;
+            gap: var(--space-md);
+        }
+
+        .impact-list li {
+            padding: var(--space-md);
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+            background: var(--color-surface);
+            border-left: 3px solid #28a745;
+            border-radius: var(--radius-sm);
+        }
+
+        .impact-list li strong {
+            color: var(--color-text-primary);
+            font-weight: var(--font-weight-semibold);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        /* Image Grid */
+        .image-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-2xl);
+            margin: var(--space-2xl) 0;
+        }
+
+        .image-item {
+            background: var(--color-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: all var(--transition-normal);
+        }
+
+        .image-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(15, 23, 42, 0.12);
+        }
+
+        .image-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            cursor: pointer;
+        }
+
+        .image-caption {
+            padding: var(--space-md);
+        }
+
+        .image-caption h4 {
+            margin: 0 0 var(--space-xs) 0;
+            font-size: var(--font-size-md);
+            color: var(--color-text-primary);
+        }
+
+        .image-caption p {
+            margin: 0;
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: var(--space-xl);
+            cursor: zoom-out;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 95%;
+            max-height: 95%;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            cursor: default;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            background: white;
+            border: none;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform var(--transition-fast);
+            z-index: 10000;
+        }
+
+        .lightbox-close:hover {
+            transform: scale(1.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .case-study-hero {
+                padding-top: calc(var(--space-2xl) + 80px);
+            }
+
+            .case-study-hero h1 {
+                font-size: var(--font-size-2xl);
+            }
+
+            .case-study-subtitle {
+                font-size: var(--font-size-lg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">MC</a>
+            <ul class="nav-menu">
+                <li><a href="../index.html#work">Projects</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="https://embed.figma.com/proto/hHWJgX5M30fJ7dyvwvWrvu/WalkPaws?node-id=50-388&scaling=scale-down&content-scaling=fixed&page-id=50%3A371&starting-point-node-id=50%3A388&show-proto-sidebar=1&embed-host=share" class="prototype-link" id="nav-prototype-link" target="_blank" rel="noopener noreferrer">View Prototype ↗</a></li>
+                <li><a href="../index.html#contact" class="nav-cta">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="case-study-hero">
+        <a href="../index.html#work" class="back-link">← Back to Projects</a>
+        <h1>Walk Paws</h1>
+        <p class="case-study-subtitle">Cross-platform pet care application connecting pet owners with trusted dog walkers</p>
+        
+        <div class="case-study-meta">
+            <span><strong>Role:</strong> UX/UI Designer</span>
+            <span><strong>Timeline:</strong> November 2023</span>
+            <span><strong>Platform:</strong> Mobile & Web</span>
+        </div>
+
+        <a href="https://embed.figma.com/proto/hHWJgX5M30fJ7dyvwvWrvu/WalkPaws?node-id=50-388&scaling=scale-down&content-scaling=fixed&page-id=50%3A371&starting-point-node-id=50%3A388&show-proto-sidebar=1&embed-host=share" class="btn btn-primary prototype-cta" id="hero-prototype-link" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: var(--space-xl);">
+            <span>View Interactive Prototype</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+        </a>
+        
+        <div class="hero-image-container">
+            <img src="../assets/images/projects/walkpawsdesign/walkpaws-hero.png" alt="Walk Paws App Overview">
+        </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="case-study-section">
+        <div class="section-container">
+            <h2>Overview</h2>
+            <p>
+                Walk Paws is a cross-platform pet care application designed with a purpose-driven approach to connect pet owners with local dog walkers while promoting social good. This UX/UI project showcases responsive design principles, ensuring a seamless user experience across mobile devices and desktop platforms.
+            </p>
+        </div>
+    </section>
+
+    <!-- The Problem -->
+    <section class="case-study-section alt-bg">
+        <div class="section-container">
+            <h2>The Problem</h2>
+            <p>
+                I identified a gap in the pet care market: the need for a reliable, user-friendly platform that connects pet owners with trusted dog walkers. The challenge was to develop a socially conscious application while ensuring a responsive design that maintains functionality and aesthetics across all device sizes.
+            </p>
+        </div>
+    </section>
+
+    <!-- The Solution -->
+    <section class="case-study-section">
+        <div class="section-container">
+            <h2>The Solution</h2>
+            <ul class="solution-list">
+                <li><strong>Trust and safety features</strong> for both parties</li>
+                <li><strong>Intuitive matching system</strong> between pet owners and verified dog walkers</li>
+                <li><strong>Responsive design</strong> across all devices</li>
+                <li><strong>Social impact integration</strong> supporting local communities</li>
+                <li><strong>Simple but efficient design</strong> accessible for users with different ages and tech skill levels</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Design Process -->
+    <section class="case-study-section alt-bg">
+        <div class="section-container">
+            <h2>Design Process</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto var(--space-2xl); color: var(--color-text-secondary); font-size: var(--font-size-sm); line-height: 1.7;">
+                Following UX methodologies, I implemented a user-centered design approach to ensure the final product would meet user needs while maintaining design standards.
+            </p>
+
+            <div class="process-grid">
+                <div class="process-item">
+                    <h3>1. Persona Development</h3>
+                    <ul>
+                        <li>Created detailed user personas</li>
+                        <li>Analyzed user pain points and opportunities</li>
+                    </ul>
+                </div>
+
+                <div class="process-item">
+                    <h3>2. Ideation & Sketching</h3>
+                    <ul>
+                        <li>Explored multiple design concepts</li>
+                        <li>Developed rough sketches to visualize initial ideas</li>
+                    </ul>
+                </div>
+
+                <div class="process-item">
+                    <h3>3. Digital Wireframing</h3>
+                    <ul>
+                        <li>Translated sketches into structured digital wireframes</li>
+                        <li>Established core layout and information architecture</li>
+                    </ul>
+                </div>
+
+                <div class="process-item">
+                    <h3>4. Lo-Fi Prototyping</h3>
+                    <ul>
+                        <li>Created interactive low-fidelity prototypes</li>
+                    </ul>
+                </div>
+
+                <div class="process-item">
+                    <h3>5. Hi-Fi Prototyping</h3>
+                    <ul>
+                        <li>Developed high-fidelity prototypes with visual design</li>
+                        <li>Refined interactions and animations</li>
+                    </ul>
+                </div>
+
+                <div class="process-item">
+                    <h3>6. Responsive Design Implementation</h3>
+                    <ul>
+                        <li>Adapted designs for various screen sizes</li>
+                        <li>Ensured consistent user experience across devices</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Persona -->
+    <section class="case-study-section">
+        <div class="section-container">
+            <h2>User Personas</h2>
+            <p>
+                I created detailed persona profiles to gain deeper insights into target users' motivations, pain points, and behavioral patterns. I developed two distinct personas representing the primary user segments: pet owners and dog walkers. These personas served as foundational tools throughout the design process, ensuring the solutions addressed real user needs.
+            </p>
+            
+            <!-- Placeholder for persona images -->
+            <div class="image-grid" style="margin-top: var(--space-2xl);">
+                <!-- Images will be added here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Sketches -->
+    <section class="case-study-section alt-bg">
+        <div class="section-container">
+            <h2>Sketches</h2>
+            <p>
+                The ideation phase began with rapid sketching to explore initial concepts and information architecture. These low-fidelity sketches served as the foundation for the app's core functionality, focusing on creating an intuitive user flow for booking dog walking services.
+            </p>
+            
+            <h4>Key elements explored:</h4>
+            <ul class="solution-list">
+                <li>Primary user journey mapping</li>
+                <li>Core feature placement and hierarchy</li>
+                <li>Essential UI components</li>
+            </ul>
+
+            <!-- Placeholder for sketch images -->
+            <div class="image-grid" style="margin-top: var(--space-2xl);">
+                <!-- Images will be added here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Digital Wireframes & Lo-Fi -->
+    <section class="case-study-section">
+        <div class="section-container">
+            <h2>Digital Wireframes and Low-Fidelity Prototype</h2>
+            <p>
+                Following the initial sketching phase, I created digital wireframes using Figma to establish a more structured foundation for the application. This step involved translating rough concepts into digital layouts.
+            </p>
+
+            <!-- Placeholder for wireframe images -->
+            <div class="image-grid" style="margin-top: var(--space-2xl);">
+                <!-- Images will be added here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Hi-Fi Prototype -->
+    <section class="case-study-section alt-bg">
+        <div class="section-container">
+            <h2>High-Fidelity Prototype</h2>
+            <p>
+                The high-fidelity phase marked the transformation of wireframes into a polished, visually engaging prototype. This stage focused on implementing the complete visual design system while maintaining the user-centric functionality established in earlier phases.
+            </p>
+
+            <h3>Key Developments</h3>
+            
+            <h4>Visual Design Elements</h4>
+            <ul class="solution-list">
+                <li>Implementation of a cohesive color palette</li>
+                <li>Refined typography and spacing systems</li>
+                <li>Consistent iconography and visual hierarchy</li>
+            </ul>
+
+            <h4>Enhanced User Interface Components</h4>
+            <ul class="solution-list">
+                <li>Polished navigation elements</li>
+                <li>Interactive booking interface</li>
+                <li>User profile and rating system</li>
+                <li>Clear call-to-action buttons</li>
+            </ul>
+
+            <div style="text-align: center; margin-bottom: var(--space-2xl);">
+                <a href="https://embed.figma.com/proto/hHWJgX5M30fJ7dyvwvWrvu/WalkPaws?node-id=50-388&scaling=scale-down&content-scaling=fixed&page-id=50%3A371&starting-point-node-id=50%3A388&show-proto-sidebar=1&embed-host=share" class="btn btn-primary prototype-cta" id="prototype-link" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                    <span>View Interactive Prototype</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Placeholder for hi-fi images -->
+            <div class="image-grid">
+                <!-- Images will be added here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Responsive Design -->
+    <section class="case-study-section">
+        <div class="section-container">
+            <h2>Responsive Design</h2>
+            <p>
+                The final phase focused on developing a comprehensive responsive design strategy that would optimize the user experience across all devices while serving as an effective marketing platform for the mobile application.
+            </p>
+
+            <h3>Key Responsive Design Implementation</h3>
+            
+            <h4>Mobile-First Approach</h4>
+            <ul class="solution-list">
+                <li>Initiated design from mobile breakpoints</li>
+                <li>Established core functionality and content hierarchy</li>
+                <li>Ensured seamless transition between screen sizes</li>
+                <li>Optimized touch interactions for mobile users</li>
+            </ul>
+
+            <h4>Strategic Website Adaptation</h4>
+            <ul class="solution-list">
+                <li>Transformed the mobile app interface into a responsive marketing website</li>
+                <li>Created compelling call-to-action elements for app downloads</li>
+                <li>Developed recruitment sections for potential dog walkers</li>
+                <li>Maintained brand consistency across all platforms</li>
+            </ul>
+
+            <!-- Placeholder for responsive design images -->
+            <div class="image-grid" style="margin-top: var(--space-2xl);">
+                <!-- Images will be added here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- UI Components -->
+    <section class="case-study-section alt-bg">
+        <div class="section-container">
+            <h2>UI Components</h2>
+            <p>
+                To maintain design consistency and streamline the development process, I created a comprehensive UI component library that forms the backbone of Walk Paws' visual and interactive elements. This approach ensures a cohesive user experience across all touchpoints.
+            </p>
+
+            <!-- Placeholder for component images -->
+            <div class="image-grid" style="margin-top: var(--space-2xl);">
+                <!-- Images will be added here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Next Steps -->
+    <section class="case-study-section">
+        <div class="section-container">
+            <h2>Next Steps</h2>
+            <p style="margin-bottom: var(--space-xl);">
+                Moving forward, I've identified several key areas for continued development and refinement of the Walk Paws platform:
+            </p>
+
+            <ul class="impact-list">
+                <li>
+                    <strong>User Research & Testing</strong>
+                    Conduct additional usability testing sessions, gather quantitative data on user behavior, analyze feedback and metrics, and identify pain points in current user journeys.
+                </li>
+                <li>
+                    <strong>Design Optimization</strong>
+                    Refine interaction patterns based on user insights, enhance accessibility features, optimize performance across different devices, and expand the component library as needed.
+                </li>
+                <li>
+                    <strong>Feature Development</strong>
+                    Develop community features for dog owners to connect and share experiences.
+                </li>
+                <li>
+                    <strong>Business Growth</strong>
+                    Develop strategies for user acquisition and explore partnerships with pet care services.
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <p class="logo">MC</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="../index.html#work">Projects</a></li>
+                            <li><a href="../about.html">About</a></li>
+                            <li><a href="../index.html#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <ul>
+                            <li><a href="mailto:marikacapraro94@gmail.com">Email</a></li>
+                            <li><a href="https://www.linkedin.com/in/marika-capraro-a09bb5239" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                            <li><a href="../assets/Marika-Capraro-Resume.pdf" target="_blank">Resume</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Marika Capraro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" aria-label="Close lightbox">×</button>
+        <img src="" alt="" id="lightbox-img">
+    </div>
+
+    <script src="../scripts/main.js"></script>
+    <script>
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const closeBtn = document.querySelector('.lightbox-close');
+
+        // Make all images in image-grid clickable
+        const imageItems = document.querySelectorAll('.image-item img');
+        imageItems.forEach(img => {
+            img.addEventListener('click', function() {
+                lightboxImg.src = this.src;
+                lightboxImg.alt = this.alt;
+                lightbox.classList.add('active');
+            });
+        });
+
+        // Close lightbox
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+        }
+
+        closeBtn.addEventListener('click', closeLightbox);
+
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>

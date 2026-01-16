@@ -557,6 +557,7 @@ p {
 
 .about-preview-image img {
     width: 100%;
+    max-width: 400px;
     border-radius: var(--radius-xl);
     box-shadow: 0 20px 60px rgba(15, 23, 42, 0.1);
 }
