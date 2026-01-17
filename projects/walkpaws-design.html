@@ -383,12 +383,41 @@
                 font-size: var(--font-size-lg);
             }
 
-            .image-grid-2 {
+            .image-grid-2,
+            .image-grid-3,
+            .process-grid {
                 grid-template-columns: 1fr;
             }
 
-            .image-grid-3 {
+            .hero-image-container {
+                max-width: 100%;
+            }
+
+            .responsive-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .solution-list {
+                padding-left: var(--space-md);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .case-study-hero h1 {
+                font-size: var(--font-size-xl);
+            }
+
+            .case-study-meta {
+                flex-direction: column;
+                gap: var(--space-sm);
+            }
+
+            .process-item {
+                padding: var(--space-md);
+            }
+
+            .image-item {
+                margin-bottom: var(--space-md);
             }
         }
     </style>

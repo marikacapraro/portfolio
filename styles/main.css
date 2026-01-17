@@ -719,7 +719,15 @@ p {
         flex-direction: column;
     }
     
+    .hero-cta .btn {
+        width: 100%;
+    }
+    
     .projects-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .approach-grid {
         grid-template-columns: 1fr;
     }
     
@@ -728,16 +736,28 @@ p {
         gap: var(--space-xl);
     }
     
+    .about-preview-image {
+        text-align: center;
+    }
+    
     .footer-links {
         grid-template-columns: 1fr;
     }
     
     .contact-links {
         flex-direction: column;
+        gap: var(--space-md);
     }
 }
 
 @media (max-width: 480px) {
+    :root {
+        --font-size-4xl: 2rem;
+        --font-size-3xl: 1.75rem;
+        --font-size-2xl: 1.5rem;
+        --font-size-xl: 1.25rem;
+    }
+    
     .hero-title {
         font-size: var(--font-size-3xl);
     }
@@ -748,6 +768,19 @@ p {
     
     .hero-cta .btn {
         width: 100%;
+    }
+    
+    .approach-card {
+        padding: var(--space-md);
+    }
+    
+    .project-filters {
+        gap: var(--space-xs);
+    }
+    
+    .filter-btn {
+        padding: var(--space-xs) var(--space-sm);
+        font-size: var(--font-size-sm);
     }
 }
 

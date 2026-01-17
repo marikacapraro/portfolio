@@ -388,8 +388,41 @@
 
             .foundation-row-2,
             .foundation-row-3,
+            .foundation-row-single,
             .process-steps {
                 grid-template-columns: 1fr;
+            }
+
+            .hero-image-container {
+                max-width: 100%;
+            }
+
+            .component-showcase {
+                max-width: 100%;
+                padding: var(--space-lg);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .case-study-hero h1 {
+                font-size: var(--font-size-2xl);
+            }
+
+            .case-study-meta {
+                flex-direction: column;
+                gap: var(--space-sm);
+            }
+
+            .process-step {
+                padding: var(--space-md);
+            }
+
+            .foundation-item {
+                padding: var(--space-md);
+            }
+
+            .component-showcase {
+                padding: var(--space-md);
             }
         }
     </style>

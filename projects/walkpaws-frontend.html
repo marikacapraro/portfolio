@@ -426,22 +426,45 @@
                 height: 300px;
             }
 
-            .split-view {
-                flex-direction: column;
+            .hero-split-item {
+                min-width: 100%;
             }
 
-            .code-side,
-            .design-side {
+            .hero-split-item:hover {
                 flex: 1;
             }
 
-            .split-view:hover .code-side:hover,
-            .split-view:hover .design-side:hover {
-                flex: 2;
-            }
-
+            .two-column-section,
             .two-column-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .solution-list {
+                padding-left: var(--space-md);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .case-study-hero h1 {
+                font-size: var(--font-size-xl);
+            }
+
+            .case-study-meta {
+                flex-direction: column;
+                gap: var(--space-sm);
+            }
+
+            .hero-image-container {
+                height: 250px;
+            }
+
+            .hero-split-item-label {
+                font-size: var(--font-size-sm);
+                padding: var(--space-xs) var(--space-sm);
+            }
+
+            .project-links {
+                flex-direction: column;
             }
         }
     </style>
