@@ -533,6 +533,19 @@
             object-position: top;
         }
 
+        /* Adjust mobile screenshot height for mobile screens */
+        @media (max-width: 768px) {
+            .comparison-image[data-img-src*="mobile.png"] {
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .comparison-image[data-img-src*="mobile.png"] {
+                height: 350px;
+            }
+        }
+
         /* Ensure consistent image heights in 2-column grid */
         .image-grid-2 .image-item img {
             width: 100%;
@@ -711,6 +724,54 @@
             }
         }
 
+        .comparison-label-box {
+            padding: var(--space-sm);
+            text-align: center;
+        }
+
+        .comparison-label-box.before {
+            background: rgba(220, 53, 69, 0.1);
+            border-bottom: 2px solid #dc3545;
+        }
+
+        .comparison-label-box.after {
+            background: rgba(40, 167, 69, 0.1);
+            border-bottom: 2px solid #28a745;
+        }
+
+        .comparison-label-text {
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 700;
+        }
+
+        .comparison-label-box.before .comparison-label-text {
+            color: #dc3545;
+        }
+
+        .comparison-label-box.after .comparison-label-text {
+            color: #28a745;
+        }
+
+        @media (max-width: 768px) {
+            .comparison-label-box {
+                padding: 6px 10px;
+            }
+
+            .comparison-label-text {
+                font-size: 11px;
+                letter-spacing: 0.03em;
+            }
+
+            .comparison-label {
+                font-size: 9px !important;
+                padding: 4px 8px !important;
+                letter-spacing: 0.03em !important;
+                font-weight: 700 !important;
+            }
+        }
+
         @media (max-width: 480px) {
             .case-study-hero h1 {
                 font-size: var(--font-size-2xl);
@@ -721,9 +782,20 @@
                 gap: var(--space-sm);
             }
 
+            .comparison-label-box {
+                padding: 4px 8px;
+            }
+
+            .comparison-label-text {
+                font-size: 10px;
+                letter-spacing: 0.03em;
+            }
+
             .comparison-label {
-                font-size: var(--font-size-xs);
-                padding: var(--space-xs) var(--space-sm);
+                font-size: 8px !important;
+                padding: 3px 6px !important;
+                letter-spacing: 0.02em !important;
+                font-weight: 700 !important;
             }
         }
     </style>
@@ -1038,16 +1110,16 @@
                 </p>
                 <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-xl); max-width: 1000px; margin: 0 auto;">
                     <div style="border-radius: var(--radius-lg); overflow: hidden; border: 2px solid var(--color-border);">
-                        <div style="background: rgba(220, 53, 69, 0.1); padding: var(--space-sm); text-align: center; border-bottom: 2px solid #dc3545;">
-                            <strong style="color: #dc3545; font-size: var(--font-size-sm); text-transform: uppercase; letter-spacing: 0.05em;">Before</strong>
+                        <div class="comparison-label-box before">
+                            <strong class="comparison-label-text">Before</strong>
                         </div>
                         <div class="comparison-image" data-img-src="gent-sports-screenshots/original/original-after-login.png" style="cursor: pointer;">
                             <img src="gent-sports-screenshots/original/original-after-login.png" alt="Original dashboard" style="width: 100%; height: auto; display: block; pointer-events: none;">
                         </div>
                     </div>
                     <div style="border-radius: var(--radius-lg); overflow: hidden; border: 2px solid var(--color-border);">
-                        <div style="background: rgba(40, 167, 69, 0.1); padding: var(--space-sm); text-align: center; border-bottom: 2px solid #28a745;">
-                            <strong style="color: #28a745; font-size: var(--font-size-sm); text-transform: uppercase; letter-spacing: 0.05em;">After</strong>
+                        <div class="comparison-label-box after">
+                            <strong class="comparison-label-text">After</strong>
                         </div>
                         <div class="comparison-image" data-img-src="gent-sports-screenshots/02-dashboard-desktop.png" style="cursor: pointer;">
                             <img src="gent-sports-screenshots/02-dashboard-desktop.png" alt="Redesigned dashboard with clear actions" style="width: 100%; height: auto; display: block; pointer-events: none;">
@@ -1064,16 +1136,16 @@
                 </p>
                 <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-xl); max-width: 1000px; margin: 0 auto;">
                     <div style="border-radius: var(--radius-lg); overflow: hidden; border: 2px solid var(--color-border);">
-                        <div style="background: rgba(220, 53, 69, 0.1); padding: var(--space-sm); text-align: center; border-bottom: 2px solid #dc3545;">
-                            <strong style="color: #dc3545; font-size: var(--font-size-sm); text-transform: uppercase; letter-spacing: 0.05em;">Before</strong>
+                        <div class="comparison-label-box before">
+                            <strong class="comparison-label-text">Before</strong>
                         </div>
                         <div class="comparison-image" data-img-src="gent-sports-screenshots/original/original-calendar-no-price.png" style="cursor: pointer;">
                             <img src="gent-sports-screenshots/original/original-calendar-no-price.png" alt="Calendar without pricing" style="width: 100%; height: auto; display: block; pointer-events: none;">
                         </div>
                     </div>
                     <div style="border-radius: var(--radius-lg); overflow: hidden; border: 2px solid var(--color-border);">
-                        <div style="background: rgba(40, 167, 69, 0.1); padding: var(--space-sm); text-align: center; border-bottom: 2px solid #28a745;">
-                            <strong style="color: #28a745; font-size: var(--font-size-sm); text-transform: uppercase; letter-spacing: 0.05em;">After</strong>
+                        <div class="comparison-label-box after">
+                            <strong class="comparison-label-text">After</strong>
                         </div>
                         <div class="comparison-image" data-img-src="../assets/images/projects/stadgentproject/calendar-newdesign.png" style="cursor: pointer;">
                             <img src="../assets/images/projects/stadgentproject/calendar-newdesign.png" alt="New calendar with transparent pricing" style="width: 100%; height: auto; display: block; pointer-events: none;">
@@ -1090,16 +1162,16 @@
                 </p>
                 <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-xl); max-width: 1000px; margin: 0 auto;">
                     <div style="border-radius: var(--radius-lg); overflow: hidden; border: 2px solid var(--color-border);">
-                        <div style="background: rgba(220, 53, 69, 0.1); padding: var(--space-sm); text-align: center; border-bottom: 2px solid #dc3545;">
-                            <strong style="color: #dc3545; font-size: var(--font-size-sm); text-transform: uppercase; letter-spacing: 0.05em;">Before</strong>
+                        <div class="comparison-label-box before">
+                            <strong class="comparison-label-text">Before</strong>
                         </div>
                         <div class="comparison-image" data-img-src="gent-sports-screenshots/original/original-competing-searches.png" style="cursor: pointer;">
                             <img src="gent-sports-screenshots/original/original-competing-searches.png" alt="Original competing search interfaces" style="width: 100%; height: auto; display: block; pointer-events: none;">
                         </div>
                     </div>
                     <div style="border-radius: var(--radius-lg); overflow: hidden; border: 2px solid var(--color-border);">
-                        <div style="background: rgba(40, 167, 69, 0.1); padding: var(--space-sm); text-align: center; border-bottom: 2px solid #28a745;">
-                            <strong style="color: #28a745; font-size: var(--font-size-sm); text-transform: uppercase; letter-spacing: 0.05em;">After</strong>
+                        <div class="comparison-label-box after">
+                            <strong class="comparison-label-text">After</strong>
                         </div>
                         <div class="comparison-image" data-img-src="gent-sports-screenshots/03-search-bookings.png" style="cursor: pointer;">
                             <img src="gent-sports-screenshots/03-search-bookings.png" alt="Unified search interface" style="width: 100%; height: auto; display: block; pointer-events: none;">
@@ -1116,16 +1188,16 @@
                 </p>
                 <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-xl); max-width: 800px; margin: 0 auto;">
                     <div style="border-radius: var(--radius-lg); overflow: hidden; border: 2px solid var(--color-border);">
-                        <div style="background: rgba(220, 53, 69, 0.1); padding: var(--space-sm); text-align: center; border-bottom: 2px solid #dc3545;">
-                            <strong style="color: #dc3545; font-size: var(--font-size-sm); text-transform: uppercase; letter-spacing: 0.05em;">Before</strong>
+                        <div class="comparison-label-box before">
+                            <strong class="comparison-label-text">Before</strong>
                         </div>
                         <div class="comparison-image" data-img-src="../assets/images/projects/stadgentproject/original-afterlogin-mobile.png" style="cursor: pointer;">
                             <img src="../assets/images/projects/stadgentproject/original-afterlogin-mobile.png" alt="Original mobile interface" style="width: 100%; height: auto; display: block; pointer-events: none;">
                         </div>
                     </div>
                     <div style="border-radius: var(--radius-lg); overflow: hidden; border: 2px solid var(--color-border);">
-                        <div style="background: rgba(40, 167, 69, 0.1); padding: var(--space-sm); text-align: center; border-bottom: 2px solid #28a745;">
-                            <strong style="color: #28a745; font-size: var(--font-size-sm); text-transform: uppercase; letter-spacing: 0.05em;">After</strong>
+                        <div class="comparison-label-box after">
+                            <strong class="comparison-label-text">After</strong>
                         </div>
                         <div class="comparison-image" data-img-src="gent-sports-screenshots/08-dashboard-mobile.png" style="cursor: pointer;">
                             <img src="gent-sports-screenshots/08-dashboard-mobile.png" alt="New mobile-optimized interface" style="width: 100%; height: auto; display: block; pointer-events: none;">

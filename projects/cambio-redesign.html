@@ -316,7 +316,7 @@
             padding: var(--space-md) var(--space-lg);
             text-align: center;
             font-weight: 700;
-            font-size: 18px;
+            font-size: 16px;
             text-transform: uppercase;
             letter-spacing: 0.1em;
         }
@@ -572,6 +572,15 @@
             }
         }
 
+        @media (max-width: 768px) {
+            .comparison-label {
+                font-size: 11px !important;
+                padding: 6px 10px !important;
+                letter-spacing: 0.03em !important;
+                font-weight: 700 !important;
+            }
+        }
+
         @media (max-width: 480px) {
             .case-study-hero h1 {
                 font-size: var(--font-size-2xl);
@@ -583,8 +592,10 @@
             }
 
             .comparison-label {
-                font-size: var(--font-size-xs);
-                padding: var(--space-xs) var(--space-sm);
+                font-size: 10px !important;
+                padding: 4px 8px !important;
+                letter-spacing: 0.03em !important;
+                font-weight: 700 !important;
             }
 
             .problem-item {
