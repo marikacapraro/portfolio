@@ -244,6 +244,11 @@ p {
     display: none;
     flex-direction: column;
     gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--space-xs);
+    z-index: 1001;
 }
 
 .nav-toggle span {
@@ -251,6 +256,19 @@ p {
     height: 2px;
     background-color: var(--color-text-primary);
     transition: all var(--transition-fast);
+    display: block;
+}
+
+.nav-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
 }
 
 /* ================================
@@ -690,11 +708,23 @@ p {
         transform: translateY(-100%);
         opacity: 0;
         transition: all var(--transition-normal);
+        z-index: 1000;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
     
     .nav-menu.active {
         transform: translateY(0);
         opacity: 1;
+    }
+    
+    .nav-menu li {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .nav-menu a {
+        display: block;
+        padding: var(--space-sm) 0;
     }
     
     .nav-toggle {
