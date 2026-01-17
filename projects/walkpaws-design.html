@@ -183,17 +183,23 @@
             border-radius: var(--radius-lg);
             padding: var(--space-xl);
             transition: all var(--transition-normal);
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
 
         .process-item:hover {
             transform: translateY(-4px);
             box-shadow: 0 8px 30px rgba(15, 23, 42, 0.12);
+            border-color: var(--color-primary);
         }
 
         .process-item h3 {
             margin-top: 0;
             font-size: var(--font-size-xl);
             margin-bottom: var(--space-md);
+            color: var(--color-text-primary);
         }
 
         .process-item ul {
@@ -251,6 +257,30 @@
             grid-template-columns: 1fr;
             gap: var(--space-2xl);
             margin: var(--space-2xl) 0;
+        }
+
+        .image-grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-2xl);
+            margin: var(--space-2xl) 0;
+        }
+
+        .image-grid-2 .image-item img {
+            max-height: 400px;
+            object-fit: contain;
+        }
+
+        .image-grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-xl);
+            margin: var(--space-2xl) 0;
+        }
+
+        .image-grid-3 .image-item img {
+            max-height: 350px;
+            object-fit: contain;
         }
 
         .image-item {
@@ -352,6 +382,14 @@
             .case-study-subtitle {
                 font-size: var(--font-size-lg);
             }
+
+            .image-grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .image-grid-3 {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -405,7 +443,7 @@
         <div class="section-container">
             <h2>Overview</h2>
             <p>
-                Walk Paws is a cross-platform pet care application designed with a purpose-driven approach to connect pet owners with local dog walkers while promoting social good. This UX/UI project showcases responsive design principles, ensuring a seamless user experience across mobile devices and desktop platforms.
+                Walk Paws is a personal UX/UI design project that demonstrates my ability to design cross-platform pet care applications. This case study showcases my approach to creating a purpose-driven platform concept that would connect pet owners with local dog walkers while promoting social good. The project highlights responsive design principles and user-centered design methodology across mobile and desktop platforms.
             </p>
         </div>
     </section>
@@ -415,7 +453,7 @@
         <div class="section-container">
             <h2>The Problem</h2>
             <p>
-                I identified a gap in the pet care market: the need for a reliable, user-friendly platform that connects pet owners with trusted dog walkers. The challenge was to develop a socially conscious application while ensuring a responsive design that maintains functionality and aesthetics across all device sizes.
+                For this personal project, I identified a gap in the pet care market: the need for a reliable, user-friendly platform that connects pet owners with trusted dog walkers. The design challenge I set for myself was to create a socially conscious application concept while ensuring a responsive design that maintains functionality and aesthetics across all device sizes.
             </p>
         </div>
     </section>
@@ -443,58 +481,58 @@
             </p>
 
             <div class="process-grid">
-                <div class="process-item">
+                <a href="#personas" class="process-item">
                     <h3>1. Persona Development</h3>
                     <ul>
                         <li>Created detailed user personas</li>
                         <li>Analyzed user pain points and opportunities</li>
                     </ul>
-                </div>
+                </a>
 
-                <div class="process-item">
+                <a href="#sketches" class="process-item">
                     <h3>2. Ideation & Sketching</h3>
                     <ul>
                         <li>Explored multiple design concepts</li>
                         <li>Developed rough sketches to visualize initial ideas</li>
                     </ul>
-                </div>
+                </a>
 
-                <div class="process-item">
+                <a href="#wireframes" class="process-item">
                     <h3>3. Digital Wireframing</h3>
                     <ul>
                         <li>Translated sketches into structured digital wireframes</li>
                         <li>Established core layout and information architecture</li>
                     </ul>
-                </div>
+                </a>
 
-                <div class="process-item">
+                <a href="#wireframes" class="process-item">
                     <h3>4. Lo-Fi Prototyping</h3>
                     <ul>
                         <li>Created interactive low-fidelity prototypes</li>
                     </ul>
-                </div>
+                </a>
 
-                <div class="process-item">
+                <a href="#hifi" class="process-item">
                     <h3>5. Hi-Fi Prototyping</h3>
                     <ul>
                         <li>Developed high-fidelity prototypes with visual design</li>
                         <li>Refined interactions and animations</li>
                     </ul>
-                </div>
+                </a>
 
-                <div class="process-item">
+                <a href="#responsive" class="process-item">
                     <h3>6. Responsive Design Implementation</h3>
                     <ul>
                         <li>Adapted designs for various screen sizes</li>
                         <li>Ensured consistent user experience across devices</li>
                     </ul>
-                </div>
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Persona -->
-    <section class="case-study-section">
+    <section id="personas" class="case-study-section">
         <div class="section-container">
             <h2>User Personas</h2>
             <p>
@@ -509,7 +547,7 @@
     </section>
 
     <!-- Sketches -->
-    <section class="case-study-section alt-bg">
+    <section id="sketches" class="case-study-section alt-bg">
         <div class="section-container">
             <h2>Sketches</h2>
             <p>
@@ -523,30 +561,54 @@
                 <li>Essential UI components</li>
             </ul>
 
-            <!-- Placeholder for sketch images -->
-            <div class="image-grid" style="margin-top: var(--space-2xl);">
-                <!-- Images will be added here -->
+            <div class="image-grid-2" style="margin-top: var(--space-2xl);">
+                <div class="image-item">
+                    <img src="../assets/images/projects/walkpawsdesign/sketch1.png" alt="Walk Paws Sketches - User Flow">
+                    <div class="image-caption">
+                        <h4>Initial Sketches</h4>
+                        <p>Early concept exploration for core user flows</p>
+                    </div>
+                </div>
+                <div class="image-item">
+                    <img src="../assets/images/projects/walkpawsdesign/sketch2.png" alt="Walk Paws Sketches - Screen Layouts">
+                    <div class="image-caption">
+                        <h4>Screen Layout Concepts</h4>
+                        <p>Rapid sketching to explore different layout options</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Digital Wireframes & Lo-Fi -->
-    <section class="case-study-section">
+    <section id="wireframes" class="case-study-section">
         <div class="section-container">
             <h2>Digital Wireframes and Low-Fidelity Prototype</h2>
             <p>
                 Following the initial sketching phase, I created digital wireframes using Figma to establish a more structured foundation for the application. This step involved translating rough concepts into digital layouts.
             </p>
 
-            <!-- Placeholder for wireframe images -->
-            <div class="image-grid" style="margin-top: var(--space-2xl);">
-                <!-- Images will be added here -->
+            <div class="image-grid-2" style="margin-top: var(--space-2xl);">
+                <div class="image-item">
+                    <img src="../assets/images/projects/walkpawsdesign/Homepage-LoFi.png" alt="Walk Paws Lo-Fi Wireframe - Homepage">
+                    <div class="image-caption">
+                        <h4>Homepage Wireframe</h4>
+                        <p>Low-fidelity wireframe showing homepage structure and navigation</p>
+                    </div>
+                </div>
+                <div class="image-item">
+                    <img src="../assets/images/projects/walkpawsdesign/Select A Date-Lo-Fi.png" alt="Walk Paws Lo-Fi Wireframe - Booking Flow">
+                    <div class="image-caption">
+                        <h4>Booking Flow Wireframe</h4>
+                        <p>Date selection and booking interface wireframe</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Hi-Fi Prototype -->
-    <section class="case-study-section alt-bg">
+    <section id="hifi" class="case-study-section alt-bg">
         <div class="section-container">
             <h2>High-Fidelity Prototype</h2>
             <p>
@@ -581,15 +643,55 @@
                 </a>
             </div>
 
-            <!-- Placeholder for hi-fi images -->
-            <div class="image-grid">
-                <!-- Images will be added here -->
+            <div class="image-grid-3">
+                <div class="image-item">
+                    <img src="../assets/images/projects/walkpawsdesign/High-Fidelity1.png" alt="Walk Paws Onboarding - Screen 1">
+                    <div class="image-caption">
+                        <h4>Welcome Screen</h4>
+                        <p>Introduction to the app's core features</p>
+                    </div>
+                </div>
+                <div class="image-item">
+                    <img src="../assets/images/projects/walkpawsdesign/High-Fidelity2.png" alt="Walk Paws Onboarding - Screen 2">
+                    <div class="image-caption">
+                        <h4>How It Works</h4>
+                        <p>Quick overview of the booking process</p>
+                    </div>
+                </div>
+                <div class="image-item">
+                    <img src="../assets/images/projects/walkpawsdesign/High-Fidelity3.png" alt="Walk Paws Onboarding - Screen 3">
+                    <div class="image-caption">
+                        <h4>Get Started</h4>
+                        <p>Final onboarding screen before login</p>
+                    </div>
+                </div>
+                <div class="image-item">
+                    <img src="../assets/images/projects/walkpawsdesign/High-Fidelity4.png" alt="Walk Paws High-Fidelity - Homepage">
+                    <div class="image-caption">
+                        <h4>Homepage</h4>
+                        <p>Main dashboard with quick action cards and navigation</p>
+                    </div>
+                </div>
+                <div class="image-item">
+                    <img src="../assets/images/projects/walkpawsdesign/High-Fidelity5.png" alt="Walk Paws High-Fidelity - Date Selector">
+                    <div class="image-caption">
+                        <h4>Date & Time Selection</h4>
+                        <p>Choose preferred date and time for dog walking service</p>
+                    </div>
+                </div>
+                <div class="image-item">
+                    <img src="../assets/images/projects/walkpawsdesign/High-Fidelity6.png" alt="Walk Paws High-Fidelity - Walker Selection">
+                    <div class="image-caption">
+                        <h4>Walker Selection</h4>
+                        <p>Browse and select from available verified dog walkers</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Responsive Design -->
-    <section class="case-study-section">
+    <section id="responsive" class="case-study-section">
         <div class="section-container">
             <h2>Responsive Design</h2>
             <p>
@@ -614,9 +716,35 @@
                 <li>Maintained brand consistency across all platforms</li>
             </ul>
 
-            <!-- Placeholder for responsive design images -->
-            <div class="image-grid" style="margin-top: var(--space-2xl);">
-                <!-- Images will be added here -->
+            <div style="margin-top: var(--space-2xl);">
+                <!-- Mobile and Tablet Row -->
+                <div class="image-grid-2" style="margin-bottom: var(--space-2xl);">
+                    <div class="image-item">
+                        <img src="../assets/images/projects/walkpawsdesign/mobile.png" alt="Walk Paws Mobile Responsive Design">
+                        <div class="image-caption">
+                            <h4>Mobile</h4>
+                            <p>Optimized touch interactions and vertical scrolling</p>
+                        </div>
+                    </div>
+                    <div class="image-item">
+                        <img src="../assets/images/projects/walkpawsdesign/tablet.png" alt="Walk Paws Tablet Responsive Design">
+                        <div class="image-caption">
+                            <h4>Tablet</h4>
+                            <p>Balanced layout utilizing medium screen space</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Desktop Full Width -->
+                <div class="image-grid">
+                    <div class="image-item">
+                        <img src="../assets/images/projects/walkpawsdesign/desktop.png" alt="Walk Paws Desktop Responsive Design">
+                        <div class="image-caption">
+                            <h4>Desktop</h4>
+                            <p>Full-featured layout with expanded navigation</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -641,7 +769,7 @@
         <div class="section-container">
             <h2>Next Steps</h2>
             <p style="margin-bottom: var(--space-xl);">
-                Moving forward, I've identified several key areas for continued development and refinement of the Walk Paws platform:
+                If this were a real-world project, I would focus on several key areas for continued development and refinement:
             </p>
 
             <ul class="impact-list">
