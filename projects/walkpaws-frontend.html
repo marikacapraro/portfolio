@@ -262,6 +262,18 @@
             margin: var(--space-2xl) 0;
         }
 
+        .two-column-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-3xl);
+            max-width: var(--container-max);
+            margin: 0 auto;
+        }
+
+        .two-column-grid h2 {
+            text-align: left;
+        }
+
         .process-item {
             background: var(--color-bg);
             border: 1px solid var(--color-border);
@@ -427,6 +439,10 @@
             .split-view:hover .design-side:hover {
                 flex: 2;
             }
+
+            .two-column-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -484,23 +500,22 @@
         </div>
     </section>
 
-    <!-- Overview -->
-    <section class="case-study-section">
-        <div class="section-container">
-            <h2>Overview</h2>
-            <p>
-                This project demonstrates my frontend development skills by transforming the Walk Paws UX/UI design into a fully functional, responsive web application. Using semantic HTML5, modern CSS, and vanilla JavaScript, I created a performant and accessible website that maintains design fidelity across all devices.
-            </p>
-        </div>
-    </section>
-
-    <!-- The Problem -->
+    <!-- Overview & Challenge -->
     <section class="case-study-section alt-bg">
-        <div class="section-container">
-            <h2>The Challenge</h2>
-            <p>
-                The main challenge was translating high-fidelity designs into clean, performant, and accessible code while ensuring the website maintains design fidelity and responsive behavior across all devices and browsers.
-            </p>
+        <div class="two-column-grid">
+            <div>
+                <h2>Overview</h2>
+                <p>
+                    This project demonstrates my frontend development skills by transforming the Walk Paws UX/UI design into a fully functional, responsive web application. Using semantic HTML5, modern CSS, and JavaScript, I created a performant and accessible website that maintains design fidelity across all devices.
+                </p>
+            </div>
+
+            <div>
+                <h2>The Challenge</h2>
+                <p>
+                    The main challenge was translating high-fidelity designs into clean, performant, and accessible code while ensuring the website maintains design fidelity and responsive behavior across all devices and browsers.
+                </p>
+            </div>
         </div>
     </section>
 
@@ -511,9 +526,8 @@
             <ul class="solution-list">
                 <li><strong>Semantic HTML5 structure</strong> for improved accessibility and SEO</li>
                 <li><strong>Responsive CSS</strong> using media queries for seamless device adaptation</li>
-                <li><strong>Vanilla JavaScript</strong> for interactive features and smooth user experience</li>
+                <li><strong>JavaScript</strong> for interactive features and smooth user experience</li>
                 <li><strong>Cross-browser compatibility</strong> tested on Chrome and Safari across devices</li>
-                <li><strong>Performance optimization</strong> ensuring fast load times and smooth interactions</li>
             </ul>
         </div>
     </section>
@@ -558,9 +572,14 @@
                 I implemented semantic HTML5 markup to create an accessible, SEO-friendly structure that reflects the design hierarchy. Proper use of semantic elements like <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, and <code>&lt;footer&gt;</code> ensures the content is meaningful for both users and search engines.
             </p>
             
-            <!-- Placeholder for HTML structure images -->
             <div class="image-grid" style="margin-top: var(--space-2xl);">
-                <!-- Images will be added here -->
+                <div class="image-item">
+                    <img src="../assets/images/projects/walkpawsfrontend/HTML picture 1 semantic.png" alt="Semantic HTML Structure">
+                    <div class="image-caption">
+                        <h4>Semantic HTML5 Markup</h4>
+                        <p>Structured, accessible HTML using semantic elements for improved SEO and accessibility</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -573,9 +592,14 @@
                 I developed a desktop-first CSS architecture with media queries for responsive adaptation across devices. The styling system includes CSS custom properties for maintainable theming, flexbox and grid layouts for modern responsive design, and carefully defined breakpoints to ensure seamless transitions between device sizes.
             </p>
 
-            <!-- Placeholder for CSS implementation images -->
             <div class="image-grid" style="margin-top: var(--space-2xl);">
-                <!-- Images will be added here -->
+                <div class="image-item">
+                    <img src="../assets/images/projects/walkpawsfrontend/CSS screenshot 3.png" alt="CSS Implementation">
+                    <div class="image-caption">
+                        <h4>CSS Architecture</h4>
+                        <p>Modern CSS with custom properties, flexbox, and grid layouts for responsive design</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -585,12 +609,37 @@
         <div class="section-container">
             <h2>JavaScript Implementation</h2>
             <p>
-                Interactive features were implemented using vanilla JavaScript to ensure smooth user experience without external dependencies. This includes mobile menu toggle functionality, smooth scroll navigation, form validation with real-time feedback, and dynamic content loading.
+                Interactive features were implemented using JavaScript to ensure smooth user experience without external dependencies. This includes mobile menu toggle functionality, smooth scroll navigation, form validation with real-time feedback, and dynamic content loading.
             </p>
 
-            <!-- Placeholder for JavaScript implementation images -->
             <div class="image-grid" style="margin-top: var(--space-2xl);">
-                <!-- Images will be added here -->
+                <div class="image-item">
+                    <img src="../assets/images/projects/walkpawsfrontend/JS picture 1 carousel.png" alt="JavaScript Carousel Implementation">
+                    <div class="image-caption">
+                        <h4>Interactive Carousel</h4>
+                        <p>JavaScript implementation of interactive carousel with smooth transitions and touch support</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Responsive Design -->
+    <section class="case-study-section alt-bg">
+        <div class="section-container">
+            <h2>Responsive Design</h2>
+            <p>
+                The website was designed to provide an optimal viewing experience across all devices. Using CSS media queries and a mobile-first approach, the layout adapts seamlessly from desktop to tablet to mobile screens. Key responsive features include flexible grid layouts, adaptive navigation, optimized images for different screen sizes, and touch-friendly interactive elements.
+            </p>
+
+            <div class="image-grid" style="margin-top: var(--space-2xl);">
+                <div class="image-item">
+                    <img src="../assets/images/projects/walkpawsfrontend/CSS picture 2 mobile navigation pattern.png" alt="Mobile Navigation Pattern">
+                    <div class="image-caption">
+                        <h4>Mobile Navigation</h4>
+                        <p>Responsive navigation pattern optimized for mobile devices with smooth animations</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -605,15 +654,15 @@
 
             <div class="project-links">
                 <a href="https://endearing-moxie-1b1cea.netlify.app" class="btn btn-primary" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.5rem;">
-                    <span>🚀 Live Website</span>
+                    <span>Live Website</span>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                         <polyline points="15 3 21 3 21 9"></polyline>
                         <line x1="10" y1="14" x2="21" y2="3"></line>
                     </svg>
                 </a>
-                <a href="#" class="btn btn-secondary" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.5rem;">
-                    <span>💻 GitHub Repository</span>
+                <a href="https://github.com/marikacapraro/walkpaws_website" class="btn btn-secondary" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                    <span>GitHub Repository</span>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                         <polyline points="15 3 21 3 21 9"></polyline>
