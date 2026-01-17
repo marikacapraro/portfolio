@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Walk Paws Frontend Implementation - Marika Capraro</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../styles/main.css">
+    <style>
+        /* Case Study Specific Styles */
+        .case-study-hero {
+            padding: calc(var(--space-3xl) + 80px) var(--container-padding) var(--space-3xl);
+            text-align: center;
+            background: transparent;
+        }
+
+        .case-study-hero h1 {
+            font-size: var(--font-size-4xl);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--space-md);
+            line-height: 1.2;
+        }
+
+        .case-study-subtitle {
+            font-size: var(--font-size-xl);
+            color: var(--color-text-secondary);
+            max-width: 700px;
+            margin: 0 auto var(--space-lg);
+            line-height: 1.6;
+        }
+
+        .case-study-meta {
+            display: flex;
+            gap: var(--space-lg);
+            justify-content: center;
+            flex-wrap: wrap;
+            font-size: var(--font-size-sm);
+            color: var(--color-text-tertiary);
+            margin-bottom: var(--space-3xl);
+        }
+
+        .case-study-meta span {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .hero-image-container {
+            max-width: 1200px;
+            height: 500px;
+            margin: 0 auto;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(15, 23, 42, 0.15);
+            display: flex;
+            position: relative;
+        }
+
+        .split-view {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .code-side,
+        .design-side {
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            cursor: pointer;
+        }
+
+        .code-side {
+            flex: 1;
+            background: #1e1e1e;
+        }
+
+        .design-side {
+            flex: 1;
+            background: #f8fafc;
+        }
+
+        .code-side img,
+        .design-side img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* Hover effects */
+        .split-view:hover .code-side:hover {
+            flex: 2;
+        }
+
+        .split-view:hover .design-side:hover {
+            flex: 2;
+        }
+
+        .split-view:hover .code-side:not(:hover) {
+            flex: 0.5;
+        }
+
+        .split-view:hover .design-side:not(:hover) {
+            flex: 0.5;
+        }
+
+        /* Hover labels */
+        .code-side::after,
+        .design-side::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .split-view:hover .code-side:not(:hover)::after,
+        .split-view:hover .design-side:not(:hover)::after {
+            opacity: 1;
+        }
+
+        .code-label,
+        .design-label {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-text-primary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .code-side:hover .code-label,
+        .design-side:hover .design-label {
+            opacity: 1;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-size: var(--font-size-sm);
+            margin-bottom: var(--space-xl);
+            transition: color var(--transition-fast);
+        }
+
+        .back-link:hover {
+            color: var(--color-accent);
+        }
+
+        .prototype-link {
+            color: var(--color-accent) !important;
+        }
+
+        /* Case Study Sections */
+        .case-study-section {
+            padding: var(--space-3xl) var(--container-padding);
+        }
+
+        .case-study-section.alt-bg {
+            background-color: var(--color-surface);
+        }
+
+        .section-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section-container-wide {
+            max-width: var(--container-max);
+            margin: 0 auto;
+        }
+
+        .case-study-section h2 {
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--space-xl);
+            color: var(--color-text-primary);
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .case-study-section h3 {
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-semibold);
+            margin: var(--space-2xl) 0 var(--space-lg);
+            color: var(--color-text-primary);
+        }
+
+        .case-study-section h4 {
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-semibold);
+            margin-top: var(--space-xl);
+            margin-bottom: var(--space-md);
+            color: var(--color-text-primary);
+        }
+
+        .case-study-section p {
+            font-size: var(--font-size-md);
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+            margin-bottom: var(--space-md);
+        }
+
+        .case-study-section p strong {
+            color: var(--color-text-primary);
+            font-weight: var(--font-weight-semibold);
+        }
+
+        /* Solution List */
+        .solution-list {
+            list-style: none;
+            padding: 0;
+            margin: var(--space-xl) 0;
+            display: grid;
+            gap: var(--space-md);
+        }
+
+        .solution-list li {
+            padding-left: var(--space-lg);
+            position: relative;
+            font-size: var(--font-size-md);
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+        }
+
+        .solution-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        /* Process Grid */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-xl);
+            margin: var(--space-2xl) 0;
+        }
+
+        .process-item {
+            background: var(--color-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            transition: all var(--transition-normal);
+        }
+
+        .process-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(15, 23, 42, 0.12);
+        }
+
+        .process-item h3 {
+            margin-top: 0;
+            font-size: var(--font-size-xl);
+            margin-bottom: var(--space-md);
+            color: var(--color-text-primary);
+        }
+
+        .process-item p {
+            margin: 0;
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Project Links */
+        .project-links {
+            display: flex;
+            gap: var(--space-lg);
+            justify-content: center;
+            margin: var(--space-2xl) 0;
+            flex-wrap: wrap;
+        }
+
+        /* Image Grid */
+        .image-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-2xl);
+            margin: var(--space-2xl) 0;
+        }
+
+        .image-item {
+            background: var(--color-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: all var(--transition-normal);
+        }
+
+        .image-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(15, 23, 42, 0.12);
+        }
+
+        .image-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            cursor: pointer;
+        }
+
+        .image-caption {
+            padding: var(--space-md);
+        }
+
+        .image-caption h4 {
+            margin: 0 0 var(--space-xs) 0;
+            font-size: var(--font-size-md);
+            color: var(--color-text-primary);
+        }
+
+        .image-caption p {
+            margin: 0;
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: var(--space-xl);
+            cursor: zoom-out;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 95%;
+            max-height: 95%;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            cursor: default;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            background: white;
+            border: none;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform var(--transition-fast);
+            z-index: 10000;
+        }
+
+        .lightbox-close:hover {
+            transform: scale(1.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .case-study-hero {
+                padding-top: calc(var(--space-2xl) + 80px);
+            }
+
+            .case-study-hero h1 {
+                font-size: var(--font-size-2xl);
+            }
+
+            .case-study-subtitle {
+                font-size: var(--font-size-lg);
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-image-container {
+                height: 300px;
+            }
+
+            .split-view {
+                flex-direction: column;
+            }
+
+            .code-side,
+            .design-side {
+                flex: 1;
+            }
+
+            .split-view:hover .code-side:hover,
+            .split-view:hover .design-side:hover {
+                flex: 2;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">MC</a>
+            <ul class="nav-menu">
+                <li><a href="../index.html#work">Projects</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="https://endearing-moxie-1b1cea.netlify.app" class="prototype-link" id="nav-prototype-link" target="_blank" rel="noopener noreferrer">View Live Site ↗</a></li>
+                <li><a href="../index.html#contact" class="nav-cta">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="case-study-hero">
+        <a href="../index.html#work" class="back-link">← Back to Projects</a>
+        <h1>Walk Paws Frontend Implementation</h1>
+        <p class="case-study-subtitle">Transforming UX/UI design into a fully functional, responsive web application</p>
+        
+        <div class="case-study-meta">
+            <span><strong>Role:</strong> Frontend Developer</span>
+            <span><strong>Timeline:</strong> December 2024</span>
+            <span><strong>Technologies:</strong> HTML5, CSS3, JavaScript</span>
+        </div>
+
+        <a href="https://endearing-moxie-1b1cea.netlify.app" class="btn btn-primary prototype-cta" id="hero-prototype-link" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: var(--space-xl);">
+            <span>View Live Website</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+        </a>
+        
+        <div class="hero-image-container">
+            <div class="split-view">
+                <div class="code-side">
+                    <img src="../assets/images/projects/walkpawsfrontend/code-full.png" alt="HTML/CSS Code">
+                    <div class="code-label">Code View</div>
+                </div>
+                <div class="design-side">
+                    <img src="../assets/images/projects/walkpawsfrontend/design-full.png" alt="Final Design">
+                    <div class="design-label">Live Design</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="case-study-section">
+        <div class="section-container">
+            <h2>Overview</h2>
+            <p>
+                This project demonstrates my frontend development skills by transforming the Walk Paws UX/UI design into a fully functional, responsive web application. Using semantic HTML5, modern CSS, and vanilla JavaScript, I created a performant and accessible website that maintains design fidelity across all devices.
+            </p>
+        </div>
+    </section>
+
+    <!-- The Problem -->
+    <section class="case-study-section alt-bg">
+        <div class="section-container">
+            <h2>The Challenge</h2>
+            <p>
+                The main challenge was translating high-fidelity designs into clean, performant, and accessible code while ensuring the website maintains design fidelity and responsive behavior across all devices and browsers.
+            </p>
+        </div>
+    </section>
+
+    <!-- The Solution -->
+    <section class="case-study-section">
+        <div class="section-container">
+            <h2>The Solution</h2>
+            <ul class="solution-list">
+                <li><strong>Semantic HTML5 structure</strong> for improved accessibility and SEO</li>
+                <li><strong>Responsive CSS</strong> using media queries for seamless device adaptation</li>
+                <li><strong>Vanilla JavaScript</strong> for interactive features and smooth user experience</li>
+                <li><strong>Cross-browser compatibility</strong> tested on Chrome and Safari across devices</li>
+                <li><strong>Performance optimization</strong> ensuring fast load times and smooth interactions</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Development Process -->
+    <section class="case-study-section alt-bg">
+        <div class="section-container">
+            <h2>Development Process</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto var(--space-2xl); color: var(--color-text-secondary); font-size: var(--font-size-sm); line-height: 1.7;">
+                I followed a systematic approach to ensure code quality, maintainability, and optimal user experience across all touchpoints.
+            </p>
+
+            <div class="process-grid">
+                <div class="process-item">
+                    <h3>File Structure</h3>
+                    <p>Organized HTML, CSS, and JavaScript files with proper asset management for images and fonts, ensuring maintainable and scalable code architecture.</p>
+                </div>
+
+                <div class="process-item">
+                    <h3>Navigation System</h3>
+                    <p>Implemented responsive menu with smooth scrolling and active state management for intuitive user navigation across all pages.</p>
+                </div>
+
+                <div class="process-item">
+                    <h3>Interactive Elements</h3>
+                    <p>Added form validation, animations, and transitions to enhance user engagement and provide immediate feedback on user actions.</p>
+                </div>
+
+                <div class="process-item">
+                    <h3>Responsive Layout</h3>
+                    <p>Defined strategic breakpoints and layout adjustments to ensure seamless adaptation from desktop to tablet to mobile devices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HTML Structure -->
+    <section class="case-study-section">
+        <div class="section-container">
+            <h2>HTML Structure</h2>
+            <p>
+                I implemented semantic HTML5 markup to create an accessible, SEO-friendly structure that reflects the design hierarchy. Proper use of semantic elements like <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, and <code>&lt;footer&gt;</code> ensures the content is meaningful for both users and search engines.
+            </p>
+            
+            <!-- Placeholder for HTML structure images -->
+            <div class="image-grid" style="margin-top: var(--space-2xl);">
+                <!-- Images will be added here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CSS Implementation -->
+    <section class="case-study-section alt-bg">
+        <div class="section-container">
+            <h2>CSS Implementation</h2>
+            <p>
+                I developed a desktop-first CSS architecture with media queries for responsive adaptation across devices. The styling system includes CSS custom properties for maintainable theming, flexbox and grid layouts for modern responsive design, and carefully defined breakpoints to ensure seamless transitions between device sizes.
+            </p>
+
+            <!-- Placeholder for CSS implementation images -->
+            <div class="image-grid" style="margin-top: var(--space-2xl);">
+                <!-- Images will be added here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript Implementation -->
+    <section class="case-study-section">
+        <div class="section-container">
+            <h2>JavaScript Implementation</h2>
+            <p>
+                Interactive features were implemented using vanilla JavaScript to ensure smooth user experience without external dependencies. This includes mobile menu toggle functionality, smooth scroll navigation, form validation with real-time feedback, and dynamic content loading.
+            </p>
+
+            <!-- Placeholder for JavaScript implementation images -->
+            <div class="image-grid" style="margin-top: var(--space-2xl);">
+                <!-- Images will be added here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Links -->
+    <section class="case-study-section alt-bg">
+        <div class="section-container">
+            <h2>Project Links</h2>
+            <p style="text-align: center; margin-bottom: var(--space-xl);">
+                View the complete project implementation:
+            </p>
+
+            <div class="project-links">
+                <a href="https://endearing-moxie-1b1cea.netlify.app" class="btn btn-primary" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                    <span>🚀 Live Website</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                </a>
+                <a href="#" class="btn btn-secondary" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                    <span>💻 GitHub Repository</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <p class="logo">MC</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="../index.html#work">Projects</a></li>
+                            <li><a href="../about.html">About</a></li>
+                            <li><a href="../index.html#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <ul>
+                            <li><a href="mailto:marikacapraro94@gmail.com">Email</a></li>
+                            <li><a href="https://www.linkedin.com/in/marika-capraro-a09bb5239" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                            <li><a href="../assets/Marika-Capraro-Resume.pdf" target="_blank">Resume</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Marika Capraro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" aria-label="Close lightbox">×</button>
+        <img src="" alt="" id="lightbox-img">
+    </div>
+
+    <script src="../scripts/main.js"></script>
+    <script>
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const closeBtn = document.querySelector('.lightbox-close');
+
+        // Make all images in image-grid clickable
+        const imageItems = document.querySelectorAll('.image-item img');
+        imageItems.forEach(img => {
+            img.addEventListener('click', function() {
+                lightboxImg.src = this.src;
+                lightboxImg.alt = this.alt;
+                lightbox.classList.add('active');
+            });
+        });
+
+        // Close lightbox
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+        }
+
+        closeBtn.addEventListener('click', closeLightbox);
+
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>
