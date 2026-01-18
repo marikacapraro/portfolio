@@ -210,6 +210,9 @@ p {
     font-size: var(--font-size-xl);
     font-weight: var(--font-weight-bold);
     color: var(--color-text-primary);
+    position: relative;
+    z-index: 1002;
+    cursor: pointer;
 }
 
 .nav-menu {
