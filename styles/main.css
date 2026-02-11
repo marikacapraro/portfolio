@@ -579,8 +579,6 @@ p {
 .about-preview-image img {
     width: 100%;
     max-width: 400px;
-    border-radius: var(--radius-xl);
-    box-shadow: 0 20px 60px rgba(15, 23, 42, 0.1);
 }
 
 .about-preview-content h2 {
@@ -824,13 +822,6 @@ p {
 /* Graceful handling of missing images */
 .hero-image-small img,
 .project-image img,
-.about-preview-image img {
-    background: linear-gradient(135deg, 
-        var(--color-bg) 0%, 
-        var(--color-border) 50%, 
-        var(--color-bg) 100%);
-}
-
 /* Hero image placeholder */
 
 /* Project image placeholders */
