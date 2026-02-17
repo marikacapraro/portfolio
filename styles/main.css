@@ -764,7 +764,7 @@ p {
     
     .about-preview-container {
         grid-template-columns: 1fr;
-        gap: var(--space-xl);
+        gap: var(--space-md);
     }
     
     .about-preview-content {
