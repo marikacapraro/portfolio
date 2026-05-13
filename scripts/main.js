@@ -160,8 +160,69 @@ document.head.appendChild(style);
 window.addEventListener('load', () => {
     document.body.style.opacity = '0';
     document.body.style.transition = 'opacity 0.3s ease';
-    
+
     requestAnimationFrame(() => {
         document.body.style.opacity = '1';
     });
 });
+
+// ================================
+// Process Icons — Draw-in animation
+// ================================
+
+(function setupIconDrawIn() {
+    const cards = document.querySelectorAll('.approach-card');
+    if (!cards.length) return;
+
+    cards.forEach(card => {
+        card.querySelectorAll('.approach-icon svg [data-draw]').forEach(el => {
+            const length = typeof el.getTotalLength === 'function' ? el.getTotalLength() : 200;
+            el.style.setProperty('--draw-length', length);
+        });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+
+    cards.forEach(c => observer.observe(c));
+})();
+
+// ================================
+// Back to Top Button
+// ================================
+
+(function setupBackToTop() {
+    const button = document.createElement('button');
+    button.className = 'back-to-top';
+    button.type = 'button';
+    button.setAttribute('aria-label', 'Back to top');
+    button.innerHTML = `
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="18 15 12 9 6 15"/>
+        </svg>
+    `;
+    document.body.appendChild(button);
+
+    const threshold = () => window.innerHeight * 0.8;
+
+    const update = () => {
+        if (window.scrollY > threshold()) {
+            button.classList.add('visible');
+        } else {
+            button.classList.remove('visible');
+        }
+    };
+
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+
+    button.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+})();
