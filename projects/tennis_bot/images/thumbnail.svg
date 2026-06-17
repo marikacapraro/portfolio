@@ -11,32 +11,38 @@
 
   <rect width="800" height="600" fill="url(#bg)"/>
 
-  <!-- subtle court lines -->
-  <g stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="2" fill="none">
-    <rect x="60" y="60" width="680" height="480" rx="8"/>
-    <line x1="400" y1="60" x2="400" y2="540"/>
-    <line x1="60" y1="300" x2="740" y2="300"/>
+  <!-- tennis court lines (top-down, filling the frame) -->
+  <g stroke="#FFFFFF" stroke-opacity="0.1" stroke-width="2" fill="none">
+    <!-- doubles court: baselines (left/right) + doubles sidelines (top/bottom) -->
+    <rect x="12" y="12" width="776" height="576"/>
+    <!-- singles sidelines -->
+    <line x1="12" y1="84" x2="788" y2="84"/>
+    <line x1="12" y1="516" x2="788" y2="516"/>
+    <!-- net -->
+    <line x1="400" y1="12" x2="400" y2="588"/>
+    <!-- service lines -->
+    <line x1="191" y1="84" x2="191" y2="516"/>
+    <line x1="609" y1="84" x2="609" y2="516"/>
+    <!-- centre service line -->
+    <line x1="191" y1="300" x2="609" y2="300"/>
+    <!-- centre marks on the baselines -->
+    <line x1="12" y1="300" x2="28" y2="300"/>
+    <line x1="772" y1="300" x2="788" y2="300"/>
   </g>
 
   <!-- user chat bubble -->
   <g filter="url(#shadow)">
     <rect x="300" y="150" width="360" height="74" rx="20" fill="#E1FFC7"/>
-    <text x="324" y="195" font-family="Menlo, Consolas, monospace" font-size="22" fill="#0F172A">/check 6 dec after 7pm</text>
+    <text x="324" y="195" font-family="Menlo, Consolas, monospace" font-size="22" fill="#0F172A">/check 13 december</text>
   </g>
 
   <!-- bot chat bubble -->
   <g filter="url(#shadow)">
-    <rect x="120" y="250" width="420" height="120" rx="20" fill="#FFFFFF"/>
-    <text x="146" y="296" font-family="Manrope, sans-serif" font-size="22" font-weight="700" fill="#0F172A">📅 3 slots available</text>
-    <text x="146" y="330" font-family="Manrope, sans-serif" font-size="19" fill="#475569">Court 01 · 19:00–20:00, 20:00–21:00</text>
-    <text x="146" y="356" font-family="Manrope, sans-serif" font-size="19" fill="#475569">Court 04 · 21:00–22:00</text>
-  </g>
-
-  <!-- tennis ball -->
-  <g filter="url(#shadow)">
-    <circle cx="660" cy="320" r="42" fill="#D9F26B"/>
-    <path d="M624 300 q36 20 72 0" stroke="#FFFFFF" stroke-width="3" fill="none"/>
-    <path d="M624 340 q36 -20 72 0" stroke="#FFFFFF" stroke-width="3" fill="none"/>
+    <rect x="120" y="240" width="440" height="180" rx="20" fill="#FFFFFF"/>
+    <text x="146" y="286" font-family="Manrope, sans-serif" font-size="22" font-weight="700" fill="#0F172A">📅 13-12-2025</text>
+    <text x="146" y="320" font-family="Manrope, sans-serif" font-size="22" font-weight="700" fill="#0F172A">🎾 14 slots available</text>
+    <text x="146" y="368" font-family="Manrope, sans-serif" font-size="20" font-weight="700" fill="#0F172A">Tennis Indoorterrein 01:</text>
+    <text x="146" y="400" font-family="Manrope, sans-serif" font-size="20" fill="#0F172A">• 21:00-22:00</text>
   </g>
 
   <!-- title -->
