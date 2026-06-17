@@ -336,37 +336,6 @@
         .annotated-legend li { display: flex; gap: var(--space-md); align-items: flex-start; }
         .annotated-legend p { margin: 0; font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: 1.6; }
 
-        /* ===== Problem → solution cards (The Challenge) ===== */
-        .ps {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--space-md);
-            margin-top: var(--space-xl);
-            align-items: stretch;
-        }
-        .ps-head {
-            font-size: var(--font-size-xs);
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            font-weight: var(--font-weight-semibold);
-            color: var(--color-text-tertiary);
-            padding-left: var(--space-xs);
-        }
-        .ps-card {
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-md);
-            padding: var(--space-md) var(--space-lg);
-            font-size: var(--font-size-sm);
-            line-height: 1.6;
-        }
-        .ps-problem { background-color: var(--color-bg); color: var(--color-text-secondary); }
-        .ps-solution {
-            background-color: var(--color-surface);
-            border-left: 3px solid var(--color-tennis);
-            color: var(--color-text-primary);
-            font-weight: var(--font-weight-medium);
-        }
-
         /* ===== Architecture flow ===== */
         .flow {
             display: flex;
@@ -597,8 +566,6 @@
             .solution-shots { grid-template-columns: 1fr; }
             .annotated { grid-template-columns: 1fr; gap: var(--space-xl); }
             .annotated-figure { margin: 0 auto; }
-            .ps { grid-template-columns: 1fr; }
-            .ps-head { display: none; }
             .compare-table th, .compare-table td { padding: var(--space-sm) var(--space-md); }
             .case-study-hero { padding: calc(var(--space-3xl) + 40px) var(--container-padding) var(--space-2xl); }
             .case-study-hero h1 { font-size: var(--font-size-3xl); }
@@ -645,77 +612,8 @@
             <p>
                 Booking a public court in Ghent runs through a clunky city website — one I'd already picked apart
                 in my <a href="../gent-sports.html">City of Gent Sports Booking</a> case study. So this time I asked a
-                different question: <strong>what if booking didn't need the website at all?</strong> Here's the weekly
-                friction — and what the bot does instead.
+                different question: <strong>what if booking didn't need the website at all?</strong>
             </p>
-            <div class="ps">
-                <span class="ps-head">The clunky way</span>
-                <span class="ps-head ps-head--fix">A quick chat instead</span>
-
-                <div class="ps-card ps-problem">Logging in and clicking through screen after screen just to see what's free.</div>
-                <div class="ps-card ps-solution">One short message in an app I already use.</div>
-
-                <div class="ps-card ps-problem">The handful of evening slots vanish while I'm still deciding.</div>
-                <div class="ps-card ps-solution">The bot grabs the first good one the moment it opens.</div>
-
-                <div class="ps-card ps-problem">If nothing's free, I keep checking back all week.</div>
-                <div class="ps-card ps-solution">I ask once, and it watches every 15 minutes for me.</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- The Idea -->
-    <section class="case-study-section">
-        <div class="section-container">
-            <h2>The Idea</h2>
-            <p>
-                I already live in chat apps, so a messaging interface felt like the most natural home for this.
-                The interaction model became simple: <strong>I tell the bot what I want in plain language, it does
-                the tedious part, and it asks me before doing anything irreversible.</strong>
-            </p>
-            <p>
-                Three jobs cover everything I actually do: <strong>check</strong> what's free,
-                <strong>book</strong> a specific slot, and — the part I'm most proud of —
-                <strong>auto-search</strong>, where the bot quietly watches for an evening slot to open up and
-                grabs it for me. The website becomes invisible; the conversation is the product.
-            </p>
-        </div>
-    </section>
-
-    <!-- The Process -->
-    <section class="case-study-section alt-bg">
-        <div class="section-container">
-            <h2>I mapped the old flow, then deleted everything I could</h2>
-            <ol class="process-steps">
-                <li>
-                    <span class="process-num">01</span>
-                    <div>
-                        <h4>Audit the original</h4>
-                        <p>Walked the real booking task end-to-end and logged every tap, reload, and re-entered choice.</p>
-                    </div>
-                </li>
-                <li>
-                    <span class="process-num">02</span>
-                    <div>
-                        <h4>Find the irreducible inputs</h4>
-                        <p>Stripped it down to what actually defines a booking: <strong>when</strong> — and that's nearly it. The rest are defaults the system should hold for me.</p>
-                    </div>
-                </li>
-                <li>
-                    <span class="process-num">03</span>
-                    <div>
-                        <h4>Design the dialogue</h4>
-                        <p>Scripted the conversation so the bot asks only what it can't assume, and confirms in one clear step.</p>
-                    </div>
-                </li>
-                <li>
-                    <span class="process-num">04</span>
-                    <div>
-                        <h4>Build &amp; live-test</h4>
-                        <p>Shipped it for myself and refined the wording against real bookings until it felt effortless.</p>
-                    </div>
-                </li>
-            </ol>
         </div>
     </section>
 
@@ -758,8 +656,45 @@
         </div>
     </section>
 
-    <!-- Designing the Conversation -->
+    <!-- The Process -->
     <section class="case-study-section alt-bg">
+        <div class="section-container">
+            <h2>I mapped the old flow, then deleted everything I could</h2>
+            <ol class="process-steps">
+                <li>
+                    <span class="process-num">01</span>
+                    <div>
+                        <h4>Audit the original</h4>
+                        <p>Walked the real booking task end-to-end and logged every tap, reload, and re-entered choice.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="process-num">02</span>
+                    <div>
+                        <h4>Find the irreducible inputs</h4>
+                        <p>Stripped it down to what actually defines a booking: <strong>when</strong> — and that's nearly it. The rest are defaults the system should hold for me.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="process-num">03</span>
+                    <div>
+                        <h4>Design the dialogue</h4>
+                        <p>Scripted the conversation so the bot asks only what it can't assume, and confirms in one clear step.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="process-num">04</span>
+                    <div>
+                        <h4>Build &amp; live-test</h4>
+                        <p>Shipped it for myself and refined the wording against real bookings until it felt effortless.</p>
+                    </div>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- Designing the Conversation -->
+    <section class="case-study-section">
         <div class="section-container">
             <h2>Designing the Conversation</h2>
             <p class="section-intro">
@@ -838,7 +773,7 @@
     </section>
 
     <!-- The Bot in Action -->
-    <section class="case-study-section">
+    <section class="case-study-section alt-bg">
         <div class="section-container">
             <h2>The Bot in Action</h2>
             <p>
@@ -861,7 +796,7 @@
     </section>
 
     <!-- Building it with AI -->
-    <section class="case-study-section alt-bg">
+    <section class="case-study-section">
         <div class="section-container">
             <h2>Designing and Shipping with AI Tools</h2>
             <p>
@@ -904,7 +839,7 @@
     </section>
 
     <!-- Doing it responsibly -->
-    <section class="case-study-section">
+    <section class="case-study-section alt-bg">
         <div class="section-container">
             <h2>Automating with a Clear Conscience</h2>
             <p>
@@ -937,7 +872,7 @@
     </section>
 
     <!-- Outcome & Reflection -->
-    <section class="case-study-section alt-bg">
+    <section class="case-study-section">
         <div class="section-container">
             <h2>Outcome &amp; Reflection</h2>
             <p>
