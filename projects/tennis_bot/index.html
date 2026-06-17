@@ -652,7 +652,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="compare-note">Screens are measured. Stad Gent's documented 8 steps flow vs. one chat. Taps and times are approximate. <Table></Table>he bot books in the background (~60–90s), so "hands-on" is active effort.</div>
+            <div class="compare-note">Screens are measured. Stad Gent's documented 8 steps flow vs. one chat. Taps and times are approximate. The bot books in the background (~60–90s), so "hands-on" is active effort.</div>
         </div>
     </section>
 
@@ -739,11 +739,10 @@
             <div class="solution-item">
                 <div class="solution-content">
                     <h3>See and cancel bookings without leaving the chat</h3>
-                    <p><strong>The conversation covers the whole booking lifecycle</strong> — not just making a reservation, but reviewing and undoing one too.</p>
+                    <p>The conversation covers the whole booking lifecycle, not just making a reservation, but reviewing and undoing one too.</p>
                     <ul class="solution-list">
-                        <li><strong>/reservations</strong> lists all my active bookings at a glance — court, date and booking number</li>
-                        <li><strong>/cancel</strong> drops a slot in plain language, e.g. <strong>12 dec court 06 at 10pm</strong></li>
-                        <li>Cancelling asks me to confirm first, just like booking — so I never remove one by accident</li>
+                        <li><strong>/reservations</strong> lists all my active bookings at a glance: court, date and booking number</li>
+                        <li>Cancelling asks me to confirm first, just like booking, so I never remove one by accident</li>
                         <li>It all stays in one thread; I never log into the city website to manage a booking</li>
                     </ul>
                 </div>
@@ -756,13 +755,12 @@
             <div class="solution-item">
                 <div class="solution-content">
                     <h3>I let the bot do the checking</h3>
-                    <p><strong>I didn't want to keep refreshing the site for a free court, so I let the bot do it.</strong> I give it a date, and it looks every 15 minutes — then books the first evening slot it finds.</p>
+                    <p>I didn't want to keep refreshing the site for a free court, so I let the bot do it. I give it a date, and it looks every 15 minutes — then books the first slot it finds between the range I specified.</p>
                     <ul class="solution-list">
                         <li>I type <strong>/search</strong> with a date and reply <strong>yes</strong> to start</li>
                         <li>It checks for a free court every 15 minutes, so I don't have to</li>
                         <li>As soon as an evening slot opens, it books it and messages me</li>
-                        <li>But if a slot starts within a few hours, it just tells me instead of booking — the city only lets me cancel for free up to <strong>2 hours before start</strong>, so the bot won't lock me into a time I might not want</li>
-                        <li>Only one search runs at a time — I send <strong>/stop</strong> to cancel it anytime</li>
+                        <li>But if a slot starts within a few hours, it just tells me instead of booking. The website only lets me cancel for free up to <strong>2 hours before start</strong>, so the bot won't lock me into a time I might not want</li>
                     </ul>
                 </div>
                 <div class="solution-screenshot zoomable">
@@ -800,11 +798,9 @@
         <div class="section-container">
             <h2>Designing and Shipping with AI Tools</h2>
             <p>
-                I'm a designer, not a backend engineer — but AI tools let me take this from idea to a running
+                I'm a designer, not a backend engineer, but AI tools let me take this from idea to a running
                 service. I used them as a pair-builder: describing the behaviour I wanted, reading and steering
-                the code, and making the product decisions myself. The interesting part is that
-                <strong>the same skill that makes a good conversation with the bot makes a good conversation with
-                an AI coding tool</strong> — being precise about intent, edge cases, and what "done" means.
+                the code, and making the product decisions myself.
             </p>
 
             <h3>How a request travels</h3>
@@ -818,12 +814,10 @@
                 <div class="flow-node">Confirmation<span>back in chat</span></div>
             </div>
             <p>
-                Under the hood: the bot runs <strong>serverless</strong> and scales to zero, so it costs nothing
-                to keep around (it lives in the cloud's free tier). A <strong>scheduler</strong> wakes it every 15
-                minutes to run active searches. Because the city has no public API, the booking itself is done by
+                Because the website has no public API, the booking itself is done by
                 <strong>browser automation</strong> that logs in and clicks through the real site, and a
-                <strong>natural-language model</strong> interprets the messier date/time phrasings. My login stays
-                in a secrets manager — never in the code.
+                <strong>natural-language model</strong> interprets the date/time phrasings. My login stays
+                in a secrets manager and never in the code.
             </p>
             <div class="tool-tags">
                 <span>Telegram Bot API</span>
@@ -833,7 +827,6 @@
                 <span>Python</span>
                 <span>Selenium</span>
                 <span>Google Cloud Run</span>
-                <span>Docker</span>
             </div>
         </div>
     </section>
@@ -843,29 +836,24 @@
         <div class="section-container">
             <h2>Automating with a Clear Conscience</h2>
             <p>
-                Automating someone else's website deserves judgement, not just enthusiasm. Before building, I did
-                real due diligence and scoped the project so it stays squarely personal and fair.
+                Automating someone else's website deserves judgement, not just enthusiasm. Before building, I
+                 scoped the project so it stays personal and fair.
             </p>
             <div class="resp-grid">
                 <div class="resp-card">
                     <div class="ic">👤</div>
                     <h4>Personal use only</h4>
-                    <p>One account, my own legitimate credentials, for booking courts I actually play on. No reselling, no profit, no second users.</p>
-                </div>
-                <div class="resp-card">
-                    <div class="ic">📜</div>
-                    <h4>I read the terms</h4>
-                    <p>I reviewed the city's website terms and sales conditions. Reselling and account abuse are prohibited — automation for personal use is not.</p>
+                    <p>One account, my own credentials, for booking courts I actually play on. No reselling, no profit, no second users.</p>
                 </div>
                 <div class="resp-card">
                     <div class="ic">🤝</div>
                     <h4>A gentle footprint</h4>
-                    <p>One user, polling at a calm 15-minute cadence with retry limits — designed to behave like a patient human, not to hammer the site.</p>
+                    <p>One user, polling at a 15-minute cadence with retry limits: designed to behave like a patient human, not to hammer the site.</p>
                 </div>
                 <div class="resp-card">
                     <div class="ic">🔐</div>
                     <h4>Credentials kept safe</h4>
-                    <p>Login details live in a secrets manager and are git-ignored — never committed to the repo, never shown in the interface.</p>
+                    <p>Login details live in a secrets manager and are git-ignored.  Never committed to the repo, never shown in the interface.</p>
                 </div>
             </div>
         </div>
@@ -876,15 +864,13 @@
         <div class="section-container">
             <h2>Outcome &amp; Reflection</h2>
             <p>
-                I now book courts by sending one message, and most weeks I don't even do that — I let
-                <span class="cmd">/search</span> find the slot for me. The whole thing runs in the background at no
+                I now book courts by sending one message. The whole thing runs in the background at no
                 cost. A few things stuck with me:
             </p>
             <ul class="reflect-list">
-                <li><strong>A chat is still a UI.</strong> Without visual affordances, tone, message order, and timing carry the entire experience. Wording <em>is</em> interaction design.</li>
-                <li><strong>The hardest decisions were about trust.</strong> Confirmations and the "3-hour rule" exist to keep me in control of anything that costs money or can't be undone.</li>
-                <li><strong>AI changed what I can ship alone.</strong> As a designer I could take a personal idea all the way to a deployed, working product — not a mockup, the real thing.</li>
-                <li><strong>Designing the unhappy paths mattered most.</strong> Parse failures and a site that's down needed as much care as the smooth booking.</li>
+                <li><strong>A chat is still a UI.</strong> Without visual affordances, tone, message order, and timing carry the entire experience. Wording is interaction design.</li>
+                <li><strong>The hardest decisions were about trust.</strong> Confirmations and the "3-hour rule" exist to keep me in control of anything that costs money.</li>
+                <li><strong>AI changed what I can ship alone.</strong> As a designer I could take a personal idea all the way to a deployed, working product.</li>
             </ul>
 
             <div class="next-cta">
