@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tennis Court Booking Bot - a personal conversational tool designed as a chat and built with AI, by Marika Capraro">
+    <title>Tennis Court Booking Bot | Marika Capraro</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../assets/images/apple-touch-icon.png">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://marikacapraro.com/projects/tennis_bot/">
+    <meta property="og:title" content="Tennis Court Booking Bot - Conversational UX & AI Build">
+    <meta property="og:description" content="A personal Telegram bot that checks, books, and auto-hunts tennis courts through a simple chat - designed as a conversation and built with AI tools.">
+    <meta property="og:image" content="https://marikacapraro.com/assets/images/social-preview.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://marikacapraro.com/projects/tennis_bot/">
+    <meta property="twitter:title" content="Tennis Court Booking Bot - Conversational UX & AI Build">
+    <meta property="twitter:description" content="A personal Telegram bot that checks, books, and auto-hunts tennis courts through a simple chat - designed as a conversation and built with AI tools.">
+    <meta property="twitter:image" content="https://marikacapraro.com/assets/images/social-preview.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../styles/main.css">
+
+    <style>
+        :root { --color-tennis: #C7E84C; }
+
+        /* ===== Shared structure — mirrors the other case study pages ===== */
+        .section-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .section-container-wide {
+            max-width: var(--container-max);
+            margin: 0 auto;
+        }
+
+        /* Hero */
+        .case-study-hero {
+            padding: calc(var(--space-3xl) + 80px) var(--container-padding) var(--space-3xl);
+            text-align: center;
+        }
+        .case-study-hero h1 {
+            font-size: var(--font-size-4xl);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--space-md);
+            line-height: 1.2;
+        }
+        .case-study-subtitle {
+            font-size: var(--font-size-xl);
+            color: var(--color-text-secondary);
+            max-width: 700px;
+            margin: 0 auto var(--space-lg);
+            line-height: 1.6;
+        }
+        .case-study-meta {
+            display: flex;
+            gap: var(--space-lg);
+            justify-content: center;
+            flex-wrap: wrap;
+            font-size: var(--font-size-sm);
+            color: var(--color-text-tertiary);
+            margin-bottom: var(--space-2xl);
+        }
+        .case-study-meta span {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+        .hero-image-container {
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(15, 23, 42, 0.15);
+        }
+        .hero-image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            color: var(--color-text-secondary);
+            font-weight: var(--font-weight-medium);
+            font-size: var(--font-size-sm);
+            margin-bottom: var(--space-xl);
+        }
+        .back-link:hover { color: var(--color-accent); }
+
+        /* Content sections */
+        .case-study-section {
+            padding: var(--space-2xl) var(--container-padding);
+        }
+        .case-study-section.alt-bg {
+            background-color: var(--color-surface);
+        }
+        .case-study-section h2 {
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--space-xl);
+            color: var(--color-text-primary);
+            text-align: center;
+            line-height: 1.2;
+        }
+        .case-study-section h3 {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--space-lg);
+            margin-top: var(--space-2xl);
+            color: var(--color-text-primary);
+        }
+        .case-study-section h3:first-child { margin-top: 0; }
+        .case-study-section p {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+            margin-bottom: var(--space-md);
+        }
+        .case-study-section p strong {
+            color: var(--color-text-primary);
+            font-weight: var(--font-weight-semibold);
+        }
+        .case-study-section a {
+            color: var(--color-accent);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        /* ===== Chat mockup ===== */
+        .chat {
+            width: 100%;
+            max-width: 380px;
+            margin: 0 auto;
+            background: #ECE5DD;
+            border-radius: 22px;
+            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.16);
+            overflow: hidden;
+            border: 1px solid rgba(15, 23, 42, 0.06);
+        }
+        .chat-head {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+            background: #517DA2;
+            color: #fff;
+        }
+        .chat-avatar {
+            width: 38px; height: 38px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.18);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px;
+        }
+        .chat-head b { font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold); }
+        .chat-head span { display: block; font-size: 12px; opacity: 0.8; }
+        .chat-body {
+            padding: 18px 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .msg {
+            max-width: 84%;
+            padding: 9px 13px;
+            border-radius: 16px;
+            font-size: var(--font-size-xs);
+            line-height: 1.45;
+            white-space: pre-line;
+            box-shadow: 0 1px 1px rgba(15, 23, 42, 0.08);
+        }
+        .msg.bot {
+            align-self: flex-start;
+            background: #fff;
+            color: #0F172A;
+            border-bottom-left-radius: 5px;
+        }
+        .msg.user {
+            align-self: flex-end;
+            background: #E1FFC7;
+            color: #0F172A;
+            border-bottom-right-radius: 5px;
+        }
+        .cmd {
+            font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
+            font-size: 0.92em;
+            background: rgba(15, 23, 42, 0.05);
+            padding: 1px 5px;
+            border-radius: 5px;
+        }
+        .msg.user .cmd { background: rgba(15, 23, 42, 0.08); }
+        .msg small { color: var(--color-text-tertiary); font-size: 11px; }
+
+        /* ===== Solution-style blocks (matches the Cambio "Redesign Approach" layout) ===== */
+        .case-study-section .section-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto var(--space-2xl);
+        }
+        .solution-item {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: var(--space-2xl);
+            align-items: center;
+            padding: var(--space-2xl) 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .solution-item:first-of-type { padding-top: var(--space-lg); }
+        .solution-item:last-of-type { border-bottom: none; padding-bottom: 0; }
+        .solution-content h3 {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-text-primary);
+            margin: 0 0 var(--space-md) 0;
+            line-height: 1.3;
+        }
+        .solution-content > p {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+            margin: 0 0 var(--space-sm) 0;
+        }
+        .solution-content > p strong { color: var(--color-text-primary); font-weight: var(--font-weight-semibold); }
+        .solution-list {
+            list-style: none;
+            padding: 0;
+            margin: var(--space-lg) 0 0;
+        }
+        .solution-list li {
+            padding: var(--space-xs) 0 var(--space-xs) var(--space-lg);
+            position: relative;
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+            margin-bottom: var(--space-xs);
+        }
+        .solution-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        .solution-list li strong { color: var(--color-text-primary); font-weight: var(--font-weight-semibold); }
+        .solution-screenshot {
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+            border-radius: 22px;
+            border: 1px solid var(--color-border);
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+            overflow: hidden;
+        }
+        .solution-screenshot img { display: block; width: 100%; height: auto; }
+
+        /* ===== Image zoom (matches Cambio: hover lift + "Click to zoom" + lightbox) ===== */
+        .zoomable { position: relative; }
+        .zoomable.has-zoom { cursor: zoom-in; transition: transform var(--transition-fast), box-shadow var(--transition-fast); }
+        .zoomable.has-zoom:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(15, 23, 42, 0.12); }
+        .zoomable.has-zoom::after {
+            content: '🔍 Click to zoom';
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: var(--radius-md);
+            font-size: var(--font-size-xs);
+            opacity: 0;
+            transition: opacity var(--transition-fast);
+            pointer-events: none;
+        }
+        .zoomable.has-zoom:hover::after { opacity: 1; }
+
+        /* ===== Annotated screenshot (Bot in Action) ===== */
+        .annotated {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: var(--space-2xl);
+            align-items: center;
+            margin-top: var(--space-xl);
+        }
+        .annotated-figure {
+            position: relative;
+            width: 300px;
+            aspect-ratio: 752 / 1194;
+            border-radius: 22px;
+            border: 1px solid var(--color-border);
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+            overflow: hidden;
+        }
+        .annotated-figure img { display: block; width: 100%; height: 100%; object-fit: cover; }
+        .marker, .legend-num {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background-color: var(--color-tennis);
+            color: #15352A;
+            font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
+            font-size: 14px;
+            font-weight: var(--font-weight-bold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .marker {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            border: 2px solid #fff;
+            box-shadow: 0 2px 6px rgba(15, 23, 42, 0.3);
+            pointer-events: none;
+        }
+        .annotated-legend {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-lg);
+        }
+        .annotated-legend li { display: flex; gap: var(--space-md); align-items: flex-start; }
+        .annotated-legend p { margin: 0; font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: 1.6; }
+
+        /* ===== Problem → solution cards (The Challenge) ===== */
+        .ps {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-md);
+            margin-top: var(--space-xl);
+            align-items: stretch;
+        }
+        .ps-head {
+            font-size: var(--font-size-xs);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-text-tertiary);
+            padding-left: var(--space-xs);
+        }
+        .ps-card {
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: var(--space-md) var(--space-lg);
+            font-size: var(--font-size-sm);
+            line-height: 1.6;
+        }
+        .ps-problem { background-color: var(--color-bg); color: var(--color-text-secondary); }
+        .ps-solution {
+            background-color: var(--color-surface);
+            border-left: 3px solid var(--color-tennis);
+            color: var(--color-text-primary);
+            font-weight: var(--font-weight-medium);
+        }
+
+        /* ===== Architecture flow ===== */
+        .flow {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+            margin: var(--space-lg) 0;
+        }
+        .flow-node {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: 14px 18px;
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
+            text-align: center;
+            min-width: 120px;
+        }
+        .flow-node span { display: block; font-size: var(--font-size-xs); color: var(--color-text-tertiary); font-weight: var(--font-weight-normal); margin-top: 2px; }
+        .flow-arrow { color: var(--color-text-tertiary); font-size: 20px; }
+
+        .tool-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: var(--space-lg); }
+        .tool-tags span {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 999px;
+            padding: 7px 14px;
+            font-size: var(--font-size-xs);
+            font-weight: var(--font-weight-medium);
+            color: var(--color-text-primary);
+        }
+
+        /* ===== Responsibility cards ===== */
+        .resp-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-md);
+            margin-top: var(--space-lg);
+        }
+        .resp-card {
+            background: var(--color-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+        }
+        .resp-card .ic { font-size: 22px; }
+        .resp-card h4 { font-size: var(--font-size-md); font-weight: var(--font-weight-semibold); margin: 10px 0 6px; color: var(--color-text-primary); }
+        .resp-card p { margin-bottom: 0; }
+
+        /* ===== Real screenshots gallery ===== */
+        .shots {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-md);
+            margin-top: var(--space-lg);
+        }
+        .shot { margin: 0; }
+        .shot__frame {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+            background: var(--color-bg);
+            aspect-ratio: 9 / 16;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .shot__frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .shot__ph {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%; height: 100%;
+            color: var(--color-text-tertiary);
+            font-size: var(--font-size-xs);
+            text-align: center;
+            padding: 16px;
+            background:
+                repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(15,23,42,0.02) 10px, rgba(15,23,42,0.02) 20px);
+        }
+        .shot__ph .ic { font-size: 26px; }
+        .shot__ph code { background: rgba(15,23,42,0.06); padding: 2px 6px; border-radius: 5px; }
+        .shot figcaption {
+            font-size: var(--font-size-xs);
+            color: var(--color-text-secondary);
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        /* ===== Reflection ===== */
+        .reflect-list { list-style: none; padding: 0; margin: var(--space-md) 0 0; }
+        .reflect-list li {
+            padding: 14px 0 14px 28px;
+            position: relative;
+            border-bottom: 1px solid var(--color-border);
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+        }
+        .reflect-list li:last-child { border-bottom: none; }
+        .reflect-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--color-warm-1);
+            font-weight: var(--font-weight-bold);
+        }
+        .reflect-list li strong { color: var(--color-text-primary); font-weight: var(--font-weight-semibold); }
+
+        .next-cta {
+            margin-top: var(--space-2xl);
+            display: flex;
+            gap: var(--space-sm);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* ===== Process (numbered steps — portfolio light style, tennis-lime accent) ===== */
+        .process-steps {
+            list-style: none;
+            margin: var(--space-xl) auto 0;
+            padding: 0;
+            max-width: 640px;
+        }
+        .process-steps li {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-md);
+            padding: var(--space-lg) 0;
+            border-top: 1px solid var(--color-border);
+        }
+        .process-steps li:first-child { border-top: none; padding-top: 0; }
+        .process-num {
+            flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-sm);
+            background-color: var(--color-tennis);
+            color: #15352A;
+            font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-bold);
+        }
+        .process-steps h4 {
+            font-size: var(--font-size-md);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-text-primary);
+            margin-bottom: var(--space-xs);
+        }
+        .process-steps p {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+            margin: 0;
+        }
+        .process-steps p strong { color: var(--color-text-primary); font-weight: var(--font-weight-semibold); }
+
+        /* ===== Solution comparison table ===== */
+        .compare-wrap {
+            max-width: 680px;
+            margin: var(--space-xl) auto 0;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            background-color: var(--color-surface);
+        }
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .compare-table th,
+        .compare-table td {
+            padding: var(--space-md) var(--space-lg);
+            text-align: right;
+            font-size: var(--font-size-sm);
+            white-space: nowrap;
+        }
+        .compare-table th:first-child,
+        .compare-table td:first-child {
+            text-align: left;
+            white-space: normal;
+        }
+        .compare-table thead th {
+            font-size: var(--font-size-xs);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-text-tertiary);
+            border-bottom: 1px solid var(--color-border);
+        }
+        .compare-table tbody td { color: var(--color-text-secondary); }
+        .compare-table tbody td:first-child { font-weight: var(--font-weight-semibold); }
+        .compare-table tbody tr + tr td { border-top: 1px solid var(--color-border); }
+        .compare-table tr.is-winner td {
+            color: var(--color-text-primary);
+            font-weight: var(--font-weight-bold);
+        }
+        .compare-dot {
+            display: inline-block;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background-color: var(--color-tennis);
+            margin-right: 9px;
+            vertical-align: middle;
+        }
+        .compare-note {
+            max-width: 680px;
+            margin: var(--space-sm) auto 0;
+            font-size: var(--font-size-xs);
+            color: var(--color-text-tertiary);
+        }
+
+        /* ===== Solution screenshots (two-up) ===== */
+        .solution-shots { grid-template-columns: 1fr 1fr; }
+        .solution-shots .shot__frame { aspect-ratio: 4 / 5; }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 860px) {
+            .solution-item { grid-template-columns: 1fr; gap: var(--space-lg); }
+            .resp-grid { grid-template-columns: 1fr; }
+            .shots { grid-template-columns: repeat(2, 1fr); }
+            .solution-shots { grid-template-columns: 1fr; }
+            .annotated { grid-template-columns: 1fr; gap: var(--space-xl); }
+            .annotated-figure { margin: 0 auto; }
+            .ps { grid-template-columns: 1fr; }
+            .ps-head { display: none; }
+            .compare-table th, .compare-table td { padding: var(--space-sm) var(--space-md); }
+            .case-study-hero { padding: calc(var(--space-3xl) + 40px) var(--container-padding) var(--space-2xl); }
+            .case-study-hero h1 { font-size: var(--font-size-3xl); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="../../index.html" class="logo">MC</a>
+            <ul class="nav-menu">
+                <li><a href="../../index.html#work">Projects</a></li>
+                <li><a href="../../about.html">About</a></li>
+                <li><a href="../../index.html#contact" class="nav-cta">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="case-study-hero">
+        <a href="../../index.html#work" class="back-link">← Back to Projects</a>
+        <h1>Tennis Court Booking Bot</h1>
+        <p class="case-study-subtitle">
+            A personal chat bot that checks, books, and auto-hunts tennis courts in Ghent — designed as a conversation and built end-to-end with AI tools.
+        </p>
+        <div class="case-study-meta">
+            <span><strong>Role:</strong> Concept, UX &amp; AI-assisted build</span>
+            <span>•</span>
+            <span><strong>Timeline:</strong> 2025</span>
+            <span>•</span>
+            <span><strong>Type:</strong> Personal tool (Telegram)</span>
+        </div>
+
+        <div class="hero-image-container">
+            <img src="images/hero.png" alt="Tennis Court Booking Bot conversation on Telegram" onerror="this.onerror=null;this.src='images/thumbnail.svg';">
+        </div>
+    </section>
+
+    <!-- The Challenge -->
+    <section class="case-study-section alt-bg">
+        <div class="section-container">
+            <h2>The Challenge</h2>
+            <p>
+                Booking a public court in Ghent runs through a clunky city website — one I'd already picked apart
+                in my <a href="../gent-sports.html">City of Gent Sports Booking</a> case study. So this time I asked a
+                different question: <strong>what if booking didn't need the website at all?</strong> Here's the weekly
+                friction — and what the bot does instead.
+            </p>
+            <div class="ps">
+                <span class="ps-head">The clunky way</span>
+                <span class="ps-head ps-head--fix">A quick chat instead</span>
+
+                <div class="ps-card ps-problem">Logging in and clicking through screen after screen just to see what's free.</div>
+                <div class="ps-card ps-solution">One short message in an app I already use.</div>
+
+                <div class="ps-card ps-problem">The handful of evening slots vanish while I'm still deciding.</div>
+                <div class="ps-card ps-solution">The bot grabs the first good one the moment it opens.</div>
+
+                <div class="ps-card ps-problem">If nothing's free, I keep checking back all week.</div>
+                <div class="ps-card ps-solution">I ask once, and it watches every 15 minutes for me.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Idea -->
+    <section class="case-study-section">
+        <div class="section-container">
+            <h2>The Idea</h2>
+            <p>
+                I already live in chat apps, so a messaging interface felt like the most natural home for this.
+                The interaction model became simple: <strong>I tell the bot what I want in plain language, it does
+                the tedious part, and it asks me before doing anything irreversible.</strong>
+            </p>
+            <p>
+                Three jobs cover everything I actually do: <strong>check</strong> what's free,
+                <strong>book</strong> a specific slot, and — the part I'm most proud of —
+                <strong>auto-search</strong>, where the bot quietly watches for an evening slot to open up and
+                grabs it for me. The website becomes invisible; the conversation is the product.
+            </p>
+        </div>
+    </section>
+
+    <!-- The Process -->
+    <section class="case-study-section alt-bg">
+        <div class="section-container">
+            <h2>I mapped the old flow, then deleted everything I could</h2>
+            <ol class="process-steps">
+                <li>
+                    <span class="process-num">01</span>
+                    <div>
+                        <h4>Audit the original</h4>
+                        <p>Walked the real booking task end-to-end and logged every tap, reload, and re-entered choice.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="process-num">02</span>
+                    <div>
+                        <h4>Find the irreducible inputs</h4>
+                        <p>Stripped it down to what actually defines a booking: <strong>when</strong> — and that's nearly it. The rest are defaults the system should hold for me.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="process-num">03</span>
+                    <div>
+                        <h4>Design the dialogue</h4>
+                        <p>Scripted the conversation so the bot asks only what it can't assume, and confirms in one clear step.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="process-num">04</span>
+                    <div>
+                        <h4>Build &amp; live-test</h4>
+                        <p>Shipped it for myself and refined the wording against real bookings until it felt effortless.</p>
+                    </div>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- The Solution -->
+    <section class="case-study-section">
+        <div class="section-container">
+            <h2>The Solution</h2>
+            <p>
+                This is conversational UX doing its job. Booking a court used to mean working through the Stad Gent
+                website screen by screen; now it's a short exchange with a chat bot on Telegram. Here's the
+                difference where it counts — the number of moves between "I want a court" and "it's booked."
+            </p>
+            <div class="compare-wrap">
+                <table class="compare-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Approach</th>
+                            <th scope="col">Taps</th>
+                            <th scope="col">Screens</th>
+                            <th scope="col">Hands-on</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Stad Gent website</td>
+                            <td>~14</td>
+                            <td>8</td>
+                            <td>~2 min</td>
+                        </tr>
+                        <tr class="is-winner">
+                            <td><span class="compare-dot"></span>Chat bot</td>
+                            <td>3</td>
+                            <td>1</td>
+                            <td>~15s</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="compare-note">Screens are measured — Stad Gent's documented 8-step flow vs. one chat. Taps and times are approximate; the bot books in the background (~60–90s), so "hands-on" is active effort.</div>
+        </div>
+    </section>
+
+    <!-- Designing the Conversation -->
+    <section class="case-study-section alt-bg">
+        <div class="section-container">
+            <h2>Designing the Conversation</h2>
+            <p class="section-intro">
+                A chat interface has no buttons, layout, or visual hierarchy to lean on. Every design decision
+                lives in the wording, the order of messages, and the moments where the bot pauses to check in
+                with me. These were the interaction-design choices I cared about most.
+            </p>
+
+            <!-- Solution 1: discoverable + forgiving input -->
+            <div class="solution-item">
+                <div class="solution-content">
+                    <h3>A vocabulary I don't have to memorise</h3>
+                    <p><strong>Even as the only user, I didn't want to memorise anything to use my own bot.</strong> A chat has no buttons to explore, so I made the words do the work.</p>
+                    <ul class="solution-list">
+                        <li><strong>/start lists every command with real examples</strong>, so I never have to remember them — even coming back after a few weeks</li>
+                        <li>I can type a date however I think of it: <strong>06 december</strong>, <strong>dec 6 after 7pm</strong> or <strong>13-12-2025</strong></li>
+                        <li>A natural-language parser reads what I wrote, so I don't have to follow a strict format</li>
+                    </ul>
+                </div>
+                <div class="solution-screenshot zoomable">
+                    <img src="images/commands.png" alt="Telegram chat showing the /start command and the bot's full command menu" loading="lazy">
+                </div>
+            </div>
+
+            <!-- Solution 2: confirm + narrate -->
+            <div class="solution-item">
+                <div class="solution-content">
+                    <h3>Confirm before anything irreversible</h3>
+                    <p><strong>Booking and cancelling cost real money and a real slot</strong> — so I never let them happen on the first message.</p>
+                    <ul class="solution-list">
+                        <li>The bot plays back exactly what it understood — court, date, time — and waits for my <strong>yes</strong></li>
+                        <li>It's like the confirm step before a purchase — that's where I catch a misread date</li>
+                        <li>Slow work is narrated — <strong>🔍 checking…</strong> → <strong>⚙️ processing…</strong> → <strong>✅ confirmed</strong> — so silence never makes me think it broke</li>
+                    </ul>
+                </div>
+                <div class="solution-screenshot zoomable">
+                    <img src="images/booking-request.png" alt="Telegram chat confirming a booking — the bot plays back court, date and time, waits for a yes, then confirms" loading="lazy">
+                </div>
+            </div>
+
+            <!-- Solution 3: manage reservations -->
+            <div class="solution-item">
+                <div class="solution-content">
+                    <h3>See and cancel bookings without leaving the chat</h3>
+                    <p><strong>The conversation covers the whole booking lifecycle</strong> — not just making a reservation, but reviewing and undoing one too.</p>
+                    <ul class="solution-list">
+                        <li><strong>/reservations</strong> lists all my active bookings at a glance — court, date and booking number</li>
+                        <li><strong>/cancel</strong> drops a slot in plain language, e.g. <strong>12 dec court 06 at 10pm</strong></li>
+                        <li>Cancelling asks me to confirm first, just like booking — so I never remove one by accident</li>
+                        <li>It all stays in one thread; I never log into the city website to manage a booking</li>
+                    </ul>
+                </div>
+                <div class="solution-screenshot zoomable">
+                    <img src="images/reservations-cancel-commands.png" alt="Telegram chat showing /reservations listing active bookings and /cancel removing one" loading="lazy">
+                </div>
+            </div>
+
+            <!-- Solution 4: auto-search -->
+            <div class="solution-item">
+                <div class="solution-content">
+                    <h3>I let the bot do the checking</h3>
+                    <p><strong>I didn't want to keep refreshing the site for a free court, so I let the bot do it.</strong> I give it a date, and it looks every 15 minutes — then books the first evening slot it finds.</p>
+                    <ul class="solution-list">
+                        <li>I type <strong>/search</strong> with a date and reply <strong>yes</strong> to start</li>
+                        <li>It checks for a free court every 15 minutes, so I don't have to</li>
+                        <li>As soon as an evening slot opens, it books it and messages me</li>
+                        <li>But if a slot starts within a few hours, it just tells me instead of booking — the city only lets me cancel for free up to <strong>2 hours before start</strong>, so the bot won't lock me into a time I might not want</li>
+                        <li>Only one search runs at a time — I send <strong>/stop</strong> to cancel it anytime</li>
+                    </ul>
+                </div>
+                <div class="solution-screenshot zoomable">
+                    <img src="images/search-command.png" alt="Telegram chat showing the /search command — confirm, then the bot checks every 15 minutes and books automatically" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Bot in Action -->
+    <section class="case-study-section">
+        <div class="section-container">
+            <h2>The Bot in Action</h2>
+            <p>
+                One real booking on my own phone, from request to confirmation — with the design decisions marked.
+            </p>
+            <div class="annotated">
+                <div class="annotated-figure zoomable">
+                    <img src="images/booking-request.png" alt="A real booking on Telegram: the bot plays back court, date and time, waits for a yes, then narrates checking, processing and confirmation" loading="lazy">
+                    <span class="marker" style="top: 34%; left: 5%;">1</span>
+                    <span class="marker" style="top: 50%; left: 62%;">2</span>
+                    <span class="marker" style="top: 57%; left: 5%;">3</span>
+                </div>
+                <ol class="annotated-legend">
+                    <li><span class="legend-num">1</span><p><strong>Plays the booking back</strong> — court, date and time — so I catch a misread before anything happens.</p></li>
+                    <li><span class="legend-num">2</span><p><strong>Nothing books without a plain "yes"</strong> — the only irreversible step is always mine to approve.</p></li>
+                    <li><span class="legend-num">3</span><p><strong>It narrates each step</strong> — checking, processing, confirmed — so a pause never feels like it broke.</p></li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- Building it with AI -->
+    <section class="case-study-section alt-bg">
+        <div class="section-container">
+            <h2>Designing and Shipping with AI Tools</h2>
+            <p>
+                I'm a designer, not a backend engineer — but AI tools let me take this from idea to a running
+                service. I used them as a pair-builder: describing the behaviour I wanted, reading and steering
+                the code, and making the product decisions myself. The interesting part is that
+                <strong>the same skill that makes a good conversation with the bot makes a good conversation with
+                an AI coding tool</strong> — being precise about intent, edge cases, and what "done" means.
+            </p>
+
+            <h3>How a request travels</h3>
+            <div class="flow">
+                <div class="flow-node">Me<span>Telegram chat</span></div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-node">Bot logic<span>parse intent</span></div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-node">Automation<span>drives the city site</span></div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-node">Confirmation<span>back in chat</span></div>
+            </div>
+            <p>
+                Under the hood: the bot runs <strong>serverless</strong> and scales to zero, so it costs nothing
+                to keep around (it lives in the cloud's free tier). A <strong>scheduler</strong> wakes it every 15
+                minutes to run active searches. Because the city has no public API, the booking itself is done by
+                <strong>browser automation</strong> that logs in and clicks through the real site, and a
+                <strong>natural-language model</strong> interprets the messier date/time phrasings. My login stays
+                in a secrets manager — never in the code.
+            </p>
+            <div class="tool-tags">
+                <span>Telegram Bot API</span>
+                <span>Claude</span>
+                <span>Cursor</span>
+                <span>Gemini (natural-language parsing)</span>
+                <span>Python</span>
+                <span>Selenium</span>
+                <span>Google Cloud Run</span>
+                <span>Docker</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Doing it responsibly -->
+    <section class="case-study-section">
+        <div class="section-container">
+            <h2>Automating with a Clear Conscience</h2>
+            <p>
+                Automating someone else's website deserves judgement, not just enthusiasm. Before building, I did
+                real due diligence and scoped the project so it stays squarely personal and fair.
+            </p>
+            <div class="resp-grid">
+                <div class="resp-card">
+                    <div class="ic">👤</div>
+                    <h4>Personal use only</h4>
+                    <p>One account, my own legitimate credentials, for booking courts I actually play on. No reselling, no profit, no second users.</p>
+                </div>
+                <div class="resp-card">
+                    <div class="ic">📜</div>
+                    <h4>I read the terms</h4>
+                    <p>I reviewed the city's website terms and sales conditions. Reselling and account abuse are prohibited — automation for personal use is not.</p>
+                </div>
+                <div class="resp-card">
+                    <div class="ic">🤝</div>
+                    <h4>A gentle footprint</h4>
+                    <p>One user, polling at a calm 15-minute cadence with retry limits — designed to behave like a patient human, not to hammer the site.</p>
+                </div>
+                <div class="resp-card">
+                    <div class="ic">🔐</div>
+                    <h4>Credentials kept safe</h4>
+                    <p>Login details live in a secrets manager and are git-ignored — never committed to the repo, never shown in the interface.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Outcome & Reflection -->
+    <section class="case-study-section alt-bg">
+        <div class="section-container">
+            <h2>Outcome &amp; Reflection</h2>
+            <p>
+                I now book courts by sending one message, and most weeks I don't even do that — I let
+                <span class="cmd">/search</span> find the slot for me. The whole thing runs in the background at no
+                cost. A few things stuck with me:
+            </p>
+            <ul class="reflect-list">
+                <li><strong>A chat is still a UI.</strong> Without visual affordances, tone, message order, and timing carry the entire experience. Wording <em>is</em> interaction design.</li>
+                <li><strong>The hardest decisions were about trust.</strong> Confirmations and the "3-hour rule" exist to keep me in control of anything that costs money or can't be undone.</li>
+                <li><strong>AI changed what I can ship alone.</strong> As a designer I could take a personal idea all the way to a deployed, working product — not a mockup, the real thing.</li>
+                <li><strong>Designing the unhappy paths mattered most.</strong> Parse failures and a site that's down needed as much care as the smooth booking.</li>
+            </ul>
+
+            <div class="next-cta">
+                <a href="../../index.html#work" class="btn btn-secondary">← Back to all projects</a>
+                <a href="../../index.html#contact" class="btn btn-primary">Get in touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="../../index.html" class="logo" style="text-decoration: none;">MC</a>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="../../index.html#work">Projects</a></li>
+                            <li><a href="../../about.html">About</a></li>
+                            <li><a href="../../index.html#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <ul>
+                            <li><a href="mailto:marikacapraro94@gmail.com">Email</a></li>
+                            <li><a href="https://www.linkedin.com/in/marika-capraro-a09bb5239" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                            <li><a href="../../assets/Marika-Capraro-Resume.pdf" target="_blank">Resume</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Marika Capraro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../scripts/main.js"></script>
+    <script>
+        // Image zoom — same behaviour as the Cambio case study (hover hint + click-to-zoom lightbox)
+        (function () {
+            function showLightbox(src, alt) {
+                const lb = document.createElement('div');
+                lb.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);display:flex;align-items:center;justify-content:center;z-index:10000;cursor:zoom-out;';
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = alt || '';
+                img.style.cssText = 'max-width:95%;max-height:95%;border-radius:8px;';
+                lb.appendChild(img);
+                document.body.appendChild(lb);
+                document.body.style.overflow = 'hidden';
+                function close() {
+                    if (lb.parentNode) document.body.removeChild(lb);
+                    document.body.style.overflow = '';
+                    document.removeEventListener('keydown', onKey);
+                }
+                function onKey(e) { if (e.key === 'Escape') close(); }
+                lb.addEventListener('click', close);
+                document.addEventListener('keydown', onKey);
+            }
+
+            document.querySelectorAll('.zoomable').forEach(function (el) {
+                const img = el.querySelector('img');
+                if (!img) return;
+                function enable() {
+                    if (img.naturalWidth > 0 && getComputedStyle(img).display !== 'none') {
+                        el.classList.add('has-zoom');
+                    }
+                }
+                if (img.complete) enable();
+                img.addEventListener('load', enable);
+                el.addEventListener('click', function () {
+                    if (el.classList.contains('has-zoom')) showLightbox(img.currentSrc || img.src, img.alt);
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
