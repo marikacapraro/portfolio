@@ -132,7 +132,7 @@
             color: var(--color-text-primary);
             font-weight: var(--font-weight-semibold);
         }
-        .case-study-section a:not(.btn) {
+        .case-study-section a {
             color: var(--color-accent);
             text-decoration: underline;
             text-underline-offset: 2px;
@@ -593,9 +593,9 @@
             A personal chat bot that checks, books, and auto-hunts tennis courts in Ghent. Designed as a conversation and built end-to-end with AI tools.
         </p>
         <div class="case-study-meta">
-            <span><strong>Role:</strong> Concept, UX &amp; AI-assisted build</span>
+            <span><strong>Role:</strong> UX Designer &amp; AI-assisted build</span>
             <span>•</span>
-            <span><strong>Timeline:</strong> 2025</span>
+            <span><strong>Timeline:</strong> 2026</span>
             <span>•</span>
             <span><strong>Type:</strong> Personal tool (Telegram)</span>
         </div>
@@ -610,7 +610,7 @@
         <div class="section-container">
             <h2>The Challenge</h2>
             <p>
-                Booking a public court in Ghent runs through a clunky city website — one I'd already picked apart
+                Booking a public court in Ghent runs through a city website — one I'd already picked apart
                 in my <a href="../gent-sports.html">City of Gent Sports Booking</a> case study. So this time I asked a
                 different question: <strong>what if booking didn't need the website at all?</strong>
             </p>
@@ -622,9 +622,9 @@
         <div class="section-container">
             <h2>The Solution</h2>
             <p>
-                This is conversational UX doing its job. Booking a court used to mean working through the Stad Gent
+                I decided to create a chat bot that would handle the entire booking process. This is conversational UX doing its job. Booking a court used to mean working through the Stad Gent
                 website screen by screen; now it's a short exchange with a chat bot on Telegram. Here's the
-                difference where it counts — the number of moves between "I want a court" and "it's booked."
+                difference, the number of moves between "I want a court" and "it's booked."
             </p>
             <div class="compare-wrap">
                 <table class="compare-table">
@@ -652,7 +652,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="compare-note">Screens are measured — Stad Gent's documented 8-step flow vs. one chat. Taps and times are approximate; the bot books in the background (~60–90s), so "hands-on" is active effort.</div>
+            <div class="compare-note">Screens are measured. Stad Gent's documented 8 steps flow vs. one chat. Taps and times are approximate. <Table></Table>he bot books in the background (~60–90s), so "hands-on" is active effort.</div>
         </div>
     </section>
 
@@ -665,7 +665,7 @@
                     <span class="process-num">01</span>
                     <div>
                         <h4>Audit the original</h4>
-                        <p>Walked the real booking task end-to-end and logged every tap, reload, and re-entered choice.</p>
+                        <p>Walked the real booking task end-to-end and logged every tap, reload, and choice.</p>
                     </div>
                 </li>
                 <li>
@@ -706,12 +706,12 @@
             <!-- Solution 1: discoverable + forgiving input -->
             <div class="solution-item">
                 <div class="solution-content">
-                    <h3>A vocabulary I don't have to memorise</h3>
-                    <p><strong>Even as the only user, I didn't want to memorise anything to use my own bot.</strong> A chat has no buttons to explore, so I made the words do the work.</p>
+                    <h3>A list of all available commands</h3>
+                    <p>Even as the only user, I didn't want to memorise anything to use my own bot. A chat has no buttons to explore, so I made the words do the work.</p>
                     <ul class="solution-list">
-                        <li><strong>/start lists every command with real examples</strong>, so I never have to remember them — even coming back after a few weeks</li>
+                        <li><strong>/start lists every command with real examples</strong>, so I never have to remember them, even coming back after a few weeks</li>
                         <li>I can type a date however I think of it: <strong>06 december</strong>, <strong>dec 6 after 7pm</strong> or <strong>13-12-2025</strong></li>
-                        <li>A natural-language parser reads what I wrote, so I don't have to follow a strict format</li>
+                        <li>A natural language parser reads what I wrote, so I don't have to follow a strict format</li>
                     </ul>
                 </div>
                 <div class="solution-screenshot zoomable">
@@ -722,12 +722,12 @@
             <!-- Solution 2: confirm + narrate -->
             <div class="solution-item">
                 <div class="solution-content">
-                    <h3>Confirm before anything irreversible</h3>
-                    <p><strong>Booking and cancelling cost real money and a real slot</strong> — so I never let them happen on the first message.</p>
+                    <h3>Confirm before booking</h3>
+                    <p>Booking and cancelling cost real money and a real slot, so I never let them happen on the first message and without my confirmation.</p>
                     <ul class="solution-list">
-                        <li>The bot plays back exactly what it understood — court, date, time — and waits for my <strong>yes</strong></li>
-                        <li>It's like the confirm step before a purchase — that's where I catch a misread date</li>
-                        <li>Slow work is narrated — <strong>🔍 checking…</strong> → <strong>⚙️ processing…</strong> → <strong>✅ confirmed</strong> — so silence never makes me think it broke</li>
+                        <li>The bot plays back exactly what it understood: court, date, time. Then it waits for my <strong>yes</strong></li>
+                        <li>It's like the confirm step before a purchase, that's where I catch a misread date</li>
+                        <li>Slow work is narrated: <br><strong>🔍 checking…</strong> → <strong>⚙️ processing…</strong> → <strong>✅ confirmed</strong> <br> so silence never makes me think it broke</li>
                     </ul>
                 </div>
                 <div class="solution-screenshot zoomable">
