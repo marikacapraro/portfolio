@@ -31,19 +31,15 @@
   </g>
 
   <!-- user chat bubble -->
-  <g filter="url(#shadow)">
-    <rect x="300" y="150" width="360" height="74" rx="20" fill="#E1FFC7"/>
-    <text x="324" y="195" font-family="Menlo, Consolas, monospace" font-size="22" fill="#0F172A">/check 13 december</text>
-  </g>
+  <rect x="300" y="150" width="360" height="74" rx="20" fill="#E1FFC7" filter="url(#shadow)"/>
+  <text x="324" y="195" font-family="Menlo, Consolas, monospace" font-size="22" fill="#0F172A">/check 13 december</text>
 
   <!-- bot chat bubble -->
-  <g filter="url(#shadow)">
-    <rect x="120" y="240" width="440" height="180" rx="20" fill="#FFFFFF"/>
-    <text x="146" y="286" font-family="Manrope, sans-serif" font-size="22" font-weight="700" fill="#0F172A">📅 13-12-2025</text>
-    <text x="146" y="320" font-family="Manrope, sans-serif" font-size="22" font-weight="700" fill="#0F172A">🎾 14 slots available</text>
-    <text x="146" y="368" font-family="Manrope, sans-serif" font-size="20" font-weight="700" fill="#0F172A">Tennis Indoorterrein 01:</text>
-    <text x="146" y="400" font-family="Manrope, sans-serif" font-size="20" fill="#0F172A">• 21:00-22:00</text>
-  </g>
+  <rect x="120" y="240" width="440" height="180" rx="20" fill="#FFFFFF" filter="url(#shadow)"/>
+  <text x="146" y="286" font-family="Manrope, sans-serif" font-size="22" font-weight="700" fill="#0F172A">📅 13-12-2025</text>
+  <text x="146" y="320" font-family="Manrope, sans-serif" font-size="22" font-weight="700" fill="#0F172A">🎾 14 slots available</text>
+  <text x="146" y="368" font-family="Manrope, sans-serif" font-size="20" font-weight="700" fill="#0F172A">Tennis Indoorterrein 01:</text>
+  <text x="146" y="400" font-family="Manrope, sans-serif" font-size="20" fill="#0F172A">• 21:00-22:00</text>
 
   <!-- title -->
   <text x="64" y="470" font-family="Manrope, sans-serif" font-size="44" font-weight="700" fill="#FFFFFF">Tennis Court Booking Bot</text>

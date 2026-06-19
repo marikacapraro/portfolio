@@ -296,7 +296,8 @@
         }
         .annotated-figure {
             position: relative;
-            width: 300px;
+            width: 100%;
+            max-width: 300px;
             aspect-ratio: 752 / 1194;
             border-radius: 22px;
             border: 1px solid var(--color-border);
@@ -566,7 +567,9 @@
             .solution-shots { grid-template-columns: 1fr; }
             .annotated { grid-template-columns: 1fr; gap: var(--space-xl); }
             .annotated-figure { margin: 0 auto; }
-            .compare-table th, .compare-table td { padding: var(--space-sm) var(--space-md); }
+            .compare-wrap { overflow-x: auto; }
+            .compare-table th, .compare-table td { padding: 12px 10px; font-size: var(--font-size-xs); }
+            .compare-table thead th { font-size: 11px; letter-spacing: 0.03em; }
             .case-study-hero { padding: calc(var(--space-3xl) + 40px) var(--container-padding) var(--space-2xl); }
             .case-study-hero h1 { font-size: var(--font-size-3xl); }
         }
