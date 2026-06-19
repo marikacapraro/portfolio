@@ -77,6 +77,7 @@
             gap: var(--space-xs);
         }
         .hero-image-container {
+            position: relative;
             max-width: 900px;
             margin: 0 auto;
             border-radius: var(--radius-lg);
@@ -88,6 +89,27 @@
             height: auto;
             display: block;
         }
+        .hero-replay {
+            position: absolute;
+            bottom: 14px;
+            right: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--color-text-secondary);
+            background: rgba(255, 255, 255, 0.92);
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            border-radius: 999px;
+            padding: 7px 13px;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(15, 23, 42, 0.12);
+            transition: background var(--transition-fast), transform var(--transition-fast);
+        }
+        .hero-replay:hover { background: #FFFFFF; transform: translateY(-1px); }
+        .hero-replay svg { width: 14px; height: 14px; }
         .back-link {
             display: inline-flex;
             align-items: center;
@@ -604,7 +626,14 @@
         </div>
 
         <div class="hero-image-container">
-            <img src="images/hero.png" alt="Tennis Court Booking Bot conversation on Telegram" onerror="this.onerror=null;this.src='images/thumbnail.svg';">
+            <img id="hero-anim" src="images/hero.svg" alt="Tennis Court Booking Bot conversation on Telegram" onerror="this.onerror=null;this.src='images/thumbnail.svg';">
+            <button id="hero-replay" class="hero-replay" type="button" aria-label="Replay animation">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M21 12a9 9 0 1 1-2.64-6.36"/>
+                    <polyline points="21 3 21 9 15 9"/>
+                </svg>
+                Replay
+            </button>
         </div>
     </section>
 
@@ -917,6 +946,35 @@
 
     <script src="../../scripts/main.js"></script>
     <script>
+        // Hero animation control. The hero art is an <img>-referenced SVG (CSS animation),
+        // so re-fetching it with a fresh query string restarts it from frame 0.
+        // Plays when the hero scrolls into view (and on load if already in view),
+        // on manual replay, and after a back/forward cache restore.
+        (function () {
+            var hero = document.getElementById('hero-anim');
+            if (!hero) return;
+            var base = 'images/hero.svg';
+            function play() {
+                if (hero.getAttribute('src').indexOf('thumbnail.svg') !== -1) return; // error fallback in use
+                hero.src = base + '?r=' + Date.now();
+            }
+
+            var btn = document.getElementById('hero-replay');
+            if (btn) btn.addEventListener('click', play);
+
+            if ('IntersectionObserver' in window) {
+                var visible = false;
+                new IntersectionObserver(function (entries) {
+                    entries.forEach(function (e) {
+                        if (e.isIntersecting && !visible) { visible = true; play(); }
+                        else if (!e.isIntersecting) { visible = false; }
+                    });
+                }, { threshold: 0.4 }).observe(hero);
+            }
+
+            window.addEventListener('pageshow', function (e) { if (e.persisted) play(); });
+        })();
+
         // Image zoom — same behaviour as the Cambio case study (hover hint + click-to-zoom lightbox)
         (function () {
             function showLightbox(src, alt) {
