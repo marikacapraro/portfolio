@@ -121,6 +121,29 @@
         }
         .back-link:hover { color: var(--color-accent); }
 
+        /* Disclaimer (below hero image) */
+        .disclaimer {
+            background: rgba(71, 85, 105, 0.1);
+            border-left: 3px solid var(--color-accent);
+            padding: var(--space-md) var(--space-lg);
+            border-radius: var(--radius-sm);
+            max-width: 900px;
+            margin: var(--space-xl) auto 0;
+            text-align: left;
+        }
+        .disclaimer strong {
+            color: var(--color-accent);
+            display: block;
+            margin-bottom: var(--space-xs);
+            font-size: var(--font-size-sm);
+        }
+        .disclaimer p {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+            margin: 0;
+        }
+
         /* Content sections */
         .case-study-section {
             padding: var(--space-2xl) var(--container-padding);
@@ -635,6 +658,11 @@
                 Replay
             </button>
         </div>
+
+        <div class="disclaimer">
+            <strong>⚠️ Disclaimer</strong>
+            <p>This is a personal project, built for my own use and shared here for portfolio purposes. It automates my own bookings on the City of Gent's public booking site. Not affiliated with or endorsed by the City of Gent.</p>
+        </div>
     </section>
 
     <!-- The Challenge -->
@@ -873,18 +901,13 @@
             <div class="resp-grid">
                 <div class="resp-card">
                     <div class="ic">👤</div>
-                    <h4>Personal use only</h4>
+                    <h4>Personal, non-profit use only</h4>
                     <p>One account, my own credentials, for booking courts I actually play on. No reselling, no profit, no second users.</p>
                 </div>
                 <div class="resp-card">
                     <div class="ic">🤝</div>
                     <h4>A gentle footprint</h4>
                     <p>One user, polling at a 15-minute cadence with retry limits: designed to behave like a patient human, not to hammer the site.</p>
-                </div>
-                <div class="resp-card">
-                    <div class="ic">🔐</div>
-                    <h4>Credentials kept safe</h4>
-                    <p>Login details live in a secrets manager and are git-ignored.  Never committed to the repo, never shown in the interface.</p>
                 </div>
             </div>
         </div>
